@@ -1,346 +1,249 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import {
-  LayoutDashboard,
-  CalendarDays,
-  Sparkles,
-  Eye,
-  BarChart3,
-} from 'lucide-react'
+import { LayoutDashboard, CalendarDays, Sparkles, Eye, BarChart3 } from 'lucide-react'
 
 const tabs = [
-  {
-    id: 'dashboard',
-    icon: LayoutDashboard,
-    label: 'Дашборд',
-    title: 'Единый центр управления',
-    description: 'Все ваши платформы, видео, статистика и настройки — в одном окне. Не нужно переключаться между кабинетами.',
-  },
-  {
-    id: 'calendar',
-    icon: CalendarDays,
-    label: 'Календарь',
-    title: 'Умный календарь публикаций',
-    description: 'Волновой, случайный, линейный режимы. Перетаскивайте видео между слотами, настраивайте интервалы и часовые пояса.',
-  },
-  {
-    id: 'ai',
-    icon: Sparkles,
-    label: 'AI-генерация',
-    title: 'AI создаёт метаданные за вас',
-    description: 'Загрузите видео — AI анализирует контент и создаёт заголовок, описание, теги и хештеги отдельно для каждой платформы.',
-  },
-  {
-    id: 'autoview',
-    icon: Eye,
-    label: 'AutoView',
-    title: 'Автопросмотры для быстрого старта',
-    description: 'Настройте стартовые просмотры для каждого видео. Алгоритмы платформ подхватывают контент с хорошим начальным откликом.',
-  },
-  {
-    id: 'stats',
-    icon: BarChart3,
-    label: 'Статистика',
-    title: 'Аналитика по всем платформам',
-    description: 'Сравнивайте эффективность на YouTube, Telegram, TikTok, Instagram и Pinterest в одном дашборде.',
-  },
+  { id: 'dashboard', icon: LayoutDashboard, label: 'Дашборд', title: 'Единый центр управления', description: 'Все ваши платформы, видео, статистика и настройки — в одном окне. Не нужно переключаться между кабинетами.' },
+  { id: 'calendar', icon: CalendarDays, label: 'Календарь', title: 'Умный календарь публикаций', description: 'Волновой, случайный, линейный режимы. Перетаскивайте видео между слотами, настраивайте интервалы.' },
+  { id: 'ai', icon: Sparkles, label: 'AI-генерация', title: 'AI создаёт метаданные за вас', description: 'Загрузите видео — AI анализирует контент и создаёт заголовок, описание, теги для каждой платформы.' },
+  { id: 'autoview', icon: Eye, label: 'AutoView', title: 'Автопросмотры для быстрого старта', description: 'Настройте стартовые просмотры для каждого видео. Алгоритмы подхватывают контент с хорошим начальным откликом.' },
+  { id: 'stats', icon: BarChart3, label: 'Статистика', title: 'Аналитика по всем платформам', description: 'Сравнивайте эффективность на YouTube, Telegram, TikTok, Instagram и Pinterest в одном дашборде.' },
 ]
 
-// Mockup screens for each tab
-const screens = {
-  dashboard: (
-    <div className="space-y-4">
-      <div className="flex gap-3 mb-4">
-        <div className="flex-1 bg-gray-800/60 rounded-xl p-4 border border-white/5">
-          <p className="text-xs text-gray-500">Видео сегодня</p>
-          <p className="text-2xl font-bold text-white">24</p>
-          <div className="w-full bg-gray-700 rounded-full h-1.5 mt-2">
-            <div className="bg-violet-500 h-1.5 rounded-full" style={{ width: '80%' }} />
+function DashboardScreen() {
+  return (
+    <div>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '10px', marginBottom: '16px' }}>
+        {[
+          { label: 'Видео сегодня', value: '24', extra: '80%', extraColor: '#a78bfa' },
+          { label: 'Просмотры', value: '14.2K', extra: '↑ 23%', extraColor: '#4ade80' },
+          { label: 'AI-генераций', value: '156', extra: 'за неделю', extraColor: '#60a5fa' },
+        ].map(s => (
+          <div key={s.label} style={{ background: 'rgba(31,41,55,0.6)', borderRadius: '10px', padding: '12px', border: '1px solid rgba(255,255,255,0.05)' }}>
+            <p style={{ fontSize: '11px', color: '#6b7280' }}>{s.label}</p>
+            <p style={{ fontSize: '20px', fontWeight: '700', color: 'white' }}>{s.value}</p>
+            <p style={{ fontSize: '11px', color: s.extraColor, marginTop: '4px' }}>{s.extra}</p>
           </div>
-        </div>
-        <div className="flex-1 bg-gray-800/60 rounded-xl p-4 border border-white/5">
-          <p className="text-xs text-gray-500">Просмотры</p>
-          <p className="text-2xl font-bold text-white">14.2K</p>
-          <p className="text-xs text-green-400 mt-2">↑ 23% vs вчера</p>
-        </div>
-        <div className="flex-1 bg-gray-800/60 rounded-xl p-4 border border-white/5 hidden md:block">
-          <p className="text-xs text-gray-500">AI-генераций</p>
-          <p className="text-2xl font-bold text-white">156</p>
-          <p className="text-xs text-blue-400 mt-2">за эту неделю</p>
-        </div>
+        ))}
       </div>
-      <div className="space-y-2">
-        {['YouTube — 8 публикаций', 'Telegram — 6 публикаций', 'TikTok — 5 публикаций', 'Instagram — 3 публикации', 'Pinterest — 2 публикации'].map((item, i) => (
-          <div key={i} className="flex items-center justify-between p-3 bg-gray-800/40 rounded-lg border border-white/5">
-            <div className="flex items-center gap-3">
-              <div className={`w-2 h-2 rounded-full ${
-                i === 0 ? 'bg-red-500' : i === 1 ? 'bg-blue-400' : i === 2 ? 'bg-white' : i === 3 ? 'bg-pink-500' : 'bg-red-600'
-              }`} />
-              <span className="text-sm text-gray-300">{item}</span>
+      {['YouTube — 8 публикаций', 'Telegram — 6 публикаций', 'TikTok — 5 публикаций', 'Instagram — 3 публикации'].map((item, i) => (
+        <div key={i} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '10px', background: 'rgba(31,41,55,0.4)', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.05)', marginBottom: '6px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+            <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: ['#ef4444','#60a5fa','#fff','#ec4899'][i] }} />
+            <span style={{ fontSize: '13px', color: '#d1d5db' }}>{item}</span>
+          </div>
+          <span style={{ fontSize: '11px', color: '#4ade80' }}>✓</span>
+        </div>
+      ))}
+    </div>
+  )
+}
+
+function BarChart() {
+  return (
+    <div>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '10px', marginBottom: '16px' }}>
+        {[{ l: 'Просмотры', v: '89.4K' }, { l: 'Подписчики', v: '+2,341' }, { l: 'CTR', v: '8.7%' }].map(s => (
+          <div key={s.l} style={{ background: 'rgba(31,41,55,0.6)', borderRadius: '10px', padding: '10px', border: '1px solid rgba(255,255,255,0.05)', textAlign: 'center' }}>
+            <p style={{ fontSize: '11px', color: '#6b7280' }}>{s.l}</p>
+            <p style={{ fontSize: '18px', fontWeight: '700', color: 'white' }}>{s.v}</p>
+          </div>
+        ))}
+      </div>
+      <div style={{ background: 'rgba(31,41,55,0.6)', borderRadius: '10px', padding: '14px', border: '1px solid rgba(255,255,255,0.05)' }}>
+        <p style={{ fontSize: '11px', color: '#6b7280', marginBottom: '10px' }}>Просмотры по платформам</p>
+        {[{ n: 'YouTube', v: 85, c: '#ef4444' }, { n: 'TikTok', v: 72, c: '#fff' }, { n: 'Instagram', v: 58, c: '#ec4899' }, { n: 'Telegram', v: 45, c: '#60a5fa' }].map(i => (
+          <div key={i.n} style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '8px' }}>
+            <span style={{ fontSize: '11px', color: '#9ca3af', width: '70px' }}>{i.n}</span>
+            <div style={{ flex: 1, background: '#374151', borderRadius: '100px', height: '6px' }}>
+              <div style={{ width: `${i.v}%`, background: i.c, height: '6px', borderRadius: '100px' }} />
             </div>
-            <span className="text-xs text-green-400">✓</span>
+            <span style={{ fontSize: '11px', color: '#6b7280', width: '30px', textAlign: 'right' }}>{i.v}%</span>
           </div>
         ))}
       </div>
     </div>
-  ),
+  )
+}
+
+const screens = {
+  dashboard: <DashboardScreen />,
   calendar: (
     <div>
-      <div className="grid grid-cols-7 gap-1 mb-3">
-        {['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'].map(d => (
-          <div key={d} className="text-center text-xs text-gray-500 py-1">{d}</div>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(7, 1fr)', gap: '4px', marginBottom: '12px' }}>
+        {['Пн','Вт','Ср','Чт','Пт','Сб','Вс'].map(d => (
+          <div key={d} style={{ textAlign: 'center', fontSize: '11px', color: '#6b7280', padding: '4px' }}>{d}</div>
         ))}
         {Array.from({ length: 28 }, (_, i) => {
-          const hasVideo = [2, 5, 8, 11, 14, 17, 20, 23, 26].includes(i)
-          const isToday = i === 8
+          const has = [2,5,8,11,14,17,20,23,26].includes(i)
+          const today = i === 8
           return (
-            <div key={i} className={`text-center text-xs py-2 rounded-lg ${
-              isToday ? 'bg-violet-500/30 text-violet-300 border border-violet-500/40' :
-              hasVideo ? 'bg-gray-800/60 text-white border border-white/5' :
-              'text-gray-600'
-            }`}>
-              {i + 1}
-              {hasVideo && <div className="w-1 h-1 rounded-full bg-violet-400 mx-auto mt-0.5" />}
-            </div>
+            <div key={i} style={{
+              textAlign: 'center', fontSize: '12px', padding: '6px', borderRadius: '8px',
+              background: today ? 'rgba(139,92,246,0.25)' : has ? 'rgba(31,41,55,0.6)' : 'transparent',
+              color: today ? '#c4b5fd' : has ? 'white' : '#4b5563',
+              border: today ? '1px solid rgba(139,92,246,0.4)' : has ? '1px solid rgba(255,255,255,0.05)' : 'none'
+            }}>{i+1}</div>
           )
         })}
       </div>
-      <div className="mt-3 space-y-1">
-        <div className="text-xs text-gray-500 mb-2">Расписание на 9 февраля</div>
-        {['09:00 — Reels: Утренний лайфхак', '12:00 — YouTube: Обзор инструментов', '18:00 — TikTok: Тренд недели'].map((item, i) => (
-          <div key={i} className="p-2 bg-gray-800/40 rounded-lg text-xs text-gray-300 border border-white/5">{item}</div>
-        ))}
-      </div>
+      <p style={{ fontSize: '11px', color: '#6b7280', marginBottom: '8px' }}>Расписание на 9 февраля</p>
+      {['09:00 — Reels: Утренний лайфхак', '12:00 — YouTube: Обзор инструментов', '18:00 — TikTok: Тренд недели'].map((t,i) => (
+        <div key={i} style={{ padding: '8px 12px', background: 'rgba(31,41,55,0.4)', borderRadius: '8px', fontSize: '12px', color: '#d1d5db', border: '1px solid rgba(255,255,255,0.05)', marginBottom: '4px' }}>{t}</div>
+      ))}
     </div>
   ),
   ai: (
-    <div className="space-y-4">
-      <div className="p-4 bg-gray-800/60 rounded-xl border border-white/5">
-        <p className="text-xs text-gray-500 mb-2">Видео загружено</p>
-        <div className="flex items-center gap-3">
-          <div className="w-16 h-10 rounded bg-gradient-to-br from-violet-500/30 to-blue-500/30 flex items-center justify-center text-xs">▶</div>
+    <div>
+      <div style={{ padding: '14px', background: 'rgba(31,41,55,0.6)', borderRadius: '10px', border: '1px solid rgba(255,255,255,0.05)', marginBottom: '12px' }}>
+        <p style={{ fontSize: '11px', color: '#6b7280', marginBottom: '8px' }}>Видео загружено</p>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+          <div style={{ width: '48px', height: '32px', borderRadius: '6px', background: 'linear-gradient(135deg, rgba(139,92,246,0.3), rgba(59,130,246,0.3))', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '12px' }}>▶</div>
           <div>
-            <p className="text-sm text-white">marketing_tips_2026.mp4</p>
-            <p className="text-xs text-gray-500">4:32 · 248 MB</p>
+            <p style={{ fontSize: '13px', color: 'white' }}>marketing_tips_2026.mp4</p>
+            <p style={{ fontSize: '11px', color: '#6b7280' }}>4:32 · 248 MB</p>
           </div>
         </div>
       </div>
-      <div className="p-4 bg-violet-500/10 rounded-xl border border-violet-500/20">
-        <div className="flex items-center gap-2 mb-3">
-          <Sparkles className="w-4 h-4 text-violet-400" />
-          <p className="text-xs text-violet-300 font-medium">AI сгенерировал метаданные</p>
+      <div style={{ padding: '14px', background: 'rgba(139,92,246,0.08)', borderRadius: '10px', border: '1px solid rgba(139,92,246,0.2)' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '10px' }}>
+          <Sparkles style={{ width: '14px', height: '14px', color: '#a78bfa' }} />
+          <p style={{ fontSize: '12px', color: '#c4b5fd', fontWeight: '500' }}>AI сгенерировал метаданные</p>
         </div>
-        <div className="space-y-2">
-          <div>
-            <p className="text-xs text-gray-500">YouTube заголовок</p>
-            <p className="text-sm text-white">🚀 5 маркетинговых стратегий, которые ВЗОРВУТ в 2026!</p>
-          </div>
-          <div>
-            <p className="text-xs text-gray-500">TikTok заголовок</p>
-            <p className="text-sm text-white">Повтори и получи 1000 клиентов 💰</p>
-          </div>
-          <div>
-            <p className="text-xs text-gray-500">Теги</p>
-            <div className="flex flex-wrap gap-1 mt-1">
-              {['маркетинг', 'бизнес2026', 'smm', 'рост', 'стратегия'].map(tag => (
-                <span key={tag} className="px-2 py-0.5 text-xs bg-gray-800 text-gray-400 rounded">#{tag}</span>
-              ))}
-            </div>
+        <div style={{ marginBottom: '8px' }}>
+          <p style={{ fontSize: '11px', color: '#6b7280' }}>YouTube</p>
+          <p style={{ fontSize: '13px', color: 'white' }}>🚀 5 стратегий, которые ВЗОРВУТ в 2026!</p>
+        </div>
+        <div style={{ marginBottom: '8px' }}>
+          <p style={{ fontSize: '11px', color: '#6b7280' }}>TikTok</p>
+          <p style={{ fontSize: '13px', color: 'white' }}>Повтори и получи 1000 клиентов 💰</p>
+        </div>
+        <div>
+          <p style={{ fontSize: '11px', color: '#6b7280', marginBottom: '4px' }}>Теги</p>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '4px' }}>
+            {['маркетинг','бизнес2026','smm','рост','стратегия'].map(t => (
+              <span key={t} style={{ padding: '2px 8px', fontSize: '11px', background: '#1f2937', color: '#9ca3af', borderRadius: '4px' }}>#{t}</span>
+            ))}
           </div>
         </div>
       </div>
     </div>
   ),
   autoview: (
-    <div className="space-y-4">
-      <div className="p-4 bg-gray-800/60 rounded-xl border border-white/5">
-        <div className="flex items-center justify-between mb-3">
-          <p className="text-sm text-white font-medium">Очередь AutoView</p>
-          <span className="text-xs px-2 py-1 bg-green-500/20 text-green-400 rounded">Активна</span>
+    <div>
+      <div style={{ padding: '14px', background: 'rgba(31,41,55,0.6)', borderRadius: '10px', border: '1px solid rgba(255,255,255,0.05)', marginBottom: '12px' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '12px' }}>
+          <p style={{ fontSize: '14px', color: 'white', fontWeight: '500' }}>Очередь AutoView</p>
+          <span style={{ fontSize: '11px', padding: '3px 10px', background: 'rgba(74,222,128,0.15)', color: '#4ade80', borderRadius: '6px' }}>Активна</span>
         </div>
-        <div className="space-y-2">
-          {[
-            { name: '5 маркетинговых стратегий', views: '1,200 / 2,000', progress: 60 },
-            { name: 'Обзор нейросетей для видео', views: '800 / 1,000', progress: 80 },
-            { name: 'Как начать SMM в 2026', views: '2,000 / 2,000', progress: 100 },
-          ].map((item, i) => (
-            <div key={i} className="p-3 bg-gray-800/40 rounded-lg border border-white/5">
-              <div className="flex items-center justify-between mb-2">
-                <p className="text-xs text-gray-300">{item.name}</p>
-                <p className="text-xs text-gray-500">{item.views}</p>
-              </div>
-              <div className="w-full bg-gray-700 rounded-full h-1.5">
-                <div
-                  className={`h-1.5 rounded-full ${item.progress === 100 ? 'bg-green-500' : 'bg-violet-500'}`}
-                  style={{ width: `${item.progress}%` }}
-                />
-              </div>
+        {[
+          { n: '5 маркетинговых стратегий', v: '1,200 / 2,000', p: 60 },
+          { n: 'Обзор нейросетей для видео', v: '800 / 1,000', p: 80 },
+          { n: 'Как начать SMM в 2026', v: '2,000 / 2,000', p: 100 },
+        ].map((item, i) => (
+          <div key={i} style={{ padding: '10px', background: 'rgba(31,41,55,0.4)', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.05)', marginBottom: '6px' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '6px' }}>
+              <p style={{ fontSize: '12px', color: '#d1d5db' }}>{item.n}</p>
+              <p style={{ fontSize: '11px', color: '#6b7280' }}>{item.v}</p>
             </div>
-          ))}
-        </div>
+            <div style={{ background: '#374151', borderRadius: '100px', height: '5px' }}>
+              <div style={{ width: `${item.p}%`, height: '5px', borderRadius: '100px', background: item.p === 100 ? '#4ade80' : '#8b5cf6' }} />
+            </div>
+          </div>
+        ))}
       </div>
-      <div className="p-3 bg-blue-500/10 rounded-xl border border-blue-500/20 text-xs text-blue-300">
-        💡 AutoView работает органично и безопасно — алгоритмы платформ считают эти просмотры естественными
+      <div style={{ padding: '10px 14px', background: 'rgba(59,130,246,0.08)', borderRadius: '10px', border: '1px solid rgba(59,130,246,0.2)', fontSize: '12px', color: '#93c5fd' }}>
+        💡 AutoView работает органично — алгоритмы платформ считают просмотры естественными
       </div>
     </div>
   ),
-  stats: (
-    <div className="space-y-4">
-      <div className="grid grid-cols-3 gap-3">
-        <div className="bg-gray-800/60 rounded-xl p-3 border border-white/5 text-center">
-          <p className="text-xs text-gray-500">Всего просмотров</p>
-          <p className="text-xl font-bold text-white">89.4K</p>
-        </div>
-        <div className="bg-gray-800/60 rounded-xl p-3 border border-white/5 text-center">
-          <p className="text-xs text-gray-500">Подписчиков</p>
-          <p className="text-xl font-bold text-white">+2,341</p>
-        </div>
-        <div className="bg-gray-800/60 rounded-xl p-3 border border-white/5 text-center">
-          <p className="text-xs text-gray-500">CTR</p>
-          <p className="text-xl font-bold text-white">8.7%</p>
-        </div>
-      </div>
-      {/* Simple bar chart mockup */}
-      <div className="p-4 bg-gray-800/60 rounded-xl border border-white/5">
-        <p className="text-xs text-gray-500 mb-3">Просмотры по платформам</p>
-        <div className="space-y-2">
-          {[
-            { name: 'YouTube', value: 85, color: 'bg-red-500' },
-            { name: 'TikTok', value: 72, color: 'bg-white' },
-            { name: 'Instagram', value: 58, color: 'bg-pink-500' },
-            { name: 'Telegram', value: 45, color: 'bg-blue-400' },
-            { name: 'Pinterest', value: 30, color: 'bg-red-600' },
-          ].map(item => (
-            <div key={item.name} className="flex items-center gap-3">
-              <span className="text-xs text-gray-400 w-20">{item.name}</span>
-              <div className="flex-1 bg-gray-700 rounded-full h-2">
-                <div className={`${item.color} h-2 rounded-full`} style={{ width: `${item.value}%` }} />
-              </div>
-              <span className="text-xs text-gray-500 w-10 text-right">{item.value}%</span>
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  ),
+  stats: <BarChart />,
 }
 
 export default function InterfaceDemo() {
   const [activeTab, setActiveTab] = useState('dashboard')
+  const tab = tabs.find(t => t.id === activeTab)
 
   return (
-    <section id="interface" className="relative py-20 lg:py-32">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
+    <section id="interface" style={{ position: 'relative', padding: '100px 0' }}>
+      <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-12"
+          style={{ textAlign: 'center', marginBottom: '48px' }}
         >
-          <span className="inline-block text-sm font-medium text-blue-400 tracking-wider uppercase mb-4">
+          <span style={{ display: 'inline-block', fontSize: '13px', fontWeight: '600', color: '#60a5fa', textTransform: 'uppercase', letterSpacing: '2px', marginBottom: '16px' }}>
             Интерфейс
           </span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">
-            Посмотрите, как это{' '}
-            <span className="gradient-text">выглядит внутри</span>
+          <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 3rem)', fontWeight: '700', color: 'white', marginBottom: '20px' }}>
+            Посмотрите, как это <span className="gradient-text">выглядит внутри</span>
           </h2>
-          <p className="text-lg text-gray-400 max-w-2xl mx-auto">
+          <p style={{ fontSize: '18px', color: '#9ca3af', maxWidth: '640px', margin: '0 auto' }}>
             Интуитивный интерфейс, в котором каждая деталь продумана для скорости и удобства
           </p>
         </motion.div>
 
-        {/* Tabs + Content */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
-        >
-          {/* Tabs */}
-          <div className="flex flex-wrap justify-center gap-2 mb-8">
-            {tabs.map((tab) => (
-              <button
-                key={tab.id}
-                onClick={() => setActiveTab(tab.id)}
-                className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium transition-all ${
-                  activeTab === tab.id
-                    ? 'bg-violet-500/20 text-violet-300 border border-violet-500/30'
-                    : 'text-gray-400 hover:text-white hover:bg-white/5 border border-transparent'
-                }`}
-              >
-                <tab.icon className="w-4 h-4" />
-                {tab.label}
-              </button>
-            ))}
+        {/* Tabs */}
+        <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '8px', marginBottom: '32px' }}>
+          {tabs.map(t => (
+            <button key={t.id} onClick={() => setActiveTab(t.id)}
+              style={{
+                display: 'flex', alignItems: 'center', gap: '6px',
+                padding: '10px 16px', borderRadius: '12px', fontSize: '13px', fontWeight: '500',
+                background: activeTab === t.id ? 'rgba(139,92,246,0.15)' : 'transparent',
+                color: activeTab === t.id ? '#c4b5fd' : '#9ca3af',
+                border: activeTab === t.id ? '1px solid rgba(139,92,246,0.3)' : '1px solid transparent',
+                cursor: 'pointer', transition: 'all 0.2s'
+              }}>
+              <t.icon style={{ width: '16px', height: '16px' }} />
+              {t.label}
+            </button>
+          ))}
+        </div>
+
+        {/* Content Grid */}
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '32px', alignItems: 'center' }} className="md:grid-cols-2 grid-cols-1">
+          {/* Text */}
+          <div style={{ order: 2 }}>
+            <AnimatePresence mode="wait">
+              <motion.div key={activeTab} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: 20 }} transition={{ duration: 0.3 }}>
+                <h3 style={{ fontSize: 'clamp(1.3rem, 2.5vw, 1.8rem)', fontWeight: '700', color: 'white', marginBottom: '16px' }}>{tab.title}</h3>
+                <p style={{ fontSize: '16px', color: '#9ca3af', lineHeight: '1.7', marginBottom: '24px' }}>{tab.description}</p>
+                <a href="#pricing" style={{ color: '#a78bfa', fontWeight: '500', textDecoration: 'none', fontSize: '15px' }}>Попробовать бесплатно →</a>
+              </motion.div>
+            </AnimatePresence>
           </div>
 
-          {/* Content */}
-          <div className="grid lg:grid-cols-2 gap-8 items-center">
-            {/* Text Side */}
-            <div className="order-2 lg:order-1">
-              <AnimatePresence mode="wait">
-                {tabs.filter(t => t.id === activeTab).map(tab => (
-                  <motion.div
-                    key={tab.id}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: 20 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    <h3 className="text-2xl lg:text-3xl font-bold text-white mb-4">
-                      {tab.title}
-                    </h3>
-                    <p className="text-gray-400 text-lg leading-relaxed mb-6">
-                      {tab.description}
-                    </p>
-                    <a
-                      href="#pricing"
-                      className="inline-flex items-center gap-2 text-violet-400 hover:text-violet-300 font-medium transition-colors"
-                    >
-                      Попробовать бесплатно →
-                    </a>
-                  </motion.div>
-                ))}
-              </AnimatePresence>
-            </div>
-
-            {/* Screen Mockup Side */}
-            <div className="order-1 lg:order-2">
-              <div className="relative">
-                <div className="absolute -inset-4 bg-gradient-to-r from-violet-500/10 via-blue-500/10 to-pink-500/10 rounded-3xl blur-xl" />
-                <div className="relative rounded-2xl overflow-hidden border border-white/10 glass">
-                  <div className="flex items-center gap-2 px-4 py-3 bg-gray-900/80 border-b border-white/5">
-                    <div className="flex gap-1.5">
-                      <div className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
-                      <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/80" />
-                      <div className="w-2.5 h-2.5 rounded-full bg-green-500/80" />
-                    </div>
-                    <div className="flex-1 mx-4">
-                      <div className="bg-gray-800 rounded-lg px-3 py-1 text-xs text-gray-400 text-center">
-                        app.youpub.ru/{activeTab}
-                      </div>
+          {/* Screen */}
+          <div style={{ order: 1 }}>
+            <div style={{ position: 'relative' }}>
+              <div style={{ position: 'absolute', inset: '-12px', background: 'linear-gradient(135deg, rgba(139,92,246,0.1), rgba(59,130,246,0.1), rgba(236,72,153,0.1))', borderRadius: '20px', filter: 'blur(20px)' }} />
+              <div className="glass" style={{ position: 'relative', borderRadius: '14px', overflow: 'hidden', border: '1px solid rgba(255,255,255,0.1)' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '6px', padding: '10px 14px', background: 'rgba(17,24,39,0.9)', borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+                  <div style={{ display: 'flex', gap: '5px' }}>
+                    <div style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#ef4444' }} />
+                    <div style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#eab308' }} />
+                    <div style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#22c55e' }} />
+                  </div>
+                  <div style={{ flex: 1, margin: '0 12px' }}>
+                    <div style={{ background: '#1f2937', borderRadius: '6px', padding: '4px 12px', fontSize: '11px', color: '#6b7280', textAlign: 'center' }}>
+                      app.youpub.ru/{activeTab}
                     </div>
                   </div>
-                  <div className="p-5 bg-gray-900/60 min-h-[360px]">
-                    <AnimatePresence mode="wait">
-                      <motion.div
-                        key={activeTab}
-                        initial={{ opacity: 0, scale: 0.98 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        exit={{ opacity: 0, scale: 0.98 }}
-                        transition={{ duration: 0.3 }}
-                      >
-                        {screens[activeTab]}
-                      </motion.div>
-                    </AnimatePresence>
-                  </div>
+                </div>
+                <div style={{ padding: '16px', background: 'rgba(17,24,39,0.6)', minHeight: '340px' }}>
+                  <AnimatePresence mode="wait">
+                    <motion.div key={activeTab} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.25 }}>
+                      {screens[activeTab]}
+                    </motion.div>
+                  </AnimatePresence>
                 </div>
               </div>
             </div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   )

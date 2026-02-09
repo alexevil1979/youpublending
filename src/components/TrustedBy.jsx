@@ -2,26 +2,26 @@ import { motion } from 'framer-motion'
 import { Users, Building2, Video, Globe } from 'lucide-react'
 
 const stats = [
-  { icon: Users, value: '1 200+', label: 'Авторов и блогеров' },
-  { icon: Building2, value: '50+', label: 'Агентств и студий' },
-  { icon: Video, value: '250K+', label: 'Видео опубликовано' },
-  { icon: Globe, value: '5', label: 'Платформ поддержки' },
+  { icon: Users, value: '1 200+', label: 'Авторов и блогеров', color: '#a78bfa' },
+  { icon: Building2, value: '50+', label: 'Агентств и студий', color: '#60a5fa' },
+  { icon: Video, value: '250K+', label: 'Видео опубликовано', color: '#f472b6' },
+  { icon: Globe, value: '5', label: 'Платформ поддержки', color: '#4ade80' },
 ]
 
 export default function TrustedBy() {
   return (
-    <section className="relative py-16 lg:py-20 border-y border-white/5">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section style={{ padding: '64px 0', borderTop: '1px solid rgba(255,255,255,0.05)', borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+      <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
         <motion.p
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="text-center text-sm text-gray-500 uppercase tracking-widest mb-10"
+          style={{ textAlign: 'center', fontSize: '13px', color: '#6b7280', textTransform: 'uppercase', letterSpacing: '3px', marginBottom: '40px' }}
         >
           Уже доверяют YouPub
         </motion.p>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 lg:gap-8">
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '32px' }}>
           {stats.map((stat, index) => (
             <motion.div
               key={stat.label}
@@ -29,13 +29,17 @@ export default function TrustedBy() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="text-center group"
+              style={{ textAlign: 'center' }}
             >
-              <div className="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-violet-500/10 mb-4 group-hover:bg-violet-500/20 transition-colors">
-                <stat.icon className="w-6 h-6 text-violet-400" />
+              <div style={{
+                display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+                width: '48px', height: '48px', borderRadius: '14px',
+                background: `${stat.color}15`, marginBottom: '16px'
+              }}>
+                <stat.icon style={{ width: '24px', height: '24px', color: stat.color }} />
               </div>
-              <p className="text-3xl lg:text-4xl font-bold text-white mb-1">{stat.value}</p>
-              <p className="text-sm text-gray-500">{stat.label}</p>
+              <p style={{ fontSize: 'clamp(1.8rem, 3vw, 2.5rem)', fontWeight: '700', color: 'white', marginBottom: '4px' }}>{stat.value}</p>
+              <p style={{ fontSize: '14px', color: '#6b7280' }}>{stat.label}</p>
             </motion.div>
           ))}
         </div>

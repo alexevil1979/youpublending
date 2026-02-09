@@ -3,34 +3,29 @@ import { Play, ArrowRight, Sparkles } from 'lucide-react'
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center hero-bg overflow-hidden pt-20">
+    <section className="hero-bg" style={{ position: 'relative', minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden', paddingTop: '80px' }}>
       {/* Animated Background Orbs */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-violet-500/10 rounded-full blur-[120px] animate-pulse-glow" />
-        <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-blue-500/10 rounded-full blur-[100px] animate-pulse-glow" style={{ animationDelay: '1s' }} />
-        <div className="absolute top-1/2 right-1/3 w-[300px] h-[300px] bg-pink-500/8 rounded-full blur-[80px] animate-pulse-glow" style={{ animationDelay: '2s' }} />
-        
-        {/* Grid Pattern */}
-        <div
-          className="absolute inset-0 opacity-[0.03]"
-          style={{
-            backgroundImage: 'linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)',
-            backgroundSize: '60px 60px',
-          }}
-        />
+      <div style={{ position: 'absolute', inset: 0, overflow: 'hidden', pointerEvents: 'none' }}>
+        <div className="animate-pulse-glow" style={{ position: 'absolute', top: '20%', left: '20%', width: '500px', height: '500px', background: 'rgba(139,92,246,0.12)', borderRadius: '50%', filter: 'blur(120px)' }} />
+        <div className="animate-pulse-glow" style={{ position: 'absolute', bottom: '20%', right: '20%', width: '400px', height: '400px', background: 'rgba(59,130,246,0.1)', borderRadius: '50%', filter: 'blur(100px)', animationDelay: '1.5s' }} />
+        <div className="animate-pulse-glow" style={{ position: 'absolute', top: '50%', right: '30%', width: '300px', height: '300px', background: 'rgba(236,72,153,0.08)', borderRadius: '50%', filter: 'blur(80px)', animationDelay: '3s' }} />
+        {/* Grid */}
+        <div style={{
+          position: 'absolute', inset: 0, opacity: 0.03,
+          backgroundImage: 'linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)',
+          backgroundSize: '60px 60px'
+        }} />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
-        <div className="text-center max-w-5xl mx-auto">
+      <div style={{ position: 'relative', zIndex: 10, maxWidth: '1280px', margin: '0 auto', padding: '80px 24px 100px' }}>
+        <div style={{ textAlign: 'center', maxWidth: '960px', margin: '0 auto' }}>
           {/* Badge */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-light mb-8"
-          >
-            <Sparkles className="w-4 h-4 text-violet-400" />
-            <span className="text-sm text-violet-300 font-medium">
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
+            <span className="glass-light" style={{
+              display: 'inline-flex', alignItems: 'center', gap: '8px',
+              padding: '8px 18px', borderRadius: '100px', fontSize: '14px', color: '#c4b5fd', fontWeight: '500', marginBottom: '32px'
+            }}>
+              <Sparkles style={{ width: '16px', height: '16px', color: '#a78bfa' }} />
               Новое поколение автопубликации видео
             </span>
           </motion.div>
@@ -40,10 +35,13 @@ export default function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.1 }}
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight tracking-tight mb-6"
+            style={{
+              fontSize: 'clamp(2.2rem, 5vw, 4.2rem)', fontWeight: '800',
+              lineHeight: '1.1', letterSpacing: '-0.02em', marginBottom: '24px', color: 'white'
+            }}
           >
             Загружай видео один раз —{' '}
-            <span className="gradient-text glow-text">
+            <span className="gradient-text" style={{ fontStyle: 'normal' }}>
               публикуй везде автоматически
             </span>
           </motion.h1>
@@ -53,11 +51,14 @@ export default function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.2 }}
-            className="text-lg sm:text-xl text-gray-400 max-w-3xl mx-auto mb-10 leading-relaxed"
+            style={{
+              fontSize: 'clamp(1rem, 2vw, 1.25rem)', color: '#9ca3af',
+              maxWidth: '720px', margin: '0 auto 40px', lineHeight: '1.7'
+            }}
           >
-            <strong className="text-white">YouPub</strong> — умная платформа для авторов, SMM-специалистов
-            и агентств. <span className="text-violet-400">5 платформ</span>, AI-заголовки,{' '}
-            <span className="text-blue-400">5 видов расписаний</span>, автопросмотры
+            <strong style={{ color: 'white' }}>YouPub</strong> — умная платформа для авторов, SMM-специалистов
+            и агентств. <span style={{ color: '#a78bfa' }}>5 платформ</span>, AI-заголовки,{' '}
+            <span style={{ color: '#60a5fa' }}>5 видов расписаний</span>, автопросмотры
             и встроенная монетизация
           </motion.p>
 
@@ -66,27 +67,17 @@ export default function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.3 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16"
+            style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center', gap: '16px', marginBottom: '64px' }}
           >
-            <a
-              href="#pricing"
-              className="btn-primary px-8 py-4 rounded-2xl text-lg font-semibold text-white flex items-center gap-2 w-full sm:w-auto justify-center"
-            >
+            <a href="#pricing" className="btn-primary"
+              style={{ padding: '16px 32px', borderRadius: '16px', fontSize: '17px', fontWeight: '600', color: 'white', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
               Начать бесплатно — 14 дней
-              <ArrowRight className="w-5 h-5" />
+              <ArrowRight style={{ width: '20px', height: '20px' }} />
             </a>
-            <a
-              href="#interface"
-              className="btn-secondary px-8 py-4 rounded-2xl text-lg font-semibold text-violet-300 flex items-center gap-2 w-full sm:w-auto justify-center"
-            >
-              <Play className="w-5 h-5" />
+            <a href="#interface" className="btn-secondary"
+              style={{ padding: '16px 32px', borderRadius: '16px', fontSize: '17px', fontWeight: '600', color: '#c4b5fd', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
+              <Play style={{ width: '20px', height: '20px' }} />
               Смотреть демо
-            </a>
-            <a
-              href="#pricing"
-              className="px-8 py-4 rounded-2xl text-lg font-medium text-gray-400 hover:text-white transition-colors underline underline-offset-4 decoration-gray-600 hover:decoration-violet-500"
-            >
-              Выбрать тариф
             </a>
           </motion.div>
 
@@ -95,97 +86,112 @@ export default function Hero() {
             initial={{ opacity: 0, y: 60, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ duration: 0.9, delay: 0.5 }}
-            className="relative mx-auto max-w-5xl"
+            style={{ position: 'relative', maxWidth: '1000px', margin: '0 auto' }}
           >
-            {/* Glow Behind */}
-            <div className="absolute -inset-4 bg-gradient-to-r from-violet-500/20 via-blue-500/20 to-pink-500/20 rounded-3xl blur-2xl" />
+            <div style={{
+              position: 'absolute', inset: '-16px',
+              background: 'linear-gradient(135deg, rgba(139,92,246,0.2), rgba(59,130,246,0.2), rgba(236,72,153,0.2))',
+              borderRadius: '24px', filter: 'blur(40px)'
+            }} />
 
-            {/* Dashboard Frame */}
-            <div className="relative rounded-2xl overflow-hidden border border-white/10 glass">
+            <div className="glass" style={{ position: 'relative', borderRadius: '16px', overflow: 'hidden', border: '1px solid rgba(255,255,255,0.1)' }}>
               {/* Browser Bar */}
-              <div className="flex items-center gap-2 px-4 py-3 bg-gray-900/80 border-b border-white/5">
-                <div className="flex gap-1.5">
-                  <div className="w-3 h-3 rounded-full bg-red-500/80" />
-                  <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
-                  <div className="w-3 h-3 rounded-full bg-green-500/80" />
+              <div style={{
+                display: 'flex', alignItems: 'center', gap: '8px', padding: '12px 16px',
+                background: 'rgba(17,24,39,0.9)', borderBottom: '1px solid rgba(255,255,255,0.05)'
+              }}>
+                <div style={{ display: 'flex', gap: '6px' }}>
+                  <div style={{ width: '12px', height: '12px', borderRadius: '50%', background: '#ef4444' }} />
+                  <div style={{ width: '12px', height: '12px', borderRadius: '50%', background: '#eab308' }} />
+                  <div style={{ width: '12px', height: '12px', borderRadius: '50%', background: '#22c55e' }} />
                 </div>
-                <div className="flex-1 mx-4">
-                  <div className="bg-gray-800 rounded-lg px-4 py-1.5 text-xs text-gray-400 text-center">
+                <div style={{ flex: 1, margin: '0 16px' }}>
+                  <div style={{ background: '#1f2937', borderRadius: '8px', padding: '6px 16px', fontSize: '12px', color: '#6b7280', textAlign: 'center' }}>
                     app.youpub.ru/dashboard
                   </div>
                 </div>
               </div>
 
               {/* Dashboard Content */}
-              <div className="bg-gray-900/60 p-6 md:p-8">
+              <div style={{ background: 'rgba(17,24,39,0.6)', padding: '24px' }}>
                 {/* Top Bar */}
-                <div className="flex items-center justify-between mb-6">
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '24px', flexWrap: 'wrap', gap: '12px' }}>
                   <div>
-                    <h3 className="text-lg font-semibold text-white">Панель управления</h3>
-                    <p className="text-sm text-gray-500">Февраль 2026</p>
+                    <h3 style={{ fontSize: '18px', fontWeight: '600', color: 'white' }}>Панель управления</h3>
+                    <p style={{ fontSize: '13px', color: '#6b7280' }}>Февраль 2026</p>
                   </div>
-                  <div className="flex gap-2">
-                    <div className="px-4 py-2 rounded-lg bg-violet-500/20 text-violet-300 text-sm font-medium">+ Загрузить видео</div>
-                    <div className="px-4 py-2 rounded-lg bg-gray-800 text-gray-400 text-sm">Настройки</div>
+                  <div style={{ display: 'flex', gap: '8px' }}>
+                    <div style={{ padding: '8px 16px', borderRadius: '8px', background: 'rgba(139,92,246,0.2)', color: '#c4b5fd', fontSize: '13px', fontWeight: '500' }}>+ Загрузить видео</div>
+                    <div style={{ padding: '8px 16px', borderRadius: '8px', background: '#1f2937', color: '#9ca3af', fontSize: '13px' }}>Настройки</div>
                   </div>
                 </div>
 
                 {/* Stats Row */}
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))', gap: '12px', marginBottom: '20px' }}>
                   {[
-                    { label: 'Публикаций', value: '1,247', change: '+12%', color: 'violet' },
-                    { label: 'Просмотров', value: '89.4K', change: '+34%', color: 'blue' },
-                    { label: 'AI-генераций', value: '3,891', change: '+8%', color: 'pink' },
-                    { label: 'Платформ', value: '5', change: 'Все', color: 'green' },
+                    { label: 'Публикаций', value: '1,247', change: '+12%', color: '#a78bfa' },
+                    { label: 'Просмотров', value: '89.4K', change: '+34%', color: '#60a5fa' },
+                    { label: 'AI-генераций', value: '3,891', change: '+8%', color: '#f472b6' },
+                    { label: 'Платформ', value: '5', change: 'Все', color: '#4ade80' },
                   ].map((stat) => (
-                    <div key={stat.label} className="bg-gray-800/60 rounded-xl p-4 border border-white/5">
-                      <p className="text-xs text-gray-500 mb-1">{stat.label}</p>
-                      <p className="text-2xl font-bold text-white">{stat.value}</p>
-                      <p className={`text-xs mt-1 ${
-                        stat.color === 'violet' ? 'text-violet-400' :
-                        stat.color === 'blue' ? 'text-blue-400' :
-                        stat.color === 'pink' ? 'text-pink-400' :
-                        'text-green-400'
-                      }`}>{stat.change}</p>
+                    <div key={stat.label} style={{
+                      background: 'rgba(31,41,55,0.6)', borderRadius: '12px', padding: '16px',
+                      border: '1px solid rgba(255,255,255,0.05)'
+                    }}>
+                      <p style={{ fontSize: '11px', color: '#6b7280', marginBottom: '4px' }}>{stat.label}</p>
+                      <p style={{ fontSize: '24px', fontWeight: '700', color: 'white' }}>{stat.value}</p>
+                      <p style={{ fontSize: '11px', color: stat.color, marginTop: '4px' }}>{stat.change}</p>
                     </div>
                   ))}
                 </div>
 
-                {/* Platform Icons Row */}
-                <div className="flex items-center gap-3 mb-4">
-                  {['YouTube', 'Telegram', 'TikTok', 'Instagram', 'Pinterest'].map((platform) => (
-                    <div key={platform} className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-gray-800/60 border border-white/5">
-                      <div className={`w-2 h-2 rounded-full ${
-                        platform === 'YouTube' ? 'bg-red-500' :
-                        platform === 'Telegram' ? 'bg-blue-400' :
-                        platform === 'TikTok' ? 'bg-white' :
-                        platform === 'Instagram' ? 'bg-pink-500' :
-                        'bg-red-600'
-                      }`} />
-                      <span className="text-xs text-gray-400 hidden sm:inline">{platform}</span>
+                {/* Platform Row */}
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '16px', flexWrap: 'wrap' }}>
+                  {[
+                    { name: 'YouTube', color: '#ef4444' },
+                    { name: 'Telegram', color: '#60a5fa' },
+                    { name: 'TikTok', color: '#fff' },
+                    { name: 'Instagram', color: '#ec4899' },
+                    { name: 'Pinterest', color: '#dc2626' },
+                  ].map((p) => (
+                    <div key={p.name} style={{
+                      display: 'flex', alignItems: 'center', gap: '6px',
+                      padding: '6px 12px', borderRadius: '8px',
+                      background: 'rgba(31,41,55,0.6)', border: '1px solid rgba(255,255,255,0.05)'
+                    }}>
+                      <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: p.color }} />
+                      <span style={{ fontSize: '12px', color: '#9ca3af' }}>{p.name}</span>
                     </div>
                   ))}
-                  <div className="text-xs text-green-400 ml-auto">● Все подключены</div>
+                  <span style={{ fontSize: '12px', color: '#4ade80', marginLeft: 'auto' }}>● Все подключены</span>
                 </div>
 
                 {/* Recent Publications */}
-                <div className="space-y-2">
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
                   {[
-                    { title: 'Как создать вирусный Reels за 5 минут', platforms: 3, views: '12.4K', status: 'Опубликовано' },
-                    { title: 'Топ-10 трендов маркетинга 2026', platforms: 5, views: '8.7K', status: 'Опубликовано' },
-                    { title: 'Секреты YouTube Shorts алгоритма', platforms: 4, views: '—', status: 'В очереди' },
+                    { title: 'Как создать вирусный Reels за 5 минут', platforms: 3, views: '12.4K', status: 'Опубликовано', statusColor: '#4ade80', statusBg: 'rgba(74,222,128,0.15)' },
+                    { title: 'Топ-10 трендов маркетинга 2026', platforms: 5, views: '8.7K', status: 'Опубликовано', statusColor: '#4ade80', statusBg: 'rgba(74,222,128,0.15)' },
+                    { title: 'Секреты YouTube Shorts алгоритма', platforms: 4, views: '—', status: 'В очереди', statusColor: '#facc15', statusBg: 'rgba(250,204,21,0.15)' },
                   ].map((item, i) => (
-                    <div key={i} className="flex items-center justify-between p-3 rounded-lg bg-gray-800/40 border border-white/5">
-                      <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-violet-500/30 to-blue-500/30 flex items-center justify-center text-xs">▶</div>
+                    <div key={i} style={{
+                      display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+                      padding: '12px', borderRadius: '10px',
+                      background: 'rgba(31,41,55,0.4)', border: '1px solid rgba(255,255,255,0.05)'
+                    }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                        <div style={{
+                          width: '40px', height: '40px', borderRadius: '8px',
+                          background: 'linear-gradient(135deg, rgba(139,92,246,0.3), rgba(59,130,246,0.3))',
+                          display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '14px', color: '#fff'
+                        }}>▶</div>
                         <div>
-                          <p className="text-sm text-white">{item.title}</p>
-                          <p className="text-xs text-gray-500">{item.platforms} платформ · {item.views} просмотров</p>
+                          <p style={{ fontSize: '13px', color: 'white', fontWeight: '500' }}>{item.title}</p>
+                          <p style={{ fontSize: '11px', color: '#6b7280' }}>{item.platforms} платформ · {item.views} просмотров</p>
                         </div>
                       </div>
-                      <span className={`text-xs px-2 py-1 rounded ${
-                        item.status === 'Опубликовано' ? 'bg-green-500/20 text-green-400' : 'bg-yellow-500/20 text-yellow-400'
-                      }`}>{item.status}</span>
+                      <span style={{ fontSize: '11px', padding: '4px 10px', borderRadius: '6px', background: item.statusBg, color: item.statusColor }}>
+                        {item.status}
+                      </span>
                     </div>
                   ))}
                 </div>

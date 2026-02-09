@@ -40,47 +40,48 @@ export default function Footer() {
   }
 
   return (
-    <footer className="border-t border-white/5 bg-gray-950">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-8">
+    <footer style={{ borderTop: '1px solid rgba(255,255,255,0.05)', background: '#030712' }}>
+      <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '64px 24px' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '32px' }}>
           {/* Brand */}
-          <div className="col-span-2 md:col-span-1">
-            <a href="#" className="flex items-center gap-2 mb-4 group">
-              <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-violet-500 to-blue-500 flex items-center justify-center">
-                <Zap className="w-4 h-4 text-white" />
+          <div>
+            <a href="#" style={{ display: 'flex', alignItems: 'center', gap: '8px', textDecoration: 'none', marginBottom: '16px' }}>
+              <div style={{
+                width: '32px', height: '32px', borderRadius: '10px',
+                background: 'linear-gradient(135deg, #8b5cf6, #3b82f6)',
+                display: 'flex', alignItems: 'center', justifyContent: 'center'
+              }}>
+                <Zap style={{ width: '16px', height: '16px', color: 'white' }} />
               </div>
-              <span className="text-lg font-bold text-white">
+              <span style={{ fontSize: '18px', fontWeight: '700', color: 'white' }}>
                 You<span className="gradient-text">Pub</span>
               </span>
             </a>
-            <p className="text-sm text-gray-500 leading-relaxed mb-4">
+            <p style={{ fontSize: '13px', color: '#6b7280', lineHeight: '1.6', marginBottom: '16px' }}>
               Автоматическая публикация видео на 5 платформ с AI и аналитикой.
             </p>
-            <div className="flex gap-3">
-              <a href="#" className="w-8 h-8 rounded-lg bg-gray-800 flex items-center justify-center text-gray-400 hover:text-white hover:bg-gray-700 transition-colors text-xs">
-                TG
-              </a>
-              <a href="#" className="w-8 h-8 rounded-lg bg-gray-800 flex items-center justify-center text-gray-400 hover:text-white hover:bg-gray-700 transition-colors text-xs">
-                YT
-              </a>
-              <a href="#" className="w-8 h-8 rounded-lg bg-gray-800 flex items-center justify-center text-gray-400 hover:text-white hover:bg-gray-700 transition-colors text-xs">
-                VK
-              </a>
+            <div style={{ display: 'flex', gap: '8px' }}>
+              {['TG', 'YT', 'VK'].map(s => (
+                <a key={s} href="#" style={{
+                  width: '32px', height: '32px', borderRadius: '8px', background: '#1f2937',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  fontSize: '11px', color: '#9ca3af', textDecoration: 'none', fontWeight: '600'
+                }}>{s}</a>
+              ))}
             </div>
           </div>
 
           {/* Links */}
           {Object.entries(footerLinks).map(([category, links]) => (
             <div key={category}>
-              <h4 className="text-sm font-semibold text-white mb-4">{category}</h4>
-              <ul className="space-y-2.5">
+              <h4 style={{ fontSize: '13px', fontWeight: '600', color: 'white', marginBottom: '16px' }}>{category}</h4>
+              <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '10px' }}>
                 {links.map((link) => (
                   <li key={link.name}>
-                    <a
-                      href={link.href}
-                      onClick={(e) => handleNavClick(e, link.href)}
-                      className="text-sm text-gray-500 hover:text-gray-300 transition-colors"
-                    >
+                    <a href={link.href} onClick={(e) => handleNavClick(e, link.href)}
+                      style={{ fontSize: '13px', color: '#6b7280', textDecoration: 'none', transition: 'color 0.2s' }}
+                      onMouseEnter={e => e.target.style.color = '#d1d5db'}
+                      onMouseLeave={e => e.target.style.color = '#6b7280'}>
                       {link.name}
                     </a>
                   </li>
@@ -90,14 +91,12 @@ export default function Footer() {
           ))}
         </div>
 
-        {/* Bottom */}
-        <div className="mt-12 pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-sm text-gray-600">
-            © 2026 YouPub. Все права защищены.
-          </p>
-          <p className="text-sm text-gray-600">
-            Сделано с ❤️ для контент-мейкеров
-          </p>
+        <div style={{
+          marginTop: '48px', paddingTop: '32px', borderTop: '1px solid rgba(255,255,255,0.05)',
+          display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: '16px'
+        }}>
+          <p style={{ fontSize: '13px', color: '#4b5563' }}>© 2026 YouPub. Все права защищены.</p>
+          <p style={{ fontSize: '13px', color: '#4b5563' }}>Сделано с любовью для контент-мейкеров</p>
         </div>
       </div>
     </footer>

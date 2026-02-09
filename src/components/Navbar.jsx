@@ -34,31 +34,39 @@ export default function Navbar() {
       animate={{ y: 0 }}
       transition={{ duration: 0.6, ease: 'easeOut' }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? 'glass shadow-lg shadow-black/20'
-          : 'bg-transparent'
+        scrolled ? 'glass' : ''
       }`}
+      style={scrolled ? { boxShadow: '0 4px 30px rgba(0,0,0,0.3)' } : {}}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 lg:h-20">
+      <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: '72px' }}>
           {/* Logo */}
-          <a href="#" className="flex items-center gap-2 group">
-            <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-violet-500 to-blue-500 flex items-center justify-center group-hover:shadow-lg group-hover:shadow-violet-500/30 transition-shadow">
-              <Zap className="w-5 h-5 text-white" />
+          <a href="#" style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none' }}>
+            <div style={{
+              width: '36px', height: '36px', borderRadius: '12px',
+              background: 'linear-gradient(135deg, #8b5cf6, #3b82f6)',
+              display: 'flex', alignItems: 'center', justifyContent: 'center'
+            }}>
+              <Zap style={{ width: '20px', height: '20px', color: 'white' }} />
             </div>
-            <span className="text-xl font-bold text-white">
+            <span style={{ fontSize: '20px', fontWeight: '800', color: 'white' }}>
               You<span className="gradient-text">Pub</span>
             </span>
           </a>
 
           {/* Desktop Nav */}
-          <div className="hidden lg:flex items-center gap-1">
+          <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }} className="hidden lg:flex">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
                 onClick={(e) => handleNavClick(e, link.href)}
-                className="px-3 py-2 text-sm text-gray-300 hover:text-white transition-colors rounded-lg hover:bg-white/5"
+                style={{
+                  padding: '8px 14px', fontSize: '14px', color: '#9ca3af',
+                  textDecoration: 'none', borderRadius: '10px', transition: 'color 0.2s'
+                }}
+                onMouseEnter={(e) => e.target.style.color = '#fff'}
+                onMouseLeave={(e) => e.target.style.color = '#9ca3af'}
               >
                 {link.name}
               </a>
@@ -66,19 +74,14 @@ export default function Navbar() {
           </div>
 
           {/* Desktop CTA */}
-          <div className="hidden lg:flex items-center gap-3">
-            <a
-              href="#pricing"
-              onClick={(e) => handleNavClick(e, '#pricing')}
-              className="px-4 py-2 text-sm text-gray-300 hover:text-white transition-colors"
-            >
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }} className="hidden lg:flex">
+            <a href="#pricing" onClick={(e) => handleNavClick(e, '#pricing')}
+              style={{ padding: '8px 16px', fontSize: '14px', color: '#9ca3af', textDecoration: 'none' }}>
               Войти
             </a>
-            <a
-              href="#pricing"
-              onClick={(e) => handleNavClick(e, '#pricing')}
-              className="btn-primary px-5 py-2.5 rounded-xl text-sm font-semibold text-white"
-            >
+            <a href="#pricing" onClick={(e) => handleNavClick(e, '#pricing')}
+              className="btn-primary"
+              style={{ padding: '10px 20px', borderRadius: '14px', fontSize: '14px', fontWeight: '600', color: 'white', textDecoration: 'none' }}>
               Начать бесплатно
             </a>
           </div>
@@ -86,9 +89,10 @@ export default function Navbar() {
           {/* Mobile Toggle */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="lg:hidden p-2 text-gray-300 hover:text-white"
+            className="lg:hidden"
+            style={{ padding: '8px', color: '#9ca3af', background: 'none', border: 'none', cursor: 'pointer' }}
           >
-            {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            {mobileOpen ? <X style={{ width: '24px', height: '24px' }} /> : <Menu style={{ width: '24px', height: '24px' }} />}
           </button>
         </div>
       </div>
@@ -100,25 +104,26 @@ export default function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden glass border-t border-white/5"
+            className="lg:hidden glass"
+            style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}
           >
-            <div className="px-4 py-4 space-y-1">
+            <div style={{ padding: '16px' }}>
               {navLinks.map((link) => (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  onClick={(e) => handleNavClick(e, link.href)}
-                  className="block px-4 py-3 text-gray-300 hover:text-white hover:bg-white/5 rounded-xl transition-colors"
-                >
+                <a key={link.name} href={link.href} onClick={(e) => handleNavClick(e, link.href)}
+                  style={{
+                    display: 'block', padding: '12px 16px', color: '#9ca3af',
+                    textDecoration: 'none', borderRadius: '12px', fontSize: '15px'
+                  }}>
                   {link.name}
                 </a>
               ))}
-              <div className="pt-3 border-t border-white/5">
-                <a
-                  href="#pricing"
-                  onClick={(e) => handleNavClick(e, '#pricing')}
-                  className="block w-full text-center btn-primary px-5 py-3 rounded-xl text-sm font-semibold text-white"
-                >
+              <div style={{ paddingTop: '12px', borderTop: '1px solid rgba(255,255,255,0.05)', marginTop: '8px' }}>
+                <a href="#pricing" onClick={(e) => handleNavClick(e, '#pricing')}
+                  className="btn-primary"
+                  style={{
+                    display: 'block', textAlign: 'center', padding: '14px 20px',
+                    borderRadius: '14px', fontSize: '14px', fontWeight: '600', color: 'white', textDecoration: 'none'
+                  }}>
                   Начать бесплатно
                 </a>
               </div>

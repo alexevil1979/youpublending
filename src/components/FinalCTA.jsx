@@ -3,55 +3,47 @@ import { ArrowRight, MessageCircle, Rocket } from 'lucide-react'
 
 export default function FinalCTA() {
   return (
-    <section className="relative py-20 lg:py-32 overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-gradient-to-r from-violet-500/10 via-blue-500/10 to-pink-500/10" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-violet-500/10 rounded-full blur-[150px]" />
+    <section style={{ position: 'relative', padding: '100px 0', overflow: 'hidden' }}>
+      <div style={{ position: 'absolute', inset: 0 }}>
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(139,92,246,0.08), rgba(59,130,246,0.08), rgba(236,72,153,0.08))' }} />
+        <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%,-50%)', width: '800px', height: '800px', background: 'rgba(139,92,246,0.1)', borderRadius: '50%', filter: 'blur(150px)' }} />
       </div>
 
-      <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          {/* Icon */}
-          <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-violet-500 to-blue-500 mb-8 shadow-lg shadow-violet-500/30">
-            <Rocket className="w-8 h-8 text-white" />
+      <div style={{ position: 'relative', maxWidth: '860px', margin: '0 auto', padding: '0 24px', textAlign: 'center' }}>
+        <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
+          <div style={{
+            display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+            width: '64px', height: '64px', borderRadius: '16px',
+            background: 'linear-gradient(135deg, #8b5cf6, #3b82f6)', marginBottom: '32px',
+            boxShadow: '0 0 40px rgba(139,92,246,0.4)'
+          }}>
+            <Rocket style={{ width: '32px', height: '32px', color: 'white' }} />
           </div>
 
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">
+          <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 3rem)', fontWeight: '700', color: 'white', marginBottom: '24px', lineHeight: '1.2' }}>
             Готовы автоматизировать публикации и{' '}
             <span className="gradient-text">расти быстрее конкурентов?</span>
           </h2>
 
-          <p className="text-lg text-gray-400 max-w-2xl mx-auto mb-10">
+          <p style={{ fontSize: '18px', color: '#9ca3af', maxWidth: '640px', margin: '0 auto 40px', lineHeight: '1.7' }}>
             Присоединяйтесь к 1 200+ авторам, которые уже экономят часы каждый день
             и получают больше просмотров на автомате. Бесплатный старт — без карты.
           </p>
 
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a
-              href="#pricing"
-              className="btn-primary px-10 py-4 rounded-2xl text-lg font-bold text-white flex items-center gap-2 w-full sm:w-auto justify-center"
-            >
+          <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center', gap: '16px' }}>
+            <a href="#pricing" className="btn-primary"
+              style={{ padding: '16px 36px', borderRadius: '16px', fontSize: '17px', fontWeight: '700', color: 'white', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
               Начать бесплатно — 14 дней
-              <ArrowRight className="w-5 h-5" />
+              <ArrowRight style={{ width: '20px', height: '20px' }} />
             </a>
-            <a
-              href="mailto:hello@youpub.ru"
-              className="btn-secondary px-10 py-4 rounded-2xl text-lg font-semibold text-violet-300 flex items-center gap-2 w-full sm:w-auto justify-center"
-            >
-              <MessageCircle className="w-5 h-5" />
+            <a href="mailto:hello@youpub.ru" className="btn-secondary"
+              style={{ padding: '16px 36px', borderRadius: '16px', fontSize: '17px', fontWeight: '600', color: '#c4b5fd', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
+              <MessageCircle style={{ width: '20px', height: '20px' }} />
               Связаться с нами
             </a>
           </div>
 
-          {/* Trust Line */}
-          <p className="text-sm text-gray-500 mt-8">
+          <p style={{ fontSize: '13px', color: '#6b7280', marginTop: '32px' }}>
             Бесплатно · Без кредитной карты · Настройка за 2 минуты
           </p>
         </motion.div>
