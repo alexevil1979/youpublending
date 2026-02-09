@@ -242,7 +242,10 @@ app.post('/api/lead', (req, res) => {
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(resolve(__dirname, 'dist')))
-  app.get('*', (req, res) => {
+  // SPA fallback — отдаём index.html для всех не-API маршрутов
+  // (совместимо с Express 5, без wildcard '*')
+  app.use((req, res, next) => {
+    if (req.path.startsWith('/api')) return next()
     res.sendFile(resolve(__dirname, 'dist', 'index.html'))
   })
 }
