@@ -10,6 +10,7 @@ import Pricing from './components/Pricing'
 import FAQ from './components/FAQ'
 import FinalCTA from './components/FinalCTA'
 import Footer from './components/Footer'
+import ChatWidget from './components/ChatWidget'
 
 export default function App() {
   return (
@@ -26,6 +27,7 @@ export default function App() {
       <FAQ />
       <FinalCTA />
       <Footer />
+      <ChatWidget />
     </div>
   )
 }

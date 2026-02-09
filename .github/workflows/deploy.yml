@@ -22,10 +22,22 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build
+      - name: Run tests
+        run: npm test
+
+      - name: Build frontend
         run: npm run build
 
-      - name: Create target dir via SSH
+      - name: Prepare server files
+        run: |
+          mkdir -p deploy-package
+          cp -r dist deploy-package/
+          cp server.js deploy-package/
+          cp package.json deploy-package/
+          cp package-lock.json deploy-package/
+          cp ecosystem.config.cjs deploy-package/
+
+      - name: Create target dir and deploy
         uses: appleboy/ssh-action@v1
         with:
           host: ${{ secrets.VPS_HOST }}
@@ -33,7 +45,7 @@ jobs:
           key: ${{ secrets.VPS_SSH_KEY }}
           port: 22
           script: |
-            mkdir -p /ssd/www/youpublanding
+            mkdir -p /ssd/www/youpublanding/logs
 
       - name: Deploy files via SCP
         uses: appleboy/scp-action@v0.1.7
@@ -42,7 +54,43 @@ jobs:
           username: ${{ secrets.VPS_USER }}
           key: ${{ secrets.VPS_SSH_KEY }}
           port: 22
-          source: "dist/*"
+          source: "deploy-package/*"
           target: "/ssd/www/youpublanding/"
           strip_components: 1
-          rm: true
+          rm: false
+
+      - name: Install deps and restart server
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          port: 22
+          script: |
+            cd /ssd/www/youpublanding
+
+            # Установка зависимостей (только production)
+            npm ci --omit=dev
+
+            # Создание .env если не существует
+            if [ ! -f .env ]; then
+              echo "⚠️  .env не найден — создайте вручную: nano /ssd/www/youpublanding/.env"
+              echo "VITE_ENABLE_CHAT=true" > .env
+              echo "GIGACHAT_API_KEY=" >> .env
+              echo "GIGACHAT_SCOPE=GIGACHAT_API_PERS" >> .env
+              echo "PORT=3001" >> .env
+            fi
+
+            # Перезапуск PM2
+            if command -v pm2 &> /dev/null; then
+              if pm2 describe youpub-api > /dev/null 2>&1; then
+                pm2 restart youpub-api
+              else
+                pm2 start ecosystem.config.cjs
+                pm2 save
+              fi
+              pm2 status youpub-api
+            else
+              echo "⚠️  PM2 не установлен. Выполните: npm install -g pm2"
+              echo "     Затем: cd /ssd/www/youpublanding && pm2 start ecosystem.config.cjs && pm2 save && pm2 startup"
+            fi
