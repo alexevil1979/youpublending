@@ -2,20 +2,12 @@
   RewriteEngine On
   RewriteBase /
 
-  # Проксируем /api/* на Express-сервер (Node.js на порту 3001)
-  RewriteRule ^api/(.*)$ http://localhost:3001/api/$1 [P,L]
-
-  # SPA fallback — все остальные маршруты → index.html
+  # SPA fallback — все маршруты → index.html (кроме файлов и /api)
+  # /api обрабатывается через ProxyPass в Apache VirtualHost конфиге
   RewriteRule ^index\.html$ - [L]
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
   RewriteRule . /index.html [L]
-</IfModule>
-
-# Reverse proxy headers (для корректной работы rate limiting)
-<IfModule mod_proxy.c>
-  ProxyPreserveHost On
-  ProxyPassReverse /api http://localhost:3001/api
 </IfModule>
 
 # Enable gzip compression
