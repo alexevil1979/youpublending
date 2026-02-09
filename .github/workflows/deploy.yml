@@ -25,7 +25,7 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Create target dir and deploy via SSH
+      - name: Create target dir via SSH
         uses: appleboy/ssh-action@v1
         with:
           host: ${{ secrets.VPS_HOST }}
