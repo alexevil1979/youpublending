@@ -24,9 +24,13 @@ jobs:
 
       - name: Run tests
         run: npm test
+        env:
+          VITE_ENABLE_CHAT: 'true'
 
       - name: Build frontend
         run: npm run build
+        env:
+          VITE_ENABLE_CHAT: 'true'
 
       - name: Prepare server files
         run: |
