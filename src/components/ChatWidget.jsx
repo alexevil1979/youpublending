@@ -287,7 +287,6 @@ export default function ChatWidget() {
 
   /* — Feature flag (dynamic check for testability) — */
   const chatEnabled = import.meta.env.VITE_ENABLE_CHAT === 'true'
-  if (!chatEnabled) return null
 
   const [isOpen, setIsOpen] = useState(false)
   const [messages, setMessages] = useState([])
@@ -500,6 +499,9 @@ export default function ChatWidget() {
   /* =========================================================
      RENDER
      ========================================================= */
+
+  // Feature flag: all hooks above, conditional return here (Rules of Hooks compliant)
+  if (!chatEnabled) return null
 
   return (
     <>
