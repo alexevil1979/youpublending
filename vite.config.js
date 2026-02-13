@@ -6,6 +6,17 @@ export default defineConfig({
   plugins: [react(), tailwindcss()],
   build: {
     outDir: 'dist',
+    sourcemap: false, // Don't expose source code in production
+    rollupOptions: {
+      output: {
+        // Split vendor chunks for better caching
+        manualChunks: {
+          'react-vendor': ['react', 'react-dom'],
+          'framer': ['framer-motion'],
+          'i18n': ['i18next', 'react-i18next', 'i18next-browser-languagedetector'],
+        },
+      },
+    },
   },
   server: {
     proxy: {
