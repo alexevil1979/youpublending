@@ -15,6 +15,7 @@
 | Tailwind CSS | 4 | Утилитарные стили, кастомные классы через `@layer` |
 | Framer Motion | 12 | Анимации при скролле, переходы |
 | Lucide React | — | SVG-иконки |
+| i18next + react-i18next | — | Интернационализация (7 языков) |
 | Express | 5 | API-сервер (чат-виджет, формы) |
 | React Hook Form + Zod | — | Валидация форм |
 | Vitest + Testing Library | — | Тесты |
@@ -35,9 +36,19 @@ youpublanding/
 ├── public/
 │   └── .htaccess                # Apache: SPA fallback, gzip, cache
 ├── src/
-│   ├── main.jsx                 # Точка входа React
-│   ├── App.jsx                  # Корневой компонент, сборка секций
+│   ├── main.jsx                 # Точка входа React + i18n init
+│   ├── App.jsx                  # Корневой компонент, SEO, lang-атрибут
 │   ├── index.css                # Tailwind v4, @theme, кастомные классы
+│   ├── i18n/
+│   │   ├── index.js             # Конфиг i18next (detection, fallback)
+│   │   └── locales/
+│   │       ├── ru.json          # Русский (оригинал, fallback)
+│   │       ├── en.json          # English
+│   │       ├── zh.json          # 中文 (Simplified Chinese)
+│   │       ├── hi.json          # हिन्दी (Hindi)
+│   │       ├── de.json          # Deutsch (German)
+│   │       ├── fr.json          # Français (French)
+│   │       └── nl.json          # Nederlands (Dutch)
 │   └── components/
 │       ├── Navbar.jsx           # Фиксированный navbar, glass-эффект
 │       ├── Hero.jsx             # Главный экран + мокап дашборда
@@ -140,3 +151,36 @@ npm run lint         # ESLint проверка
 - `animate-pulse-glow` — пульсирующее свечение фоновых орбов
 
 Цвета легко менять через `@theme` в `src/index.css`.
+
+---
+
+## Мультиязычность (i18n)
+
+Лендинг полностью локализован на **7 языков** с помощью `react-i18next`:
+
+| Код | Язык | Статус |
+|-----|------|--------|
+| `ru` | Русский | Оригинал (fallback) |
+| `en` | English | Полный перевод |
+| `zh` | 中文 (Simplified Chinese) | Полный перевод |
+| `hi` | हिन्दी (Hindi) | Полный перевод |
+| `de` | Deutsch (German) | Полный перевод |
+| `fr` | Français (French) | Полный перевод |
+| `nl` | Nederlands (Dutch) | Полный перевод |
+
+### Архитектура i18n
+
+- **Библиотеки:** `i18next`, `react-i18next`, `i18next-browser-languagedetector`
+- **Конфиг:** `src/i18n/index.js` — LanguageDetector (localStorage → navigator → htmlTag)
+- **Переводы:** `src/i18n/locales/*.json` — статические JSON, бандлятся в сборку
+- **Использование:** `const { t } = useTranslation()` → `{t('hero.title')}`
+- **Переключатель:** Dropdown с флагами в Navbar (десктоп + мобильное меню)
+- **SEO:** Динамический `<html lang>`, `document.title`, `<meta description>`
+- **RTL:** Готов механизм `dir="rtl"` для арабского/иврита (Hindi — LTR)
+
+### Как добавить новый язык
+
+1. Создать `src/i18n/locales/XX.json` (скопировать `en.json` как шаблон)
+2. Добавить импорт и ресурс в `src/i18n/index.js`
+3. Добавить язык в массив `supportedLanguages` в `src/i18n/index.js`
+4. Перевести все ключи в JSON-файле
