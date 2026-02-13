@@ -26,15 +26,25 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  // Close lang dropdown on outside click
+  // Close lang dropdown on outside click or Escape key
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (langRef.current && !langRef.current.contains(e.target)) {
         setLangOpen(false)
       }
     }
+    const handleEscape = (e) => {
+      if (e.key === 'Escape') {
+        setLangOpen(false)
+        setMobileOpen(false)
+      }
+    }
     document.addEventListener('mousedown', handleClickOutside)
-    return () => document.removeEventListener('mousedown', handleClickOutside)
+    document.addEventListener('keydown', handleEscape)
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+      document.removeEventListener('keydown', handleEscape)
+    }
   }, [])
 
   const handleNavClick = (e, href) => {
@@ -169,6 +179,8 @@ export default function Navbar() {
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
             className="lg:hidden"
+            aria-label={mobileOpen ? t('navbar.closeMenu', 'Закрыть меню') : t('navbar.openMenu', 'Открыть меню')}
+            aria-expanded={mobileOpen}
             style={{ padding: '8px', color: '#9ca3af', background: 'none', border: 'none', cursor: 'pointer' }}
           >
             {mobileOpen ? <X style={{ width: '24px', height: '24px' }} /> : <Menu style={{ width: '24px', height: '24px' }} />}
