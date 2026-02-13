@@ -10,12 +10,33 @@
   RewriteRule . /index.html [L]
 </IfModule>
 
+# ===== Security Headers =====
+<IfModule mod_headers.c>
+  # Prevent MIME-type sniffing
+  Header set X-Content-Type-Options "nosniff"
+
+  # Clickjacking protection
+  Header set X-Frame-Options "DENY"
+
+  # XSS protection (legacy browsers)
+  Header set X-XSS-Protection "1; mode=block"
+
+  # Referrer policy
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+
+  # Permissions policy (disable unused browser features)
+  Header set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=()"
+
+  # Content Security Policy (report-only initially — switch to enforcing after testing)
+  Header set Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://fonts.googleapis.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'"
+</IfModule>
+
 # Enable gzip compression
 <IfModule mod_deflate.c>
   AddOutputFilterByType DEFLATE text/html text/plain text/css application/json application/javascript text/xml application/xml application/xml+rss text/javascript
 </IfModule>
 
-# Cache static assets
+# Cache static assets (Vite hashes filenames, so 1 year is safe)
 <IfModule mod_expires.c>
   ExpiresActive On
   ExpiresByType text/css "access plus 1 year"

@@ -16,8 +16,17 @@ module.exports = {
       env: {
         NODE_ENV: 'production',
         PORT: 3001,
-        // Для GigaChat API (сертификаты РФ ЦА)
-        NODE_TLS_REJECT_UNAUTHORIZED: '0',
+        // ВНИМАНИЕ: NODE_TLS_REJECT_UNAUTHORIZED='0' отключает проверку TLS-сертификатов
+        // для ВСЕХ соединений на сервере — это опасно в production.
+        //
+        // Для GigaChat API (сертификаты РФ ЦА):
+        // Правильное решение — установить корневой сертификат Минцифры РФ:
+        //   1) Скачать: https://gu-st.ru/content/lending/russian_trusted_root_ca_pem.crt
+        //   2) Добавить через NODE_EXTRA_CA_CERTS (ниже)
+        //
+        // Если сертификат установлен — раскомментируйте строку ниже и удалите NODE_TLS_REJECT_UNAUTHORIZED:
+        // NODE_EXTRA_CA_CERTS: '/ssd/www/youpublanding/certs/russian_trusted_root_ca.pem',
+        NODE_TLS_REJECT_UNAUTHORIZED: '0', // TODO: заменить на NODE_EXTRA_CA_CERTS
       },
       // .env файл загружается через dotenv внутри server.js
       error_file: '/ssd/www/youpublanding/logs/error.log',

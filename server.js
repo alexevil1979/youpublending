@@ -93,6 +93,9 @@ setInterval(() => {
    Express Setup
    ============================================================ */
 
+// Trust reverse proxy (Apache) for correct req.ip
+app.set('trust proxy', 1)
+
 app.use(express.json({ limit: '16kb' }))
 
 // CORS for development (Vite on port 5173)
@@ -230,10 +233,38 @@ app.post('/api/lead', (req, res) => {
     return res.status(400).json({ error: 'Имя и email обязательны' })
   }
 
+  // Validate name (2-50 chars, no HTML)
+  if (typeof name !== 'string' || name.length < 2 || name.length > 50 || /<[^>]*>/.test(name)) {
+    return res.status(400).json({ error: 'Некорректное имя (2–50 символов, без HTML)' })
+  }
+
+  // Validate email format
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+  if (typeof email !== 'string' || !emailRegex.test(email) || email.length > 254) {
+    return res.status(400).json({ error: 'Некорректный формат email' })
+  }
+
+  // Sanitize for logging (prevent log injection)
+  const safeName = name.replace(/[\n\r\t]/g, ' ')
+  const safeEmail = email.replace(/[\n\r\t]/g, ' ')
+
   // Log lead (в production — сохранять в БД / CRM / отправлять на почту)
-  console.log(`[Lead captured] ${name} — ${email} at ${new Date().toISOString()}`)
+  console.log(`[Lead captured] ${safeName} — ${safeEmail} at ${new Date().toISOString()}`)
 
   res.json({ success: true })
+})
+
+/* ============================================================
+   API Endpoint: GET /api/health (мониторинг)
+   ============================================================ */
+
+app.get('/api/health', (req, res) => {
+  res.json({
+    status: 'ok',
+    uptime: process.uptime(),
+    timestamp: new Date().toISOString(),
+    gigachat: GIGACHAT_API_KEY ? 'configured' : 'missing',
+  })
 })
 
 /* ============================================================
