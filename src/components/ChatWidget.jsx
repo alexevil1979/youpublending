@@ -419,17 +419,16 @@ export default function ChatWidget() {
       logAnalytics('message_sent', { length: trimmed.length })
 
       try {
-        /* Language name for reinforcement hint */
+        /* Language name for reinforcement hint (appended to system prompt) */
         const langNames = { ru: 'Russian', en: 'English', zh: 'Chinese', hi: 'Hindi', de: 'German', fr: 'French', nl: 'Dutch' }
         const langHint = langNames[i18n.language] || 'Russian'
 
         const apiMessages = [
-          { role: 'system', content: t('chat.systemPrompt') },
+          { role: 'system', content: `${t('chat.systemPrompt')}\n\nIMPORTANT: You MUST respond in ${langHint} language only.` },
           ...messages
             .filter((m) => m.role === 'user' || m.role === 'assistant')
             .slice(-10)
             .map((m) => ({ role: m.role, content: m.content })),
-          { role: 'system', content: `Important: You MUST respond in ${langHint} language only.` },
           { role: 'user', content: trimmed },
         ]
 
