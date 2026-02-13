@@ -5,10 +5,62 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="YouPub — умная платформа автоматической публикации видео на 5 платформ: YouTube, Telegram, TikTok, Instagram, Pinterest" />
+
+    <!-- SEO: Canonical -->
+    <link rel="canonical" href="https://youpub.1tlt.ru/" />
+
+    <!-- SEO: Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://youpub.1tlt.ru/" />
+    <meta property="og:title" content="YouPub — Публикуй видео на 5 платформ одним кликом" />
+    <meta property="og:description" content="YouPub — умная платформа автоматической публикации видео на YouTube, Telegram, TikTok, Instagram, Pinterest с AI и аналитикой" />
+    <meta property="og:site_name" content="YouPub" />
+    <meta property="og:locale" content="ru_RU" />
+
+    <!-- SEO: Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="YouPub — Публикуй видео на 5 платформ одним кликом" />
+    <meta name="twitter:description" content="Автоматическая публикация видео на 5 платформ с AI-генерацией и аналитикой" />
+
+    <!-- Fonts: load only used weights (400,500,600,700,800) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
     <title>YouPub — Публикуй видео на 5 платформ одним кликом</title>
+
+    <!-- Structured Data: Organization -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "YouPub",
+      "url": "https://youpub.1tlt.ru",
+      "applicationCategory": "MultimediaApplication",
+      "operatingSystem": "Web",
+      "description": "Умная платформа автоматической публикации видео на 5 платформ: YouTube, Telegram, TikTok, Instagram, Pinterest",
+      "offers": [
+        { "@type": "Offer", "name": "Starter", "price": "0", "priceCurrency": "RUB", "description": "10 видео/мес, 2 платформы" },
+        { "@type": "Offer", "name": "Pro", "price": "1490", "priceCurrency": "RUB", "description": "100 видео/мес, 5 платформ, AI, AutoView" },
+        { "@type": "Offer", "name": "Agency", "price": "4990", "priceCurrency": "RUB", "description": "500 видео/мес, API, командный доступ" }
+      ]
+    }
+    </script>
+
+    <!-- Structured Data: FAQ -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "Какие платформы поддерживает YouPub?", "acceptedAnswer": { "@type": "Answer", "text": "YouTube, Telegram, TikTok, Instagram (Reels + Stories) и Pinterest." }},
+        { "@type": "Question", "name": "Как работает AI-генерация заголовков?", "acceptedAnswer": { "@type": "Answer", "text": "AI анализирует видео и создаёт уникальные заголовки, описания и теги для каждой платформы." }},
+        { "@type": "Question", "name": "Что такое AutoView и безопасно ли это?", "acceptedAnswer": { "@type": "Answer", "text": "AutoView — встроенная система стартовых просмотров через распределённую сеть реальных устройств." }},
+        { "@type": "Question", "name": "Есть ли API для интеграции?", "acceptedAnswer": { "@type": "Answer", "text": "Да, REST API доступен на тарифах Agency и Custom." }},
+        { "@type": "Question", "name": "Можно ли отменить подписку?", "acceptedAnswer": { "@type": "Answer", "text": "Да, отмена в любой момент. Возврат денег в течение первых 14 дней." }}
+      ]
+    }
+    </script>
   </head>
   <body class="bg-gray-950 text-white font-sans antialiased">
     <div id="root"></div>

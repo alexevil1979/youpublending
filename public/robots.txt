@@ -1,0 +1,6 @@
+# YouPub Landing — robots.txt
+User-agent: *
+Allow: /
+Disallow: /api/
+
+Sitemap: https://youpub.1tlt.ru/sitemap.xml
