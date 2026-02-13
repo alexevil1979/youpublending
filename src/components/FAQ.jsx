@@ -1,20 +1,13 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ChevronDown } from 'lucide-react'
-
-const faqs = [
-  { question: 'Какие платформы поддерживает YouPub?', answer: 'YouPub поддерживает публикацию на YouTube, Telegram, TikTok, Instagram (Reels + Stories) и Pinterest. Мы постоянно добавляем новые платформы — следующими на очереди VK Video и Facebook.' },
-  { question: 'Как работает AI-генерация заголовков?', answer: 'Наш AI анализирует содержимое видео (аудио, визуал, субтитры) и создаёт уникальные заголовки, описания и теги для каждой платформы отдельно. Например, для YouTube — SEO-оптимизированный заголовок, для TikTok — цепляющий короткий текст с эмодзи.' },
-  { question: 'Что такое AutoView и безопасно ли это?', answer: 'AutoView — это встроенная система стартовых просмотров, которая помогает вашему видео набрать первичный импульс. Она работает через распределённую сеть реальных устройств и полностью имитирует органический просмотр.' },
-  { question: 'Могу ли я использовать YouPub для нескольких клиентов?', answer: 'Да! Тарифы Agency и Custom поддерживают множество аккаунтов и командный доступ. Вы можете управлять каналами разных клиентов из одного дашборда с разделением прав доступа.' },
-  { question: 'Есть ли API для интеграции?', answer: 'Да, YouPub предоставляет REST API на тарифах Agency и Custom. Вы можете автоматизировать загрузку видео, управлять расписаниями и получать статистику через API.' },
-  { question: 'Какие форматы видео поддерживаются?', answer: 'Мы поддерживаем все популярные форматы: MP4, MOV, AVI, MKV, WebM. Максимальный размер файла — 10 ГБ. При загрузке видео автоматически конвертируется в оптимальный формат.' },
-  { question: 'Можно ли отменить подписку?', answer: 'Да, вы можете отменить подписку в любой момент из личного кабинета. При отмене доступ сохраняется до конца оплаченного периода. Мы также предлагаем возврат денег в течение первых 14 дней.' },
-  { question: 'Как быстро публикуются видео?', answer: 'Мгновенная публикация происходит за 1–3 минуты в зависимости от размера видео и платформы. При использовании расписания видео публикуется точно в назначенное время.' },
-]
+import { useTranslation } from 'react-i18next'
 
 export default function FAQ() {
+  const { t } = useTranslation()
   const [openIndex, setOpenIndex] = useState(null)
+
+  const faqs = t('faq.items', { returnObjects: true })
 
   return (
     <section id="faq" style={{ position: 'relative', padding: '100px 0' }}>
@@ -27,13 +20,13 @@ export default function FAQ() {
           style={{ textAlign: 'center', marginBottom: '64px' }}
         >
           <span style={{ display: 'inline-block', fontSize: '13px', fontWeight: '600', color: '#facc15', textTransform: 'uppercase', letterSpacing: '2px', marginBottom: '16px' }}>
-            FAQ
+            {t('faq.badge')}
           </span>
           <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 3rem)', fontWeight: '700', color: 'white', marginBottom: '20px' }}>
-            Часто задаваемые <span className="gradient-text">вопросы</span>
+            {t('faq.title')}<span className="gradient-text">{t('faq.titleHighlight')}</span>
           </h2>
           <p style={{ fontSize: '18px', color: '#9ca3af' }}>
-            Не нашли ответ? Напишите нам — ответим за 15 минут.
+            {t('faq.subtitle')}
           </p>
         </motion.div>
 
