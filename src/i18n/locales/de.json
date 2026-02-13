@@ -1,0 +1,396 @@
+{
+  "meta": {
+    "title": "YouPub — Videos mit einem Klick auf 5 Plattformen veröffentlichen",
+    "description": "YouPub — intelligente Plattform für automatische Video-Veröffentlichung auf 5 Plattformen: YouTube, Telegram, TikTok, Instagram, Pinterest"
+  },
+  "navbar": {
+    "features": "Funktionen",
+    "interface": "Oberfläche",
+    "howItWorks": "So funktioniert's",
+    "pricing": "Preise",
+    "testimonials": "Bewertungen",
+    "faq": "FAQ",
+    "login": "Anmelden",
+    "startFree": "Kostenlos starten"
+  },
+  "hero": {
+    "badge": "Neue Generation der Video-Autopublikation",
+    "titleStart": "Lade ein Video einmal hoch — ",
+    "titleHighlight": "veröffentliche überall automatisch",
+    "subtitleStart": "",
+    "subtitleBold": "YouPub",
+    "subtitleMiddle": " — die intelligente Plattform für Creator, SMM-Spezialisten und Agenturen. ",
+    "subtitlePlatforms": "5 Plattformen",
+    "subtitleMiddle2": ", KI-Titel, ",
+    "subtitleSchedules": "5 Arten von Zeitplänen",
+    "subtitleEnd": ", AutoViews und integrierte Monetarisierung",
+    "ctaPrimary": "Kostenlos starten — 14 Tage",
+    "ctaSecondary": "Demo ansehen",
+    "dashboard": {
+      "title": "Dashboard",
+      "date": "Februar 2026",
+      "uploadVideo": "+ Video hochladen",
+      "settings": "Einstellungen",
+      "publications": "Veröffentlichungen",
+      "views": "Aufrufe",
+      "aiGenerations": "KI-Generierungen",
+      "platforms": "Plattformen",
+      "all": "Alle",
+      "allConnected": "● Alle verbunden",
+      "video1": "So erstellst du einen viralen Reels in 5 Minuten",
+      "video2": "Top-10 Marketing-Trends 2026",
+      "video3": "Geheimnisse des YouTube Shorts Algorithmus",
+      "published": "Veröffentlicht",
+      "inQueue": "In Warteschlange",
+      "platformsCount": "Plattformen",
+      "viewsCount": "Aufrufe"
+    }
+  },
+  "trustedBy": {
+    "title": "YouPub wird bereits vertraut",
+    "authors": "Creator und Blogger",
+    "agencies": "Agenturen und Studios",
+    "videosPublished": "Videos veröffentlicht",
+    "platformsSupport": "Unterstützte Plattformen"
+  },
+  "features": {
+    "badge": "Funktionen",
+    "title": "Alles, was du für ",
+    "titleHighlight": "Veröffentlichung im großen Stil brauchst",
+    "subtitle": "YouPub vereint Automatisierung, KI und Analytics in einer übersichtlichen Oberfläche. Spare jeden Tag Stunden.",
+    "card1": {
+      "title": "Multi-Plattform",
+      "description": "YouTube, Telegram, TikTok, Instagram, Pinterest — ein Upload, Veröffentlichung auf allen 5 Plattformen gleichzeitig."
+    },
+    "card2": {
+      "title": "KI-Content-Generierung",
+      "description": "Künstliche Intelligenz erstellt ansprechende Titel, Beschreibungen und Hashtags für jede Plattform individuell."
+    },
+    "card3": {
+      "title": "5 Arten von Zeitplänen",
+      "description": "Linear, wellenförmig, zufällig, nach Zeitzonen und intervallbasiert — intelligente Veröffentlichung, wenn deine Zielgruppe aktiv ist."
+    },
+    "card4": {
+      "title": "AutoView — automatische Aufrufe",
+      "description": "Integrierte Startaufrufe bringen dein Video in den ersten Stunden nach der Veröffentlichung in Schwung."
+    },
+    "card5": {
+      "title": "Content-Gruppen",
+      "description": "Organisiere Videos nach Projekten, Kunden oder Themen. Massenoperationen mit Gruppen in wenigen Klicks."
+    },
+    "card6": {
+      "title": "Integrierte Abrechnung",
+      "description": "Transparente Preise, Zahlung per Karte oder Kryptowährung, automatische Verlängerung und Zahlungshistorie."
+    },
+    "card7": {
+      "title": "API für Integrationen",
+      "description": "Offene REST-API zur Anbindung von YouPub an deine CRM, Automatisierungen und internen Systeme."
+    },
+    "card8": {
+      "title": "Sicherheit und Zuverlässigkeit",
+      "description": "Datenverschlüsselung, OAuth-Autorisierung, 99,9 % Uptime und tägliche Backups aller deiner Videos."
+    }
+  },
+  "interfaceDemo": {
+    "badge": "Oberfläche",
+    "title": "Sieh dir an, wie es ",
+    "titleHighlight": "innen aussieht",
+    "subtitle": "Intuitive Oberfläche, bei der jedes Detail auf Geschwindigkeit und Komfort ausgelegt ist",
+    "tryFree": "Kostenlos testen →",
+    "tabs": {
+      "dashboard": {
+        "label": "Dashboard",
+        "title": "Zentrale Steuerung",
+        "description": "Alle deine Plattformen, Videos, Statistiken und Einstellungen — in einem Fenster. Kein Wechseln zwischen Oberflächen mehr."
+      },
+      "calendar": {
+        "label": "Kalender",
+        "title": "Intelligenter Veröffentlichungskalender",
+        "description": "Wellen-, Zufalls- und Linear-Modus. Ziehe Videos zwischen Slots, passe Intervalle an."
+      },
+      "ai": {
+        "label": "KI-Generierung",
+        "title": "KI erstellt Metadaten für dich",
+        "description": "Lade ein Video hoch — die KI analysiert den Inhalt und erstellt Titel, Beschreibung und Tags für jede Plattform."
+      },
+      "autoview": {
+        "label": "AutoView",
+        "title": "AutoViews für den schnellen Start",
+        "description": "Stelle Startaufrufe für jedes Video ein. Algorithmen bevorzugen Content mit gutem anfänglichen Feedback."
+      },
+      "stats": {
+        "label": "Statistik",
+        "title": "Analytics für alle Plattformen",
+        "description": "Vergleiche die Performance auf YouTube, Telegram, TikTok, Instagram und Pinterest in einem Dashboard."
+      }
+    },
+    "screen": {
+      "videosToday": "Videos heute",
+      "views": "Aufrufe",
+      "aiGenerations": "KI-Generierungen",
+      "perWeek": "pro Woche",
+      "ytPublications": "YouTube — 8 Veröffentlichungen",
+      "tgPublications": "Telegram — 6 Veröffentlichungen",
+      "ttPublications": "TikTok — 5 Veröffentlichungen",
+      "igPublications": "Instagram — 3 Veröffentlichungen",
+      "weekdays": ["Mo", "Di", "Mi", "Do", "Fr", "Sa", "So"],
+      "scheduleDate": "Zeitplan für den 9. Februar",
+      "schedule1": "09:00 — Reels: Morgentipp",
+      "schedule2": "12:00 — YouTube: Tool-Überblick",
+      "schedule3": "18:00 — TikTok: Trend der Woche",
+      "videoUploaded": "Video hochgeladen",
+      "aiGenerated": "KI hat Metadaten generiert",
+      "ytTitle": "🚀 5 Strategien, die 2026 durchstarten!",
+      "ttTitle": "Mach nach und gewinn 1000 Kunden 💰",
+      "tags": "Tags",
+      "tagsList": ["Marketing", "Business2026", "SMM", "Wachstum", "Strategie"],
+      "autoviewQueue": "AutoView-Warteschlange",
+      "active": "Aktiv",
+      "autoviewItem1": "5 Marketing-Strategien",
+      "autoviewItem2": "Überblick KI für Video",
+      "autoviewItem3": "So startest du mit SMM 2026",
+      "autoviewHint": "💡 AutoView arbeitet organisch — Plattform-Algorithmen werten die Aufrufe als natürlich",
+      "statsViews": "Aufrufe",
+      "subscribers": "Abonnenten",
+      "viewsByPlatform": "Aufrufe nach Plattform"
+    }
+  },
+  "beforeAfter": {
+    "badge": "Transformation",
+    "title": "Spür den ",
+    "titleHighlight": "Unterschied",
+    "subtitle": "Vergleiche deine Arbeit vor und nach YouPub — die Zeitersparnis ist offensichtlich",
+    "beforeTitle": "Vor YouPub",
+    "beforeSubtitle": "Manuelle Routine und Chaos",
+    "afterTitle": "Mit YouPub",
+    "afterSubtitle": "Automatisierung und Wachstum",
+    "before1": "3–5 Stunden täglich für manuelle Veröffentlichung",
+    "before2": "Wechsel zwischen 5 verschiedenen Oberflächen",
+    "before3": "Titel und Beschreibungen manuell kopieren",
+    "before4": "Langweilige, eintönige Metadaten",
+    "before5": "0 Startaufrufe — das Video versinkt",
+    "before6": "Burnout und verpasste Reichweiten",
+    "after1": "3 Klicks — Video auf allen 5 Plattformen",
+    "after2": "Ein Dashboard für alles",
+    "after3": "KI erstellt einzigartige Metadaten für jede Plattform",
+    "after4": "Ansprechende Titel = höhere CTR",
+    "after5": "AutoView bringt das Video in den ersten Stunden in Fahrt",
+    "after6": "Mehr Zeit für Kreativität und Wachstum"
+  },
+  "howItWorks": {
+    "badge": "So funktioniert's",
+    "title": "Vom Upload zur Veröffentlichung — ",
+    "titleHighlight": "5 einfache Schritte",
+    "subtitle": "Der gesamte Prozess dauert weniger als 3 Minuten. Ohne komplizierte Einstellungen, ohne Handarbeit.",
+    "step1": {
+      "title": "Video hochladen",
+      "description": "Lade ein Video oder eine ganze Reihe hoch. Massen-Upload von bis zu 100 Dateien gleichzeitig wird unterstützt."
+    },
+    "step2": {
+      "title": "Plattformen und Gruppe wählen",
+      "description": "Wähle YouTube, Telegram, TikTok, Instagram, Pinterest — jede Kombination. Erstelle eine Content-Gruppe."
+    },
+    "step3": {
+      "title": "KI erstellt Metadaten",
+      "description": "Die KI analysiert das Video und generiert einzigartige Titel, Beschreibungen und Tags für jede Plattform."
+    },
+    "step4": {
+      "title": "Zeitplan einrichten",
+      "description": "Wähle einen von 5 Modi: linear, wellenförmig, zufällig, nach Zeitzonen oder intervallbasiert."
+    },
+    "step5": {
+      "title": "Starten und verfolgen",
+      "description": "Klicke auf „Starten“ — das Video wird nach Zeitplan veröffentlicht. AutoView liefert Startaufrufe. Beobachte die Analytics."
+    }
+  },
+  "testimonials": {
+    "badge": "Bewertungen",
+    "title": "Was unsere ",
+    "titleHighlight": "Nutzer sagen",
+    "subtitle": "Echte Ergebnisse von echten Creatorn, Agenturen und Unternehmen",
+    "item1": {
+      "name": "Thomas Müller",
+      "role": "YouTube-Creator, 120K Abonnenten",
+      "text": "Im ersten Monat mit YouPub sind meine Aufrufe um 340 % gestiegen. Ich spare jeden Tag 4 Stunden bei der Veröffentlichung. KI-Titel sind Magie.",
+      "metric": "+340 % Aufrufe",
+      "avatar": "TM"
+    },
+    "item2": {
+      "name": "Sarah Fischer",
+      "role": "SMM-Managerin, Agentur „Digital Pulse“",
+      "text": "Wir betreuen 15 Kunden und veröffentlichen über 200 Videos pro Woche. Früher brauchte es ein ganzes Team, heute — eine Person mit YouPub.",
+      "metric": "200+ Videos/Woche",
+      "avatar": "SF"
+    },
+    "item3": {
+      "name": "Markus Weber",
+      "role": "Unternehmer, E-Commerce",
+      "text": "AutoView hat meinen Produktvideos den Startschub gegeben. Verkäufe aus Social Media sind nach 3 Wochen Nutzung um 85 % gestiegen.",
+      "metric": "+85 % Verkäufe",
+      "avatar": "MW"
+    },
+    "item4": {
+      "name": "Julia Schneider",
+      "role": "Content Creator, TikTok + Reels",
+      "text": "Ich erstelle den Content, YouPub übernimmt die Routine. Zeitplan, Titel, Tags — alles automatisch. Endlich kann ich mich aufs Kreative konzentrieren!",
+      "metric": "5 Std. Ersparnis/Tag",
+      "avatar": "JS"
+    }
+  },
+  "pricing": {
+    "badge": "Preise",
+    "title": "Wähle den Plan für ",
+    "titleHighlight": "dein Wachstum",
+    "subtitle": "Starte kostenlos und skaliere mit dem Wachstum. Alle kostenpflichtigen Pläne beinhalten 14 Tage kostenlos.",
+    "mostPopular": "Am beliebtesten",
+    "free": "Kostenlos",
+    "onRequest": "Auf Anfrage",
+    "perMonth": "/ Monat",
+    "forever": "für immer",
+    "footer": "Alle Preise inkl. MwSt. Zahlung per Karte oder Kryptowährung. Jederzeit kündbar.",
+    "starter": {
+      "description": "Für alle, die es ausprobieren möchten",
+      "features": ["10 Videos / Monat", "2 Plattformen", "20 KI-Generierungen", "1 Konto", "1 GB Speicher", "Basis-Statistik"],
+      "limitations": ["Kein AutoView", "Kein Prioritäts-Support"],
+      "cta": "Kostenlos starten"
+    },
+    "pro": {
+      "description": "Für Creator und SMM-Spezialisten",
+      "features": ["100 Videos / Monat", "Alle 5 Plattformen", "500 KI-Generierungen", "5 Konten", "50 GB Speicher", "AutoView — 5.000 Aufrufe", "Intelligente Zeitpläne", "Content-Gruppen", "Erweiterte Analytics"],
+      "limitations": [],
+      "cta": "Pro wählen"
+    },
+    "agency": {
+      "description": "Für Agenturen und große Teams",
+      "features": ["500 Videos / Monat", "Alle 5 Plattformen", "2.000 KI-Generierungen", "25 Konten", "200 GB Speicher", "AutoView — 25.000 Aufrufe", "Alle Zeitplan-Arten", "API-Zugang", "Team-Zugang (5 Personen)", "Prioritäts-Support"],
+      "limitations": [],
+      "cta": "Agency wählen"
+    },
+    "custom": {
+      "description": "Individuelle Konditionen",
+      "features": ["Unbegrenzte Videos", "Alle 5 Plattformen", "Unbegrenzte KI-Generierungen", "Unbegrenzte Konten", "Unbegrenzter Speicher", "AutoView — beliebiges Volumen", "Dedizierter Ansprechpartner", "SLA 99,9 %", "Individuelle Integrationen", "On-Premise-Option"],
+      "limitations": [],
+      "cta": "Kontakt aufnehmen"
+    }
+  },
+  "faq": {
+    "badge": "FAQ",
+    "title": "Häufig gestellte ",
+    "titleHighlight": "Fragen",
+    "subtitle": "Keine Antwort gefunden? Schreib uns — wir antworten innerhalb von 15 Minuten.",
+    "items": [
+      {
+        "question": "Welche Plattformen unterstützt YouPub?",
+        "answer": "YouPub unterstützt die Veröffentlichung auf YouTube, Telegram, TikTok, Instagram (Reels + Stories) und Pinterest. Wir fügen ständig neue Plattformen hinzu — als Nächstes kommen VK Video und Facebook."
+      },
+      {
+        "question": "Wie funktioniert die KI-Generierung von Titeln?",
+        "answer": "Unsere KI analysiert den Videoinhalt (Audio, Bild, Untertitel) und erstellt einzigartige Titel, Beschreibungen und Tags für jede Plattform separat. Z. B. für YouTube — SEO-optimierter Titel, für TikTok — knackiger Kurztext mit Emojis."
+      },
+      {
+        "question": "Was ist AutoView und ist es sicher?",
+        "answer": "AutoView ist ein integriertes System für Startaufrufe, das deinem Video den ersten Schub gibt. Es arbeitet über ein verteiltes Netzwerk echter Geräte und imitiert organische Aufrufe vollständig."
+      },
+      {
+        "question": "Kann ich YouPub für mehrere Kunden nutzen?",
+        "answer": "Ja! Die Tarife Agency und Custom unterstützen mehrere Konten und Team-Zugang. Du kannst Kanäle verschiedener Kunden aus einem Dashboard mit Zugriffsrechten verwalten."
+      },
+      {
+        "question": "Gibt es eine API zur Integration?",
+        "answer": "Ja, YouPub bietet eine REST-API in den Tarifen Agency und Custom. Du kannst den Video-Upload automatisieren, Zeitpläne verwalten und Statistiken per API abrufen."
+      },
+      {
+        "question": "Welche Videoformate werden unterstützt?",
+        "answer": "Wir unterstützen alle gängigen Formate: MP4, MOV, AVI, MKV, WebM. Maximale Dateigröße — 10 GB. Beim Upload wird das Video automatisch ins optimale Format konvertiert."
+      },
+      {
+        "question": "Kann ich das Abo kündigen?",
+        "answer": "Ja, du kannst das Abo jederzeit im Kundenbereich kündigen. Nach der Kündigung bleibt der Zugang bis zum Ende des bezahlten Zeitraums bestehen. Wir bieten auch eine Geld-zurück-Garantie in den ersten 14 Tagen."
+      },
+      {
+        "question": "Wie schnell werden Videos veröffentlicht?",
+        "answer": "Die sofortige Veröffentlichung dauert 1–3 Minuten je nach Videogröße und Plattform. Bei Nutzung des Zeitplans wird das Video genau zur festgelegten Zeit veröffentlicht."
+      }
+    ]
+  },
+  "finalCta": {
+    "titleStart": "Bereit, Veröffentlichungen zu automatisieren und ",
+    "titleHighlight": "schneller als die Konkurrenz zu wachsen?",
+    "subtitle": "Schließ dich über 1.200 Creatorn an, die bereits täglich Stunden sparen und mehr Aufrufe automatisch bekommen. Kostenloser Start — ohne Karte.",
+    "ctaPrimary": "Kostenlos starten — 14 Tage",
+    "ctaSecondary": "Kontakt aufnehmen",
+    "footer": "Kostenlos · Ohne Kreditkarte · Einrichtung in 2 Minuten"
+  },
+  "footer": {
+    "description": "Automatische Video-Veröffentlichung auf 5 Plattformen mit KI und Analytics.",
+    "copyright": "© 2026 YouPub. Alle Rechte vorbehalten.",
+    "madeWith": "Mit Liebe für Content Creator gemacht",
+    "product": "Produkt",
+    "company": "Unternehmen",
+    "support": "Support",
+    "legal": "Rechtliches",
+    "links": {
+      "features": "Funktionen",
+      "pricing": "Preise",
+      "interface": "Oberfläche",
+      "api": "API",
+      "updates": "Updates",
+      "about": "Über uns",
+      "blog": "Blog",
+      "careers": "Karriere",
+      "partners": "Partner",
+      "contacts": "Kontakt",
+      "documentation": "Dokumentation",
+      "knowledgeBase": "Wissensdatenbank",
+      "telegramChat": "Telegram-Chat",
+      "serviceStatus": "Service-Status",
+      "feedback": "Feedback",
+      "privacy": "Datenschutz",
+      "terms": "Nutzungsbedingungen",
+      "offer": "Angebot",
+      "cookie": "Cookies"
+    }
+  },
+  "chat": {
+    "openChat": "Chat öffnen",
+    "title": "YouPub KI-Assistent",
+    "online": "Online",
+    "newDialog": "Neuer Dialog",
+    "minimize": "Chat minimieren",
+    "close": "Chat schließen",
+    "placeholder": "Nachricht schreiben...",
+    "sendAriaLabel": "Senden",
+    "demoEmail": "Demo gewünscht? E-Mail hinterlassen",
+    "leaveContact": "Kontakt hinterlassen — wir melden uns!",
+    "yourName": "Dein Name",
+    "email": "E-Mail",
+    "submit": "Senden",
+    "thankYou": "Danke, {{name}}! 🎉 Wir melden uns unter {{email}}. Bis dahin — stell gern alle Fragen!",
+    "greeting": "Hallo! 👋 Ich bin der YouPub KI-Assistent auf Basis von GigaChat.\n\nIch helfe dir, die Plattform kennenzulernen und die beste Lösung für deinen Content zu finden.\n\nWorüber möchtest du mehr erfahren?",
+    "quickActions": {
+      "features": "🚀 Funktionen",
+      "pricing": "💰 Preise",
+      "aiGeneration": "🤖 KI-Generierung",
+      "autoview": "📊 AutoView"
+    },
+    "quickMessages": {
+      "features": "Erzähl von den YouPub-Funktionen",
+      "pricing": "Welche Tarife und Preise gibt es?",
+      "aiGeneration": "Wie funktioniert die KI-Content-Generierung?",
+      "autoview": "Was ist AutoView und wie funktioniert es?"
+    },
+    "errors": {
+      "fallback": "Entschuldigung, es ist ein vorübergehender Verbindungsfehler aufgetreten. Bitte versuche es in ein paar Sekunden erneut oder schreib uns unter support@youpub.ru 📧",
+      "tooLong": "⚠️ Nachricht zu lang. Bitte auf 1000 Zeichen kürzen.",
+      "rateLimit": "⏳ Zu viele Nachrichten. Bitte eine Minute warten.",
+      "totalLimit": "📝 Nachrichtenlimit erreicht. Seite neu laden für eine neue Sitzung.",
+      "tooManyRequests": "⏳ Zu viele Anfragen. Bitte eine Minute warten und erneut versuchen."
+    },
+    "validation": {
+      "minChars": "Mindestens 2 Zeichen",
+      "maxChars": "Maximal 50 Zeichen",
+      "invalidEmail": "Bitte gültige E-Mail eingeben"
+    },
+    "systemPrompt": "Du bist der intelligente YouPub KI-Assistent, basierend auf GigaChat. Dein Ziel ist es, Nutzern die Plattform näherzubringen und zur Registrierung/ zum Kauf zu motivieren.\n\nWichtige YouPub-Features:\n- Automatische Video-Veröffentlichung auf YouTube, Telegram, TikTok, Instagram, Pinterest (5 Plattformen gleichzeitig)\n- KI-Generierung von Titeln, Beschreibungen und Tags für maximale Reichweite\n- 5 Arten von Veröffentlichungszeitplänen (täglich, wöchentlich, Kalender, Intervall, einmalig)\n- AutoView — System zur Steigerung der Aufrufe auf YouTube\n- Integrierte Abrechnung mit 4 Zahlungsanbietern (Karten, SBP, Kryptowährung, Guthaben)\n- REST-API für die Integration mit anderen Diensten\n- Multi-Kanal-Analytics und Statistik\n\nTarife:\n- Starter: 500₽/Monat — bis 30 Videos/Monat, 2 Kanäle, Basis-KI\n- Pro: 1500₽/Monat — unbegrenzte Videos, 10 Kanäle, erweiterte KI, AutoView, Prioritäts-Support\n- Business: 5000₽/Monat — alles aus Pro + API-Zugang, White-Label, persönlicher Ansprechpartner\n\nKommunikationsregeln:\n- Always respond in German\n- Sei freundlich und professionell\n- Fokussiere auf Vorteile: Zeitersparnis, mehr Aufrufe, Automatisierung der Routine\n- Stelle Rückfragen\n- Biete Demo oder passenden Tarif an\n- Wenn der Nutzer interessiert ist — schlag vor, die E-Mail für den Kontakt zu hinterlassen\n- Setze Emojis maßvoll ein\n- Antworte kurz und sachlich (bis 200 Wörter)\n- Sammle E-Mails für Leads"
+  }
+}

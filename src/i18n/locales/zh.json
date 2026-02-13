@@ -1,0 +1,439 @@
+{
+  "meta": {
+    "title": "YouPub — 一键发布视频到 5 大平台",
+    "description": "YouPub — 智能视频自动发布平台，一键发布到 YouTube、Telegram、TikTok、Instagram、Pinterest 五大平台"
+  },
+  "navbar": {
+    "features": "功能",
+    "interface": "界面",
+    "howItWorks": "如何运作",
+    "pricing": "价格",
+    "testimonials": "用户评价",
+    "faq": "常见问题",
+    "login": "登录",
+    "startFree": "免费开始"
+  },
+  "hero": {
+    "badge": "新一代视频自动发布",
+    "titleStart": "一次上传视频 — ",
+    "titleHighlight": "自动发布到各处",
+    "subtitleStart": "",
+    "subtitleBold": "YouPub",
+    "subtitleMiddle": " — 面向创作者、社媒运营与机构的智能平台。",
+    "subtitlePlatforms": "5 大平台",
+    "subtitleMiddle2": "、AI 标题、",
+    "subtitleSchedules": "5 种排期",
+    "subtitleEnd": "、自动播放与内置变现",
+    "ctaPrimary": "免费开始 — 14 天",
+    "ctaSecondary": "观看演示",
+    "dashboard": {
+      "title": "控制面板",
+      "date": "2026年2月",
+      "uploadVideo": "+ 上传视频",
+      "settings": "设置",
+      "publications": "发布数",
+      "views": "播放量",
+      "aiGenerations": "AI 生成",
+      "platforms": "平台",
+      "all": "全部",
+      "allConnected": "● 已全部连接",
+      "video1": "5 分钟打造爆款 Reels",
+      "video2": "2026 营销十大趋势",
+      "video3": "YouTube Shorts 算法秘诀",
+      "published": "已发布",
+      "inQueue": "排队中",
+      "platformsCount": "平台",
+      "viewsCount": "播放"
+    }
+  },
+  "trustedBy": {
+    "title": "已有用户信赖 YouPub",
+    "authors": "创作者与博主",
+    "agencies": "机构与工作室",
+    "videosPublished": "已发布视频",
+    "platformsSupport": "支持平台"
+  },
+  "features": {
+    "badge": "功能",
+    "title": "规模化发布所需的 ",
+    "titleHighlight": "一切",
+    "subtitle": "YouPub 将自动化、AI 与数据分析整合于一个简洁界面，每天为您节省数小时。",
+    "card1": {
+      "title": "多平台发布",
+      "description": "YouTube、Telegram、TikTok、Instagram、Pinterest — 一次上传，同时发布到全部 5 个平台。"
+    },
+    "card2": {
+      "title": "AI 内容生成",
+      "description": "人工智能为每个平台生成吸睛的标题、描述和话题标签，风格因平台而异。"
+    },
+    "card3": {
+      "title": "5 种排期模式",
+      "description": "线性、波浪、随机、按时区与按间隔 — 在受众最活跃的时间智能发布。"
+    },
+    "card4": {
+      "title": "AutoView — 自动播放",
+      "description": "内置启动播放引擎，在发布后数小时内为视频带来初始流量。"
+    },
+    "card5": {
+      "title": "内容分组",
+      "description": "按项目、客户或主题整理视频，几键即可对整组进行批量操作。"
+    },
+    "card6": {
+      "title": "内置计费",
+      "description": "价格透明，支持银行卡或加密货币支付，自动续费与完整支付记录。"
+    },
+    "card7": {
+      "title": "API 集成",
+      "description": "开放 REST API，可将 YouPub 接入您的 CRM、自动化与内部系统。"
+    },
+    "card8": {
+      "title": "安全可靠",
+      "description": "数据加密、OAuth 登录、99.9% 可用性与每日视频备份。"
+    }
+  },
+  "interfaceDemo": {
+    "badge": "界面",
+    "title": "看看系统 ",
+    "titleHighlight": "内部长什么样",
+    "subtitle": "直观界面，每个细节都为效率与便捷而设计",
+    "tryFree": "免费试用 →",
+    "tabs": {
+      "dashboard": {
+        "label": "仪表盘",
+        "title": "统一管理中心",
+        "description": "所有平台、视频、数据与设置集中在一个窗口，无需在多个后台之间切换。"
+      },
+      "calendar": {
+        "label": "日历",
+        "title": "智能发布日历",
+        "description": "波浪、随机、线性模式。拖拽视频到时间槽，自定义发布间隔。"
+      },
+      "ai": {
+        "label": "AI 生成",
+        "title": "AI 为您生成元数据",
+        "description": "上传视频后，AI 分析内容并为每个平台生成标题、描述与标签。"
+      },
+      "autoview": {
+        "label": "AutoView",
+        "title": "自动播放助力冷启动",
+        "description": "为每个视频设置启动播放量，平台算法更易推荐初期表现好的内容。"
+      },
+      "stats": {
+        "label": "统计",
+        "title": "全平台数据分析",
+        "description": "在一个仪表盘中对比 YouTube、Telegram、TikTok、Instagram 与 Pinterest 的效果。"
+      }
+    },
+    "screen": {
+      "videosToday": "今日视频",
+      "views": "播放量",
+      "aiGenerations": "AI 生成",
+      "perWeek": "本周",
+      "ytPublications": "YouTube — 8 条发布",
+      "tgPublications": "Telegram — 6 条发布",
+      "ttPublications": "TikTok — 5 条发布",
+      "igPublications": "Instagram — 3 条发布",
+      "weekdays": ["周一", "周二", "周三", "周四", "周五", "周六", "周日"],
+      "scheduleDate": "2月9日排期",
+      "schedule1": "09:00 — Reels：晨间小技巧",
+      "schedule2": "12:00 — YouTube：工具测评",
+      "schedule3": "18:00 — TikTok：本周趋势",
+      "videoUploaded": "视频已上传",
+      "aiGenerated": "AI 已生成元数据",
+      "ytTitle": "🚀 2026 年必火的 5 大策略！",
+      "ttTitle": "照做就能获客 1000+ 💰",
+      "tags": "标签",
+      "tagsList": ["营销", "商业2026", "社媒", "增长", "策略"],
+      "autoviewQueue": "AutoView 队列",
+      "active": "进行中",
+      "autoviewItem1": "5 大营销策略",
+      "autoviewItem2": "视频 AI 工具盘点",
+      "autoviewItem3": "2026 社媒入门指南",
+      "autoviewHint": "💡 AutoView 模拟真实观看，平台算法会将其视为自然流量",
+      "statsViews": "播放量",
+      "subscribers": "订阅数",
+      "viewsByPlatform": "各平台播放量"
+    }
+  },
+  "beforeAfter": {
+    "badge": "对比",
+    "title": "感受 ",
+    "titleHighlight": "前后差异",
+    "subtitle": "对比使用 YouPub 前后的工作方式，省下的时间一目了然",
+    "beforeTitle": "使用 YouPub 之前",
+    "beforeSubtitle": "手工重复与混乱",
+    "afterTitle": "使用 YouPub 之后",
+    "afterSubtitle": "自动化与增长",
+    "before1": "每天 3–5 小时手动发布",
+    "before2": "在 5 个不同后台之间来回切换",
+    "before3": "手动复制粘贴标题和描述",
+    "before4": "千篇一律的枯燥元数据",
+    "before5": "零启动播放，视频石沉大海",
+    "before6": "疲惫与错失的曝光",
+    "after1": "3 次点击，视频登上全部 5 个平台",
+    "after2": "一个仪表盘管理一切",
+    "after3": "AI 为每个平台生成独特元数据",
+    "after4": "吸睛标题 = 更高点击率",
+    "after5": "AutoView 在发布后几小时内助推",
+    "after6": "更多时间留给创作与增长"
+  },
+  "howItWorks": {
+    "badge": "如何运作",
+    "title": "从上传到发布 — ",
+    "titleHighlight": "只需 5 步",
+    "subtitle": "全流程不到 3 分钟，无需复杂配置，无需手工操作。",
+    "step1": {
+      "title": "上传视频",
+      "description": "上传单个视频或批量上传，支持单次最多 100 个文件。"
+    },
+    "step2": {
+      "title": "选择平台与分组",
+      "description": "勾选 YouTube、Telegram、TikTok、Instagram、Pinterest — 任意组合，并创建内容分组。"
+    },
+    "step3": {
+      "title": "AI 生成元数据",
+      "description": "AI 分析视频内容，为每个平台生成独特的标题、描述与标签。"
+    },
+    "step4": {
+      "title": "设置排期",
+      "description": "选择五种模式之一：线性、波浪、随机、按时区或按间隔。"
+    },
+    "step5": {
+      "title": "启动并跟踪",
+      "description": "点击「启动」— 视频按排期自动发布。AutoView 提供启动播放，您可在后台查看数据。"
+    }
+  },
+  "testimonials": {
+    "badge": "用户评价",
+    "title": "用户 ",
+    "titleHighlight": "怎么说",
+    "subtitle": "来自真实创作者、机构与商家的真实反馈",
+    "item1": {
+      "name": "李明",
+      "role": "YouTube 博主，12 万订阅",
+      "text": "使用 YouPub 第一个月，播放量涨了 340%。每天在发布上省下 4 小时，AI 标题真的像魔法一样好用。",
+      "metric": "播放量 +340%",
+      "avatar": "李"
+    },
+    "item2": {
+      "name": "王芳",
+      "role": "社媒经理，「数字脉搏」 agency",
+      "text": "我们服务 15 个客户，每周发布 200+ 条视频。以前要一整支团队，现在一个人加 YouPub 就能搞定。",
+      "metric": "200+ 条视频/周",
+      "avatar": "王"
+    },
+    "item3": {
+      "name": "张伟",
+      "role": "电商创业者",
+      "text": "AutoView 给产品视频做了冷启动，用三周社媒带来的销量就涨了 85%。",
+      "metric": "销量 +85%",
+      "avatar": "张"
+    },
+    "item4": {
+      "name": "刘洋",
+      "role": "内容创作者，TikTok + Reels",
+      "text": "我只负责创作，发布、排期、标题、标签全交给 YouPub。终于可以专心做内容了！",
+      "metric": "每天省 5 小时",
+      "avatar": "刘"
+    }
+  },
+  "pricing": {
+    "badge": "价格",
+    "title": "选择适合您 ",
+    "titleHighlight": "成长的方案",
+    "subtitle": "免费起步，随业务扩展升级。所有付费方案均含 14 天免费试用。",
+    "mostPopular": "最受欢迎",
+    "free": "免费",
+    "onRequest": "联系咨询",
+    "perMonth": "/ 月",
+    "forever": "永久",
+    "footer": "价格含税。支持银行卡、快速支付或加密货币。随时可取消。",
+    "starter": {
+      "description": "适合想先试试的用户",
+      "features": [
+        "10 条视频 / 月",
+        "2 个平台",
+        "20 次 AI 生成",
+        "1 个账号",
+        "1 GB 存储",
+        "基础统计"
+      ],
+      "limitations": [
+        "不含 AutoView",
+        "无优先支持"
+      ],
+      "cta": "免费开始"
+    },
+    "pro": {
+      "description": "适合创作者与社媒运营",
+      "features": [
+        "100 条视频 / 月",
+        "全部 5 个平台",
+        "500 次 AI 生成",
+        "5 个账号",
+        "50 GB 存储",
+        "AutoView — 5,000 播放",
+        "智能排期",
+        "内容分组",
+        "高级分析"
+      ],
+      "limitations": [],
+      "cta": "选择 Pro"
+    },
+    "agency": {
+      "description": "适合机构与大型团队",
+      "features": [
+        "500 条视频 / 月",
+        "全部 5 个平台",
+        "2,000 次 AI 生成",
+        "25 个账号",
+        "200 GB 存储",
+        "AutoView — 25,000 播放",
+        "全部排期类型",
+        "API 访问",
+        "团队协作（5 人）",
+        "优先支持"
+      ],
+      "limitations": [],
+      "cta": "选择 Agency"
+    },
+    "custom": {
+      "description": "定制方案",
+      "features": [
+        "视频不限量",
+        "全部 5 个平台",
+        "AI 生成不限量",
+        "账号不限量",
+        "存储不限量",
+        "AutoView — 任意量",
+        "专属客户经理",
+        "SLA 99.9%",
+        "定制集成",
+        "本地部署可选"
+      ],
+      "limitations": [],
+      "cta": "联系我们"
+    }
+  },
+  "faq": {
+    "badge": "常见问题",
+    "title": "常见 ",
+    "titleHighlight": "问题",
+    "subtitle": "没找到答案？给我们留言，15 分钟内回复。",
+    "items": [
+      {
+        "question": "YouPub 支持哪些平台？",
+        "answer": "YouPub 支持发布到 YouTube、Telegram、TikTok、Instagram（Reels + Stories）和 Pinterest。我们持续接入新平台，下一步计划包括 VK Video 和 Facebook。"
+      },
+      {
+        "question": "AI 标题生成是怎么工作的？",
+        "answer": "我们的 AI 会分析视频内容（音频、画面、字幕），为每个平台单独生成标题、描述和标签。例如 YouTube 侧重 SEO 标题，TikTok 则生成短小吸睛、带表情的文案。"
+      },
+      {
+        "question": "AutoView 是什么？安全吗？",
+        "answer": "AutoView 是内置的启动播放系统，帮助视频获得初始流量。它通过分布式真实设备网络运行，完全模拟真实用户观看行为。"
+      },
+      {
+        "question": "可以用 YouPub 服务多个客户吗？",
+        "answer": "可以！Agency 与 Custom 方案支持多账号与团队权限。您可以在同一仪表盘中管理不同客户的频道，并设置权限分工。"
+      },
+      {
+        "question": "有 API 可以对接吗？",
+        "answer": "有。YouPub 在 Agency 与 Custom 方案中提供 REST API，可通过 API 自动上传视频、管理排期并获取统计数据。"
+      },
+      {
+        "question": "支持哪些视频格式？",
+        "answer": "我们支持常见格式：MP4、MOV、AVI、MKV、WebM。单文件最大 10 GB。上传时会自动转成平台最优格式。"
+      },
+      {
+        "question": "可以取消订阅吗？",
+        "answer": "可以，您随时可在个人中心取消订阅。取消后，已付费期内仍可继续使用。我们也在前 14 天内支持退款。"
+      },
+      {
+        "question": "视频多久能发布出去？",
+        "answer": "即时发布一般在 1–3 分钟内完成，具体取决于视频大小和平台。若使用排期，则会在设定时间准时发布。"
+      }
+    ]
+  },
+  "finalCta": {
+    "titleStart": "准备好用自动化发布 ",
+    "titleHighlight": "跑赢对手了吗？",
+    "subtitle": "已有 1,200+ 创作者加入，每天省下数小时、自动获得更多播放。免费开始，无需绑卡。",
+    "ctaPrimary": "免费开始 — 14 天",
+    "ctaSecondary": "联系我们",
+    "footer": "免费 · 无需信用卡 · 2 分钟完成设置"
+  },
+  "footer": {
+    "description": "一键将视频自动发布到 5 大平台，含 AI 与数据分析。",
+    "copyright": "© 2026 YouPub. 保留所有权利。",
+    "madeWith": "为内容创作者用心打造",
+    "product": "产品",
+    "company": "公司",
+    "support": "支持",
+    "legal": "法律",
+    "links": {
+      "features": "功能",
+      "pricing": "价格",
+      "interface": "界面",
+      "api": "API",
+      "updates": "更新",
+      "about": "关于我们",
+      "blog": "博客",
+      "careers": "招聘",
+      "partners": "合作伙伴",
+      "contacts": "联系方式",
+      "documentation": "文档",
+      "knowledgeBase": "帮助中心",
+      "telegramChat": "Telegram 群",
+      "serviceStatus": "服务状态",
+      "feedback": "反馈",
+      "privacy": "隐私政策",
+      "terms": "使用条款",
+      "offer": "服务协议",
+      "cookie": "Cookie"
+    }
+  },
+  "chat": {
+    "openChat": "打开聊天",
+    "title": "YouPub AI 助手",
+    "online": "在线",
+    "newDialog": "新对话",
+    "minimize": "收起",
+    "close": "关闭",
+    "placeholder": "输入消息...",
+    "sendAriaLabel": "发送",
+    "demoEmail": "想要演示？留下邮箱",
+    "leaveContact": "留下联系方式，我们会联系您！",
+    "yourName": "您的姓名",
+    "email": "邮箱",
+    "submit": "提交",
+    "later": "稍后",
+    "thankYou": "感谢您，{{name}}！🎉 我们会通过 {{email}} 与您联系。在此之前，欢迎随时提问！",
+    "greeting": "你好！👋 我是 YouPub 的 AI 助手，基于 GigaChat。\n\n我可以帮你了解平台，并为你的内容推荐最合适的方案。\n\n想先了解哪方面？",
+    "quickActions": {
+      "features": "🚀 功能",
+      "pricing": "💰 价格",
+      "aiGeneration": "🤖 AI 生成",
+      "autoview": "📊 AutoView"
+    },
+    "quickMessages": {
+      "features": "介绍一下 YouPub 的功能",
+      "pricing": "有哪些套餐和价格？",
+      "aiGeneration": "AI 内容生成是怎么工作的？",
+      "autoview": "AutoView 是什么，怎么用？"
+    },
+    "errors": {
+      "fallback": "抱歉，暂时出现连接问题。请稍后重试，或发邮件至 support@youpub.ru 📧",
+      "tooLong": "⚠️ 消息过长，请控制在 1000 字以内。",
+      "rateLimit": "⏳ 发送过于频繁，请稍等一分钟。",
+      "totalLimit": "📝 已达消息上限，请刷新页面开始新会话。",
+      "tooManyRequests": "⏳ 请求过多，请稍等一分钟再试。"
+    },
+    "validation": {
+      "minChars": "至少 2 个字符",
+      "maxChars": "最多 50 个字符",
+      "invalidEmail": "请输入有效的邮箱地址"
+    },
+    "systemPrompt": "你是 YouPub 的智能 AI 助手，基于 GigaChat。你的目标是帮助用户了解平台并促成注册/购买。\n\nYouPub 核心功能：\n- 一键将视频自动发布到 YouTube、Telegram、TikTok、Instagram、Pinterest（5 个平台同时发布）\n- AI 生成标题、描述与标签，提升曝光\n- 5 种发布排期（每日、每周、日历、间隔、单次）\n- AutoView — 提升 YouTube 播放量的系统\n- 内置计费，支持 4 种支付方式（银行卡、快速支付、加密货币、余额）\n- REST API 可与其它系统集成\n- 多平台数据与统计\n\n价格方案：\n- Starter：500₽/月 — 最多 30 条视频/月，2 个频道，基础 AI\n- Pro：1500₽/月 — 视频不限量，10 个频道，高级 AI、AutoView、优先支持\n- Business：5000₽/月 — 含 Pro 全部 + API、白标、专属客户经理\n\n沟通规则：\n- Always respond in Chinese (Simplified)\n- 保持友好、专业\n- 突出价值：省时间、涨播放、自动化\n- 适时追问需求\n- 推荐演示或合适套餐\n- 若用户有意向，可邀请留下邮箱\n- 适度使用表情，不要过度\n- 回答简洁，控制在 200 字以内\n- 收集邮箱用于跟进"
+  }
+}

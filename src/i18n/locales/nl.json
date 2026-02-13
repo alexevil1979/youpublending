@@ -1,0 +1,396 @@
+{
+  "meta": {
+    "title": "YouPub — Publiceer video's met één klik op 5 platformen",
+    "description": "YouPub — slim platform voor automatische videopublicatie op 5 platformen: YouTube, Telegram, TikTok, Instagram, Pinterest"
+  },
+  "navbar": {
+    "features": "Functies",
+    "interface": "Interface",
+    "howItWorks": "Hoe het werkt",
+    "pricing": "Prijzen",
+    "testimonials": "Reviews",
+    "faq": "FAQ",
+    "login": "Inloggen",
+    "startFree": "Gratis starten"
+  },
+  "hero": {
+    "badge": "Nieuwe generatie videopublicatie",
+    "titleStart": "Upload één keer — ",
+    "titleHighlight": "publiceer overal automatisch",
+    "subtitleStart": "",
+    "subtitleBold": "YouPub",
+    "subtitleMiddle": " — het slimme platform voor makers, SMM-specialisten en bureaus. ",
+    "subtitlePlatforms": "5 platformen",
+    "subtitleMiddle2": ", AI-titels, ",
+    "subtitleSchedules": "5 soorten schema's",
+    "subtitleEnd": ", autoweergaven en ingebouwde monetisatie",
+    "ctaPrimary": "Gratis starten — 14 dagen",
+    "ctaSecondary": "Demo bekijken",
+    "dashboard": {
+      "title": "Dashboard",
+      "date": "Februari 2026",
+      "uploadVideo": "+ Video uploaden",
+      "settings": "Instellingen",
+      "publications": "Publicaties",
+      "views": "Weergaven",
+      "aiGenerations": "AI-generaties",
+      "platforms": "Platformen",
+      "all": "Alle",
+      "allConnected": "● Alle verbonden",
+      "video1": "Zo maak je een virale Reels in 5 minuten",
+      "video2": "Top 10 marketingtrends 2026",
+      "video3": "Geheimen van het YouTube Shorts-algoritme",
+      "published": "Gepubliceerd",
+      "inQueue": "In wachtrij",
+      "platformsCount": "platformen",
+      "viewsCount": "weergaven"
+    }
+  },
+  "trustedBy": {
+    "title": "YouPub wordt al vertrouwd",
+    "authors": "Makers en bloggers",
+    "agencies": "Bureaus en studio's",
+    "videosPublished": "Video's gepubliceerd",
+    "platformsSupport": "Ondersteunde platformen"
+  },
+  "features": {
+    "badge": "Functies",
+    "title": "Alles wat je nodig hebt voor ",
+    "titleHighlight": "publicatie op grote schaal",
+    "subtitle": "YouPub combineert automatisering, AI en analytics in één overzichtelijke interface. Bespaar elke dag uren.",
+    "card1": {
+      "title": "Multiplatform",
+      "description": "YouTube, Telegram, TikTok, Instagram, Pinterest — één upload, publicatie op alle 5 platformen tegelijk."
+    },
+    "card2": {
+      "title": "AI-contentgeneratie",
+      "description": "Kunstmatige intelligentie maakt pakkende titels, beschrijvingen en hashtags voor elk platform apart."
+    },
+    "card3": {
+      "title": "5 soorten schema's",
+      "description": "Lineair, golf, willekeurig, per tijdzone en interval — slim publiceren wanneer je publiek actief is."
+    },
+    "card4": {
+      "title": "AutoView — autoweergaven",
+      "description": "De ingebouwde motor voor startweergaven geeft je video een vliegende start in de eerste uren na publicatie."
+    },
+    "card5": {
+      "title": "Contentgroepen",
+      "description": "Organiseer video's per project, klant of thema. Massabewerkingen op groepen in een paar klikken."
+    },
+    "card6": {
+      "title": "Ingebouwde facturatie",
+      "description": "Transparante tarieven, betalen met kaart of crypto, automatische verlenging en betalingsgeschiedenis."
+    },
+    "card7": {
+      "title": "API voor integraties",
+      "description": "Open REST API om YouPub te koppelen aan je CRM, automatiseringen en interne systemen."
+    },
+    "card8": {
+      "title": "Beveiliging en betrouwbaarheid",
+      "description": "Gegevensversleuteling, OAuth-autorisatie, 99,9% uptime en dagelijkse back-ups van al je video's."
+    }
+  },
+  "interfaceDemo": {
+    "badge": "Interface",
+    "title": "Bekijk hoe het er ",
+    "titleHighlight": "vanbinnen uitziet",
+    "subtitle": "Intuïtieve interface waar elk detail is doordacht voor snelheid en gemak",
+    "tryFree": "Gratis proberen →",
+    "tabs": {
+      "dashboard": {
+        "label": "Dashboard",
+        "title": "Eén centraal beheerpunt",
+        "description": "Al je platformen, video's, statistieken en instellingen — in één scherm. Geen wisselen meer tussen omgevingen."
+      },
+      "calendar": {
+        "label": "Kalender",
+        "title": "Slimme publicatiekalender",
+        "description": "Golf-, willekeur- en lineaire modus. Sleep video's tussen slots, stel intervallen in."
+      },
+      "ai": {
+        "label": "AI-generatie",
+        "title": "AI maakt metadata voor je",
+        "description": "Upload een video — AI analyseert de inhoud en maakt titel, beschrijving en tags voor elk platform."
+      },
+      "autoview": {
+        "label": "AutoView",
+        "title": "Autoweergaven voor een snelle start",
+        "description": "Stel startweergaven in per video. Algoritmes pikken content met goede eerste respons op."
+      },
+      "stats": {
+        "label": "Statistieken",
+        "title": "Analytics voor alle platformen",
+        "description": "Vergelijk prestaties op YouTube, Telegram, TikTok, Instagram en Pinterest in één dashboard."
+      }
+    },
+    "screen": {
+      "videosToday": "Video's vandaag",
+      "views": "Weergaven",
+      "aiGenerations": "AI-generaties",
+      "perWeek": "per week",
+      "ytPublications": "YouTube — 8 publicaties",
+      "tgPublications": "Telegram — 6 publicaties",
+      "ttPublications": "TikTok — 5 publicaties",
+      "igPublications": "Instagram — 3 publicaties",
+      "weekdays": ["Ma", "Di", "Wo", "Do", "Vr", "Za", "Zo"],
+      "scheduleDate": "Schema 9 februari",
+      "schedule1": "09:00 — Reels: Ochtendlifehack",
+      "schedule2": "12:00 — YouTube: Tool-overzicht",
+      "schedule3": "18:00 — TikTok: Trend van de week",
+      "videoUploaded": "Video geüpload",
+      "aiGenerated": "AI heeft metadata gegenereerd",
+      "ytTitle": "🚀 5 strategieën die in 2026 DOORBREKEN!",
+      "ttTitle": "Doe na en krijg 1000 klanten 💰",
+      "tags": "Tags",
+      "tagsList": ["marketing", "business2026", "smm", "groei", "strategie"],
+      "autoviewQueue": "AutoView-wachtrij",
+      "active": "Actief",
+      "autoviewItem1": "5 marketingstrategieën",
+      "autoviewItem2": "Overzicht AI voor video",
+      "autoviewItem3": "Hoe start je met SMM in 2026",
+      "autoviewHint": "💡 AutoView werkt organisch — platformalgoritmes zien de weergaven als natuurlijk",
+      "statsViews": "Weergaven",
+      "subscribers": "Abonnees",
+      "viewsByPlatform": "Weergaven per platform"
+    }
+  },
+  "beforeAfter": {
+    "badge": "Transformatie",
+    "title": "Voel het ",
+    "titleHighlight": "verschil",
+    "subtitle": "Vergelijk je werk voor en na YouPub — de tijdsbesparing is duidelijk",
+    "beforeTitle": "Voor YouPub",
+    "beforeSubtitle": "Handmatige routine en chaos",
+    "afterTitle": "Met YouPub",
+    "afterSubtitle": "Automatisering en groei",
+    "before1": "3–5 uur per dag aan handmatig publiceren",
+    "before2": "Schakelen tussen 5 verschillende omgevingen",
+    "before3": "Titels en beschrijvingen handmatig kopiëren",
+    "before4": "Saai, eentonige metadata",
+    "before5": "0 startweergaven — video zinkt",
+    "before6": "Uitputting en gemiste bereiken",
+    "after1": "3 klikken — video op alle 5 platformen",
+    "after2": "Eén dashboard voor alles",
+    "after3": "AI maakt unieke metadata per platform",
+    "after4": "Pakkende titels = hogere CTR",
+    "after5": "AutoView geeft video een vliegende start",
+    "after6": "Meer tijd voor creativiteit en groei"
+  },
+  "howItWorks": {
+    "badge": "Hoe het werkt",
+    "title": "Van upload tot publicatie — ",
+    "titleHighlight": "5 eenvoudige stappen",
+    "subtitle": "Het hele proces duurt minder dan 3 minuten. Geen ingewikkelde instellingen, geen handwerk.",
+    "step1": {
+      "title": "Video uploaden",
+      "description": "Upload één video of een hele batch. Massa-upload tot 100 bestanden tegelijk wordt ondersteund."
+    },
+    "step2": {
+      "title": "Platformen en groep kiezen",
+      "description": "Selecteer YouTube, Telegram, TikTok, Instagram, Pinterest — elke combinatie. Maak een contentgroep."
+    },
+    "step3": {
+      "title": "AI maakt metadata",
+      "description": "De AI analyseert de video en genereert unieke titels, beschrijvingen en tags per platform."
+    },
+    "step4": {
+      "title": "Schema instellen",
+      "description": "Kies één van de 5 modi: lineair, golf, willekeurig, per tijdzone of interval."
+    },
+    "step5": {
+      "title": "Starten en volgen",
+      "description": "Klik op «Starten» — de video wordt volgens schema gepubliceerd. AutoView levert startweergaven. Volg de analytics."
+    }
+  },
+  "testimonials": {
+    "badge": "Reviews",
+    "title": "Wat onze ",
+    "titleHighlight": "gebruikers zeggen",
+    "subtitle": "Echte resultaten van echte makers, bureaus en bedrijven",
+    "item1": {
+      "name": "Jan de Vries",
+      "role": "YouTube-maker, 120K abonnees",
+      "text": "In de eerste maand met YouPub zijn mijn weergaven met 340% gestegen. Ik bespaar elke dag 4 uur op publiceren. AI-titels zijn magie.",
+      "metric": "+340% weergaven",
+      "avatar": "JV"
+    },
+    "item2": {
+      "name": "Lisa Bakker",
+      "role": "SMM-manager, bureau «Digital Pulse»",
+      "text": "We beheren 15 klanten en publiceren 200+ video's per week. Eerst had je een heel team nodig, nu — één persoon met YouPub.",
+      "metric": "200+ video's/wk",
+      "avatar": "LB"
+    },
+    "item3": {
+      "name": "Pieter Jansen",
+      "role": "Ondernemer, e-commerce",
+      "text": "AutoView gaf mijn productvideo's de eerste zet. Verkoop via social media steeg met 85% al na 3 weken gebruik.",
+      "metric": "+85% verkoop",
+      "avatar": "PJ"
+    },
+    "item4": {
+      "name": "Emma Visser",
+      "role": "Contentmaker, TikTok + Reels",
+      "text": "Ik maak de content, YouPub doet de routine. Schema, titels, tags — alles automatisch. Eindelijk kan ik me op creativiteit richten!",
+      "metric": "5u bespaard/dag",
+      "avatar": "EV"
+    }
+  },
+  "pricing": {
+    "badge": "Prijzen",
+    "title": "Kies het abonnement voor ",
+    "titleHighlight": "jouw groei",
+    "subtitle": "Start gratis en schaal mee. Alle betaalde abonnementen hebben 14 dagen gratis proberen.",
+    "mostPopular": "Meest populair",
+    "free": "Gratis",
+    "onRequest": "Op aanvraag",
+    "perMonth": "/ maand",
+    "forever": "voor altijd",
+    "footer": "Alle prijzen inclusief BTW. Betalen met kaart of crypto. Opzeggen wanneer je wilt.",
+    "starter": {
+      "description": "Voor wie wil proberen",
+      "features": ["10 video's / maand", "2 platformen", "20 AI-generaties", "1 account", "1 GB opslag", "Basisstatistieken"],
+      "limitations": ["Geen AutoView", "Geen prioriteitsondersteuning"],
+      "cta": "Gratis starten"
+    },
+    "pro": {
+      "description": "Voor makers en SMM-specialisten",
+      "features": ["100 video's / maand", "Alle 5 platformen", "500 AI-generaties", "5 accounts", "50 GB opslag", "AutoView — 5.000 weergaven", "Slimme schema's", "Contentgroepen", "Uitgebreide analytics"],
+      "limitations": [],
+      "cta": "Pro kiezen"
+    },
+    "agency": {
+      "description": "Voor bureaus en grote teams",
+      "features": ["500 video's / maand", "Alle 5 platformen", "2.000 AI-generaties", "25 accounts", "200 GB opslag", "AutoView — 25.000 weergaven", "Alle soorten schema's", "API-toegang", "Teamtoegang (5 personen)", "Prioriteitsondersteuning"],
+      "limitations": [],
+      "cta": "Agency kiezen"
+    },
+    "custom": {
+      "description": "Op maat",
+      "features": ["Onbeperkte video's", "Alle 5 platformen", "Onbeperkte AI-generaties", "Onbeperkte accounts", "Onbeperkte opslag", "AutoView — elk volume", "Vaste accountmanager", "SLA 99,9%", "Custom integraties", "On-premise optie"],
+      "limitations": [],
+      "cta": "Neem contact op"
+    }
+  },
+  "faq": {
+    "badge": "FAQ",
+    "title": "Veelgestelde ",
+    "titleHighlight": "vragen",
+    "subtitle": "Geen antwoord gevonden? Schrijf ons — we reageren binnen 15 minuten.",
+    "items": [
+      {
+        "question": "Welke platformen ondersteunt YouPub?",
+        "answer": "YouPub ondersteunt publicatie op YouTube, Telegram, TikTok, Instagram (Reels + Stories) en Pinterest. We voegen steeds platformen toe — volgende in de rij: VK Video en Facebook."
+      },
+      {
+        "question": "Hoe werkt AI-generatie van titels?",
+        "answer": "Onze AI analyseert de video-inhoud (audio, beeld, ondertitels) en maakt unieke titels, beschrijvingen en tags per platform. Bijv. voor YouTube — SEO-geoptimaliseerde titel, voor TikTok — pakkende korte tekst met emoji's."
+      },
+      {
+        "question": "Wat is AutoView en is het veilig?",
+        "answer": "AutoView is het ingebouwde systeem voor startweergaven dat je video een eerste zetje geeft. Het werkt via een gedistribueerd netwerk van echte apparaten en bootst organisch kijken volledig na."
+      },
+      {
+        "question": "Kan ik YouPub voor meerdere klanten gebruiken?",
+        "answer": "Ja! Agency- en Custom-abonnementen ondersteunen meerdere accounts en teamtoegang. Je beheert kanalen van verschillende klanten vanuit één dashboard met rechtenbeheer."
+      },
+      {
+        "question": "Is er een API voor integratie?",
+        "answer": "Ja, YouPub biedt een REST API op Agency- en Custom-abonnementen. Je kunt video-upload automatiseren, schema's beheren en statistieken via de API ophalen."
+      },
+      {
+        "question": "Welke videoformaten worden ondersteund?",
+        "answer": "We ondersteunen alle gangbare formaten: MP4, MOV, AVI, MKV, WebM. Maximale bestandsgrootte — 10 GB. Bij upload wordt de video automatisch naar het optimale formaat geconverteerd."
+      },
+      {
+        "question": "Kan ik mijn abonnement opzeggen?",
+        "answer": "Ja, je kunt je abonnement elk moment opzeggen in je account. Na opzegging blijft toegang tot het einde van de betaalde periode. We bieden ook geld-terug binnen de eerste 14 dagen."
+      },
+      {
+        "question": "Hoe snel worden video's gepubliceerd?",
+        "answer": "Directe publicatie duurt 1–3 minuten afhankelijk van videogrootte en platform. Met een schema wordt de video precies op het geplande tijdstip gepubliceerd."
+      }
+    ]
+  },
+  "finalCta": {
+    "titleStart": "Klaar om publiceren te automatiseren en ",
+    "titleHighlight": "sneller te groeien dan de concurrentie?",
+    "subtitle": "Sluit je aan bij 1.200+ makers die al elke dag uren besparen en meer weergaven automatisch krijgen. Gratis start — zonder kaart.",
+    "ctaPrimary": "Gratis starten — 14 dagen",
+    "ctaSecondary": "Neem contact op",
+    "footer": "Gratis · Geen creditcard · Setup in 2 minuten"
+  },
+  "footer": {
+    "description": "Automatische videopublicatie op 5 platformen met AI en analytics.",
+    "copyright": "© 2026 YouPub. Alle rechten voorbehouden.",
+    "madeWith": "Met liefde gemaakt voor contentmakers",
+    "product": "Product",
+    "company": "Bedrijf",
+    "support": "Support",
+    "legal": "Juridisch",
+    "links": {
+      "features": "Functies",
+      "pricing": "Prijzen",
+      "interface": "Interface",
+      "api": "API",
+      "updates": "Updates",
+      "about": "Over ons",
+      "blog": "Blog",
+      "careers": "Carrière",
+      "partners": "Partners",
+      "contacts": "Contact",
+      "documentation": "Documentatie",
+      "knowledgeBase": "Kennisbank",
+      "telegramChat": "Telegram-chat",
+      "serviceStatus": "Servicestatus",
+      "feedback": "Feedback",
+      "privacy": "Privacybeleid",
+      "terms": "Gebruiksvoorwaarden",
+      "offer": "Aanbieding",
+      "cookie": "Cookies"
+    }
+  },
+  "chat": {
+    "openChat": "Chat openen",
+    "title": "YouPub AI-assistent",
+    "online": "Online",
+    "newDialog": "Nieuw gesprek",
+    "minimize": "Chat minimaliseren",
+    "close": "Chat sluiten",
+    "placeholder": "Schrijf een bericht...",
+    "sendAriaLabel": "Versturen",
+    "demoEmail": "Demo gewenst? Laat je e-mail achter",
+    "leaveContact": "Laat je gegevens achter — we nemen contact op!",
+    "yourName": "Je naam",
+    "email": "E-mail",
+    "submit": "Versturen",
+    "thankYou": "Bedankt, {{name}}! 🎉 We nemen contact op via {{email}}. Stel intussen gerust je vragen!",
+    "greeting": "Hoi! 👋 Ik ben de YouPub AI-assistent op basis van GigaChat.\n\nIk help je de platform te ontdekken en de beste oplossing voor je content te vinden.\n\nWaar wil je meer over weten?",
+    "quickActions": {
+      "features": "🚀 Functies",
+      "pricing": "💰 Prijzen",
+      "aiGeneration": "🤖 AI-generatie",
+      "autoview": "📊 AutoView"
+    },
+    "quickMessages": {
+      "features": "Vertel over de YouPub-functies",
+      "pricing": "Welke abonnementen en prijzen zijn er?",
+      "aiGeneration": "Hoe werkt AI-contentgeneratie?",
+      "autoview": "Wat is AutoView en hoe werkt het?"
+    },
+    "errors": {
+      "fallback": "Sorry, er is een tijdelijk verbindingsprobleem. Probeer over een paar seconden opnieuw of mail ons op support@youpub.ru 📧",
+      "tooLong": "⚠️ Bericht te lang. Verkort tot 1000 tekens.",
+      "rateLimit": "⏳ Te veel berichten. Wacht even een minuut.",
+      "totalLimit": "📝 Berichtenlimiet bereikt. Vernieuw de pagina voor een nieuwe sessie.",
+      "tooManyRequests": "⏳ Te veel verzoeken. Wacht een minuut en probeer opnieuw."
+    },
+    "validation": {
+      "minChars": "Minimaal 2 tekens",
+      "maxChars": "Maximaal 50 tekens",
+      "invalidEmail": "Voer een geldig e-mailadres in"
+    },
+    "systemPrompt": "Je bent de slimme YouPub AI-assistent, gebaseerd op GigaChat. Je doel is gebruikers te helpen de platform te ontdekken en te motiveren tot registratie/aankoop.\n\nBelangrijke YouPub-functies:\n- Automatische videopublicatie op YouTube, Telegram, TikTok, Instagram, Pinterest (5 platformen tegelijk)\n- AI-generatie van titels, beschrijvingen en tags voor maximaal bereik\n- 5 soorten publicatieschema's (dagelijks, wekelijks, kalender, interval, eenmalig)\n- AutoView — systeem voor meer weergaven op YouTube\n- Ingebouwde facturatie met 4 betaalproviders (kaarten, SBP, crypto, saldo)\n- REST API voor integratie met andere diensten\n- Multi-kanaal analytics en statistieken\n\nAbonnementen:\n- Starter: 500₽/maand — tot 30 video's/maand, 2 kanalen, basis-AI\n- Pro: 1500₽/maand — onbeperkte video's, 10 kanalen, geavanceerde AI, AutoView, prioriteitsondersteuning\n- Business: 5000₽/maand — alles van Pro + API-toegang, white-label, vaste accountmanager\n\nCommunicatieregels:\n- Always respond in Dutch\n- Wees vriendelijk en professioneel\n- Focus op voordelen: tijdsbesparing, meer weergaven, automatisering van routine\n- Stel verduidelijkende vragen\n- Bied een demo of passend abonnement aan\n- Als de gebruiker geïnteresseerd is — stel voor e-mail achter te laten voor contact\n- Gebruik emoji's met mate\n- Antwoord kort en bondig (tot 200 woorden)\n- Verzamel e-mails voor leads"
+  }
+}
