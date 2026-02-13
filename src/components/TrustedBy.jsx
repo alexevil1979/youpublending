@@ -1,14 +1,17 @@
 import { motion } from 'framer-motion'
 import { Users, Building2, Video, Globe } from 'lucide-react'
-
-const stats = [
-  { icon: Users, value: '1 200+', label: 'Авторов и блогеров', color: '#a78bfa' },
-  { icon: Building2, value: '50+', label: 'Агентств и студий', color: '#60a5fa' },
-  { icon: Video, value: '250K+', label: 'Видео опубликовано', color: '#f472b6' },
-  { icon: Globe, value: '5', label: 'Платформ поддержки', color: '#4ade80' },
-]
+import { useTranslation } from 'react-i18next'
 
 export default function TrustedBy() {
+  const { t } = useTranslation()
+
+  const stats = [
+    { icon: Users, value: '1 200+', label: t('trustedBy.authors'), color: '#a78bfa' },
+    { icon: Building2, value: '50+', label: t('trustedBy.agencies'), color: '#60a5fa' },
+    { icon: Video, value: '250K+', label: t('trustedBy.videosPublished'), color: '#f472b6' },
+    { icon: Globe, value: '5', label: t('trustedBy.platformsSupport'), color: '#4ade80' },
+  ]
+
   return (
     <section style={{ padding: '64px 0', borderTop: '1px solid rgba(255,255,255,0.05)', borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
       <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
@@ -18,7 +21,7 @@ export default function TrustedBy() {
           viewport={{ once: true }}
           style={{ textAlign: 'center', fontSize: '13px', color: '#6b7280', textTransform: 'uppercase', letterSpacing: '3px', marginBottom: '40px' }}
         >
-          Уже доверяют YouPub
+          {t('trustedBy.title')}
         </motion.p>
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '32px' }}>

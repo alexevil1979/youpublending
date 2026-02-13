@@ -1,7 +1,23 @@
 import { motion } from 'framer-motion'
 import { Play, ArrowRight, Sparkles } from 'lucide-react'
+import { useTranslation } from 'react-i18next'
 
 export default function Hero() {
+  const { t } = useTranslation()
+
+  const stats = [
+    { label: t('hero.dashboard.publications'), value: '1,247', change: '+12%', color: '#a78bfa' },
+    { label: t('hero.dashboard.views'), value: '89.4K', change: '+34%', color: '#60a5fa' },
+    { label: t('hero.dashboard.aiGenerations'), value: '3,891', change: '+8%', color: '#f472b6' },
+    { label: t('hero.dashboard.platforms'), value: '5', change: t('hero.dashboard.all'), color: '#4ade80' },
+  ]
+
+  const publications = [
+    { title: t('hero.dashboard.video1'), platforms: 3, views: '12.4K', status: t('hero.dashboard.published'), statusColor: '#4ade80', statusBg: 'rgba(74,222,128,0.15)' },
+    { title: t('hero.dashboard.video2'), platforms: 5, views: '8.7K', status: t('hero.dashboard.published'), statusColor: '#4ade80', statusBg: 'rgba(74,222,128,0.15)' },
+    { title: t('hero.dashboard.video3'), platforms: 4, views: '—', status: t('hero.dashboard.inQueue'), statusColor: '#facc15', statusBg: 'rgba(250,204,21,0.15)' },
+  ]
+
   return (
     <section className="hero-bg" style={{ position: 'relative', minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden', paddingTop: '80px' }}>
       {/* Animated Background Orbs */}
@@ -26,7 +42,7 @@ export default function Hero() {
               padding: '8px 18px', borderRadius: '100px', fontSize: '14px', color: '#c4b5fd', fontWeight: '500', marginBottom: '32px'
             }}>
               <Sparkles style={{ width: '16px', height: '16px', color: '#a78bfa' }} />
-              Новое поколение автопубликации видео
+              {t('hero.badge')}
             </span>
           </motion.div>
 
@@ -40,9 +56,9 @@ export default function Hero() {
               lineHeight: '1.1', letterSpacing: '-0.02em', marginBottom: '24px', color: 'white'
             }}
           >
-            Загружай видео один раз —{' '}
+            {t('hero.titleStart')}
             <span className="gradient-text" style={{ fontStyle: 'normal' }}>
-              публикуй везде автоматически
+              {t('hero.titleHighlight')}
             </span>
           </motion.h1>
 
@@ -56,10 +72,12 @@ export default function Hero() {
               maxWidth: '720px', margin: '0 auto 40px', lineHeight: '1.7'
             }}
           >
-            <strong style={{ color: 'white' }}>YouPub</strong> — умная платформа для авторов, SMM-специалистов
-            и агентств. <span style={{ color: '#a78bfa' }}>5 платформ</span>, AI-заголовки,{' '}
-            <span style={{ color: '#60a5fa' }}>5 видов расписаний</span>, автопросмотры
-            и встроенная монетизация
+            <strong style={{ color: 'white' }}>{t('hero.subtitleBold')}</strong>
+            {t('hero.subtitleMiddle')}
+            <span style={{ color: '#a78bfa' }}>{t('hero.subtitlePlatforms')}</span>
+            {t('hero.subtitleMiddle2')}
+            <span style={{ color: '#60a5fa' }}>{t('hero.subtitleSchedules')}</span>
+            {t('hero.subtitleEnd')}
           </motion.p>
 
           {/* CTA Buttons */}
@@ -71,13 +89,13 @@ export default function Hero() {
           >
             <a href="#pricing" className="btn-primary"
               style={{ padding: '16px 32px', borderRadius: '16px', fontSize: '17px', fontWeight: '600', color: 'white', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
-              Начать бесплатно — 14 дней
+              {t('hero.ctaPrimary')}
               <ArrowRight style={{ width: '20px', height: '20px' }} />
             </a>
             <a href="#interface" className="btn-secondary"
               style={{ padding: '16px 32px', borderRadius: '16px', fontSize: '17px', fontWeight: '600', color: '#c4b5fd', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
               <Play style={{ width: '20px', height: '20px' }} />
-              Смотреть демо
+              {t('hero.ctaSecondary')}
             </a>
           </motion.div>
 
@@ -117,23 +135,18 @@ export default function Hero() {
                 {/* Top Bar */}
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '24px', flexWrap: 'wrap', gap: '12px' }}>
                   <div>
-                    <h3 style={{ fontSize: '18px', fontWeight: '600', color: 'white' }}>Панель управления</h3>
-                    <p style={{ fontSize: '13px', color: '#6b7280' }}>Февраль 2026</p>
+                    <h3 style={{ fontSize: '18px', fontWeight: '600', color: 'white' }}>{t('hero.dashboard.title')}</h3>
+                    <p style={{ fontSize: '13px', color: '#6b7280' }}>{t('hero.dashboard.date')}</p>
                   </div>
                   <div style={{ display: 'flex', gap: '8px' }}>
-                    <div style={{ padding: '8px 16px', borderRadius: '8px', background: 'rgba(139,92,246,0.2)', color: '#c4b5fd', fontSize: '13px', fontWeight: '500' }}>+ Загрузить видео</div>
-                    <div style={{ padding: '8px 16px', borderRadius: '8px', background: '#1f2937', color: '#9ca3af', fontSize: '13px' }}>Настройки</div>
+                    <div style={{ padding: '8px 16px', borderRadius: '8px', background: 'rgba(139,92,246,0.2)', color: '#c4b5fd', fontSize: '13px', fontWeight: '500' }}>{t('hero.dashboard.uploadVideo')}</div>
+                    <div style={{ padding: '8px 16px', borderRadius: '8px', background: '#1f2937', color: '#9ca3af', fontSize: '13px' }}>{t('hero.dashboard.settings')}</div>
                   </div>
                 </div>
 
                 {/* Stats Row */}
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))', gap: '12px', marginBottom: '20px' }}>
-                  {[
-                    { label: 'Публикаций', value: '1,247', change: '+12%', color: '#a78bfa' },
-                    { label: 'Просмотров', value: '89.4K', change: '+34%', color: '#60a5fa' },
-                    { label: 'AI-генераций', value: '3,891', change: '+8%', color: '#f472b6' },
-                    { label: 'Платформ', value: '5', change: 'Все', color: '#4ade80' },
-                  ].map((stat) => (
+                  {stats.map((stat) => (
                     <div key={stat.label} style={{
                       background: 'rgba(31,41,55,0.6)', borderRadius: '12px', padding: '16px',
                       border: '1px solid rgba(255,255,255,0.05)'
@@ -163,16 +176,12 @@ export default function Hero() {
                       <span style={{ fontSize: '12px', color: '#9ca3af' }}>{p.name}</span>
                     </div>
                   ))}
-                  <span style={{ fontSize: '12px', color: '#4ade80', marginLeft: 'auto' }}>● Все подключены</span>
+                  <span style={{ fontSize: '12px', color: '#4ade80', marginLeft: 'auto' }}>{t('hero.dashboard.allConnected')}</span>
                 </div>
 
                 {/* Recent Publications */}
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                  {[
-                    { title: 'Как создать вирусный Reels за 5 минут', platforms: 3, views: '12.4K', status: 'Опубликовано', statusColor: '#4ade80', statusBg: 'rgba(74,222,128,0.15)' },
-                    { title: 'Топ-10 трендов маркетинга 2026', platforms: 5, views: '8.7K', status: 'Опубликовано', statusColor: '#4ade80', statusBg: 'rgba(74,222,128,0.15)' },
-                    { title: 'Секреты YouTube Shorts алгоритма', platforms: 4, views: '—', status: 'В очереди', statusColor: '#facc15', statusBg: 'rgba(250,204,21,0.15)' },
-                  ].map((item, i) => (
+                  {publications.map((item, i) => (
                     <div key={i} style={{
                       display: 'flex', alignItems: 'center', justifyContent: 'space-between',
                       padding: '12px', borderRadius: '10px',
@@ -186,7 +195,7 @@ export default function Hero() {
                         }}>▶</div>
                         <div>
                           <p style={{ fontSize: '13px', color: 'white', fontWeight: '500' }}>{item.title}</p>
-                          <p style={{ fontSize: '11px', color: '#6b7280' }}>{item.platforms} платформ · {item.views} просмотров</p>
+                          <p style={{ fontSize: '11px', color: '#6b7280' }}>{item.platforms} {t('hero.dashboard.platformsCount')} · {item.views} {t('hero.dashboard.viewsCount')}</p>
                         </div>
                       </div>
                       <span style={{ fontSize: '11px', padding: '4px 10px', borderRadius: '6px', background: item.statusBg, color: item.statusColor }}>
