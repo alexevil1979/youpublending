@@ -1,7 +1,11 @@
 {
   "meta": {
     "title": "YouPub — Publiceer video's met één klik op 5 platformen",
-    "description": "YouPub — slim platform voor automatische videopublicatie op 5 platformen: YouTube, Telegram, TikTok, Instagram, Pinterest"
+    "description": "YouPub — slim platform voor automatische videopublicatie op 5 platformen: YouTube, Telegram, TikTok, Instagram, Pinterest",
+    "ogTitle": "YouPub — Publiceer video's met één klik op 5 platformen",
+    "ogDescription": "Automatische videopublicatie op YouTube, Telegram, TikTok, Instagram, Pinterest met AI-generatie en analytics",
+    "ogLocale": "nl_NL",
+    "keywords": "video publiceren, auto-publish, YouTube, TikTok, Instagram, Telegram, Pinterest, AI-generatie, SMM, automatisering"
   },
   "navbar": {
     "features": "Functies",

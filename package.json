@@ -8,6 +8,7 @@
     "dev:server": "node --env-file=.env server.js",
     "dev:full": "node --env-file=.env server.js & vite",
     "build": "vite build",
+    "postbuild": "node scripts/postbuild-seo.js",
     "start": "NODE_ENV=production node --env-file=.env server.js",
     "lint": "eslint .",
     "preview": "vite preview",
@@ -15,6 +16,7 @@
     "test:watch": "vitest"
   },
   "dependencies": {
+    "@dr.pogodin/react-helmet": "^3.0.6",
     "@hookform/resolvers": "^5.2.2",
     "@tailwindcss/vite": "^4.1.18",
     "dotenv": "^17.2.4",

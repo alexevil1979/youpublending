@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#030712"/>
+      <stop offset="50%" style="stop-color:#1e1b4b"/>
+      <stop offset="100%" style="stop-color:#030712"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#8b5cf6"/>
+      <stop offset="50%" style="stop-color:#3b82f6"/>
+      <stop offset="100%" style="stop-color:#ec4899"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  
+  <!-- Decorative orbs -->
+  <circle cx="200" cy="150" r="200" fill="#7c3aed" opacity="0.15"/>
+  <circle cx="1000" cy="480" r="250" fill="#3b82f6" opacity="0.1"/>
+  <circle cx="600" cy="315" r="300" fill="#ec4899" opacity="0.05"/>
+  
+  <!-- Logo icon -->
+  <rect x="80" y="60" width="56" height="56" rx="12" fill="#7c3aed"/>
+  <text x="108" y="96" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-weight="800" font-size="32" fill="white">Y</text>
+  <circle cx="124" y="68" r="8" fill="#ec4899"/>
+  
+  <!-- Brand name -->
+  <text x="150" y="98" font-family="Inter, system-ui, sans-serif" font-weight="800" font-size="36" fill="white">YouPub</text>
+  
+  <!-- Main headline -->
+  <text x="80" y="250" font-family="Inter, system-ui, sans-serif" font-weight="800" font-size="56" fill="white">C1;8:C9 2845> =0</text>
+  <text x="80" y="320" font-family="Inter, system-ui, sans-serif" font-weight="800" font-size="56" fill="url(#accent)">5 ?;0BD>@< >4=8< :;8:><</text>
+  
+  <!-- Subtitle -->
+  <text x="80" y="390" font-family="Inter, system-ui, sans-serif" font-weight="400" font-size="24" fill="#9ca3af">YouTube · Telegram · TikTok · Instagram · Pinterest</text>
+  
+  <!-- Features -->
+  <text x="80" y="460" font-family="Inter, system-ui, sans-serif" font-weight="500" font-size="20" fill="#a78bfa">AI-35=5@0F8O · 5 @0A?8A0=89 · AutoView · =0;8B8:0</text>
+  
+  <!-- CTA badge -->
+  <rect x="80" y="500" width="280" height="50" rx="25" fill="#7c3aed"/>
+  <text x="220" y="532" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-weight="600" font-size="20" fill="white">0G0BL 15A?;0B=> ’</text>
+  
+  <!-- Platform icons area -->
+  <rect x="800" y="180" width="320" height="280" rx="16" fill="#111827" opacity="0.8" stroke="#374151" stroke-width="1"/>
+  <text x="960" y="220" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-weight="600" font-size="18" fill="#9ca3af">Dashboard</text>
+  
+  <!-- Mock stats -->
+  <rect x="830" y="245" width="120" height="60" rx="8" fill="#1e1b4b"/>
+  <text x="890" y="272" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-weight="700" font-size="20" fill="#8b5cf6">1,247</text>
+  <text x="890" y="294" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-weight="400" font-size="12" fill="#9ca3af">Videos</text>
+  
+  <rect x="970" y="245" width="120" height="60" rx="8" fill="#1e1b4b"/>
+  <text x="1030" y="272" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-weight="700" font-size="20" fill="#3b82f6">48.2K</text>
+  <text x="1030" y="294" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-weight="400" font-size="12" fill="#9ca3af">Views</text>
+  
+  <!-- Mock bars -->
+  <rect x="830" y="330" width="260" height="12" rx="6" fill="#1e1b4b"/>
+  <rect x="830" y="330" width="200" height="12" rx="6" fill="#8b5cf6"/>
+  <text x="830" y="362" font-family="Inter, system-ui, sans-serif" font-weight="400" font-size="11" fill="#9ca3af">YouTube</text>
+  
+  <rect x="830" y="375" width="260" height="12" rx="6" fill="#1e1b4b"/>
+  <rect x="830" y="375" width="160" height="12" rx="6" fill="#3b82f6"/>
+  <text x="830" y="407" font-family="Inter, system-ui, sans-serif" font-weight="400" font-size="11" fill="#9ca3af">TikTok</text>
+  
+  <rect x="830" y="420" width="260" height="12" rx="6" fill="#1e1b4b"/>
+  <rect x="830" y="420" width="130" height="12" rx="6" fill="#ec4899"/>
+  <text x="830" y="452" font-family="Inter, system-ui, sans-serif" font-weight="400" font-size="11" fill="#9ca3af">Instagram</text>
+  
+  <!-- URL -->
+  <text x="80" y="590" font-family="Inter, system-ui, sans-serif" font-weight="400" font-size="18" fill="#6b7280">youpub.1tlt.ru</text>
+</svg>

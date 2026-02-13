@@ -19,7 +19,7 @@ export default function Hero() {
   ]
 
   return (
-    <section className="hero-bg" style={{ position: 'relative', minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden', paddingTop: '80px' }}>
+    <section aria-label="Hero" className="hero-bg" style={{ position: 'relative', minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden', paddingTop: '80px' }}>
       {/* Animated Background Orbs */}
       <div style={{ position: 'absolute', inset: 0, overflow: 'hidden', pointerEvents: 'none' }}>
         <div className="animate-pulse-glow" style={{ position: 'absolute', top: '20%', left: '20%', width: '500px', height: '500px', background: 'rgba(139,92,246,0.12)', borderRadius: '50%', filter: 'blur(120px)' }} />

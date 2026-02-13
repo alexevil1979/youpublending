@@ -1,6 +1,23 @@
 # YouPub Landing — robots.txt
+# https://youpub.1tlt.ru
+
 User-agent: *
 Allow: /
 Disallow: /api/
 
+# Sitemap
 Sitemap: https://youpub.1tlt.ru/sitemap.xml
+
+# Crawl-delay (optional, for polite crawlers)
+Crawl-delay: 1
+
+# Google-specific
+User-agent: Googlebot
+Allow: /
+Disallow: /api/
+
+# Yandex
+User-agent: Yandex
+Allow: /
+Disallow: /api/
+Host: https://youpub.1tlt.ru

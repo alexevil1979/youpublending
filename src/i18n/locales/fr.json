@@ -1,7 +1,11 @@
 {
   "meta": {
     "title": "YouPub — Publiez vos vidéos sur 5 plateformes en un clic",
-    "description": "YouPub — plateforme intelligente de publication automatique de vidéos sur 5 plateformes : YouTube, Telegram, TikTok, Instagram, Pinterest"
+    "description": "YouPub — plateforme intelligente de publication automatique de vidéos sur 5 plateformes : YouTube, Telegram, TikTok, Instagram, Pinterest",
+    "ogTitle": "YouPub — Publiez vos vidéos sur 5 plateformes en un clic",
+    "ogDescription": "Publication automatique de vidéos sur YouTube, Telegram, TikTok, Instagram, Pinterest avec génération IA et analytique",
+    "ogLocale": "fr_FR",
+    "keywords": "publication vidéo, auto-publication, YouTube, TikTok, Instagram, Telegram, Pinterest, génération IA, SMM, automatisation"
   },
   "navbar": {
     "features": "Fonctionnalités",

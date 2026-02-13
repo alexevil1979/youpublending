@@ -23,7 +23,7 @@ export default function Pricing() {
   }))
 
   return (
-    <section id="pricing" style={{ position: 'relative', padding: '100px 0' }}>
+    <section id="pricing" aria-labelledby="pricing-heading" style={{ position: 'relative', padding: '100px 0' }}>
       <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -35,7 +35,7 @@ export default function Pricing() {
           <span style={{ display: 'inline-block', fontSize: '13px', fontWeight: '600', color: '#4ade80', textTransform: 'uppercase', letterSpacing: '2px', marginBottom: '16px' }}>
             {t('pricing.badge')}
           </span>
-          <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 3rem)', fontWeight: '700', color: 'white', marginBottom: '20px' }}>
+          <h2 id="pricing-heading" style={{ fontSize: 'clamp(1.8rem, 4vw, 3rem)', fontWeight: '700', color: 'white', marginBottom: '20px' }}>
             {t('pricing.title')}<span className="gradient-text">{t('pricing.titleHighlight')}</span>
           </h2>
           <p style={{ fontSize: '18px', color: '#9ca3af', maxWidth: '640px', margin: '0 auto' }}>

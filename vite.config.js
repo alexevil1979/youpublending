@@ -7,13 +7,16 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     sourcemap: false, // Don't expose source code in production
+    target: 'es2020', // Modern browsers — smaller output
+    cssMinify: 'lightningcss', // Faster CSS minification
     rollupOptions: {
       output: {
-        // Split vendor chunks for better caching
+        // Split vendor chunks for better caching & parallel loading
         manualChunks: {
           'react-vendor': ['react', 'react-dom'],
           'framer': ['framer-motion'],
           'i18n': ['i18next', 'react-i18next', 'i18next-browser-languagedetector'],
+          'helmet': ['@dr.pogodin/react-helmet'],
         },
       },
     },

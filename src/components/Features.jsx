@@ -19,7 +19,7 @@ export default function Features() {
   }))
 
   return (
-    <section id="features" style={{ position: 'relative', padding: '100px 0' }}>
+    <section id="features" aria-labelledby="features-heading" style={{ position: 'relative', padding: '100px 0' }}>
       <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
         {/* Header */}
         <motion.div
@@ -32,7 +32,7 @@ export default function Features() {
           <span style={{ display: 'inline-block', fontSize: '13px', fontWeight: '600', color: '#a78bfa', textTransform: 'uppercase', letterSpacing: '2px', marginBottom: '16px' }}>
             {t('features.badge')}
           </span>
-          <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 3rem)', fontWeight: '700', color: 'white', marginBottom: '20px' }}>
+          <h2 id="features-heading" style={{ fontSize: 'clamp(1.8rem, 4vw, 3rem)', fontWeight: '700', color: 'white', marginBottom: '20px' }}>
             {t('features.title')}
             <span className="gradient-text">{t('features.titleHighlight')}</span>
           </h2>

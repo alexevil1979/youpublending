@@ -14,6 +14,7 @@
 | Vite | 7 | Сборщик, HMR, dev-сервер |
 | Tailwind CSS | 4 | Утилитарные стили, кастомные классы через `@layer` |
 | Framer Motion | 12 | Анимации при скролле, переходы |
+| @dr.pogodin/react-helmet | 3 | Динамические мета-теги, OG, hreflang (React 19 совместим) |
 | Lucide React | — | SVG-иконки |
 | i18next + react-i18next | — | Интернационализация (7 языков) |
 | Express | 5 | API-сервер (чат-виджет, формы) |
@@ -34,10 +35,17 @@ youpublanding/
 │       └── deploy.yml          # CI/CD: build → SCP на VPS
 ├── dist/                        # Production build (gitignored)
 ├── public/
-│   └── .htaccess                # Apache: SPA fallback, gzip, cache
+│   ├── .htaccess                # Apache: SPA fallback, gzip, cache
+│   ├── favicon.svg              # YouPub favicon (SVG)
+│   ├── og-image.png             # OG/Twitter Card изображение (1200×630)
+│   ├── og-image.svg             # OG изображение (SVG-шаблон)
+│   ├── robots.txt               # Правила для краулеров
+│   └── sitemap.xml              # Multilingual sitemap с hreflang
+├── scripts/
+│   └── postbuild-seo.js         # Инжектирует JSON-LD в dist/index.html
 ├── src/
-│   ├── main.jsx                 # Точка входа React + i18n init
-│   ├── App.jsx                  # Корневой компонент, SEO, lang-атрибут
+│   ├── main.jsx                 # Точка входа React + HelmetProvider + i18n
+│   ├── App.jsx                  # Корневой компонент + SEOHead + StructuredData
 │   ├── index.css                # Tailwind v4, @theme, кастомные классы
 │   ├── i18n/
 │   │   ├── index.js             # Конфиг i18next (detection, fallback)
@@ -50,6 +58,8 @@ youpublanding/
 │   │       ├── fr.json          # Français (French)
 │   │       └── nl.json          # Nederlands (Dutch)
 │   └── components/
+│       ├── SEOHead.jsx          # 🔍 Динамические мета-теги, OG, hreflang
+│       ├── StructuredData.jsx   # 🔍 JSON-LD (Organization, FAQ, Software...)
 │       ├── Navbar.jsx           # Фиксированный navbar, glass-эффект
 │       ├── Hero.jsx             # Главный экран + мокап дашборда
 │       ├── TrustedBy.jsx        # Цифры доверия (1200+ авторов...)
@@ -62,17 +72,17 @@ youpublanding/
 │       ├── FAQ.jsx              # 8 вопросов, аккордеон
 │       ├── FinalCTA.jsx         # Финальный призыв к действию
 │       ├── Footer.jsx           # Навигация, ссылки, копирайт
-│       └── ChatWidget.jsx       # Чат-виджет поддержки
+│       ├── ChatWidget.jsx       # Чат-виджет поддержки
+│       └── ErrorBoundary.jsx    # Обработка ошибок React
 ├── server.js                    # Express API-сервер
 ├── .env                         # Переменные окружения (не в git)
 ├── .env.example                 # Шаблон переменных
 ├── deploy.sh                    # Скрипт ручного деплоя
 ├── setup-vps.sh                 # Настройка VPS
 ├── ecosystem.config.cjs         # PM2 конфиг для сервера
-├── AI_CONTEXT.md                # Контекст для AI-ассистента
-├── vite.config.js               # Конфиг Vite + Tailwind плагин
+├── vite.config.js               # Конфиг Vite + Tailwind + оптимизации
 ├── package.json                 # Зависимости и скрипты
-└── index.html                   # HTML-шаблон, мета-теги, шрифты
+└── index.html                   # HTML-шаблон (fallback meta + noscript)
 ```
 
 ---
@@ -175,7 +185,7 @@ npm run lint         # ESLint проверка
 - **Переводы:** `src/i18n/locales/*.json` — статические JSON, бандлятся в сборку
 - **Использование:** `const { t } = useTranslation()` → `{t('hero.title')}`
 - **Переключатель:** Dropdown с флагами в Navbar (десктоп + мобильное меню)
-- **SEO:** Динамический `<html lang>`, `document.title`, `<meta description>`
+- **SEO:** Динамический `<html lang>`, OG, hreflang, JSON-LD через `SEOHead` + `StructuredData`
 - **RTL:** Готов механизм `dir="rtl"` для арабского/иврита (Hindi — LTR)
 
 ### Как добавить новый язык
@@ -184,3 +194,77 @@ npm run lint         # ESLint проверка
 2. Добавить импорт и ресурс в `src/i18n/index.js`
 3. Добавить язык в массив `supportedLanguages` в `src/i18n/index.js`
 4. Перевести все ключи в JSON-файле
+5. Обновить `SUPPORTED_LANGS` и `OG_LOCALES` в `src/components/SEOHead.jsx`
+6. Добавить hreflang URL в `public/sitemap.xml`
+
+---
+
+## SEO-оптимизация
+
+### Архитектура SEO (обновлено: Февраль 2026)
+
+Лендинг оптимизирован для SPA SEO без миграции на SSR/Next.js:
+
+| Компонент | Файл | Описание |
+|-----------|------|----------|
+| **SEOHead** | `src/components/SEOHead.jsx` | Динамические мета-теги через `@dr.pogodin/react-helmet` |
+| **StructuredData** | `src/components/StructuredData.jsx` | JSON-LD схемы (Organization, WebSite, SoftwareApplication, FAQPage, BreadcrumbList) |
+| **Post-build SEO** | `scripts/postbuild-seo.js` | Инжектирует JSON-LD в статический `dist/index.html` для краулеров |
+
+### Мета-теги (динамические)
+- `<title>` и `<meta description>` — из i18n (меняются при смене языка)
+- `<link rel="canonical">` — динамический
+- `<html lang>` — автоматически по языку
+- Keywords — локализованные по языку
+
+### Open Graph & Twitter Cards
+- `og:title`, `og:description`, `og:locale` — из i18n
+- `og:image` → `/og-image.png` (1200×630px)
+- `og:locale:alternate` — для всех 7 языков
+- `twitter:card` = `summary_large_image`
+- `twitter:image` → `/og-image.png`
+
+### Hreflang
+- `<link rel="alternate" hreflang="XX">` для 7 языков + `x-default`
+- Дублирование в `sitemap.xml` через `xhtml:link`
+
+### Structured Data (JSON-LD)
+- **Organization** — имя, URL, логотип, контакт, языки
+- **WebSite** — имя, URL, язык, издатель
+- **SoftwareApplication** — категория, цены (3 тарифа), рейтинг
+- **FAQPage** — 8 вопросов из i18n (динамический язык)
+- **BreadcrumbList** — минимальный (главная)
+
+### Performance & Core Web Vitals
+- Code splitting: 6 vendor-чанков (react, framer, i18n, helmet)
+- Lazy loading: Below-the-fold компоненты через `React.lazy()`
+- Font: Inter с `font-display: swap`, `preconnect`
+- Build: `target: 'es2020'`, `cssMinify: 'lightningcss'`
+- Gzip/Brotli через `.htaccess`
+- Cache: 1 год для статических ресурсов
+
+### Crawl & Indexing
+- `robots.txt` — Allow: /, Disallow: /api/, Sitemap
+- `sitemap.xml` — 8 URLs (7 языков + default) с hreflang
+- `<noscript>` fallback в `index.html`
+- Post-build: JSON-LD инжектирован в статический HTML
+
+### Accessibility (a11y → SEO)
+- Skip-to-content ссылка
+- `aria-labelledby` на секциях (Features, Pricing, Testimonials)
+- `aria-label` на социальных ссылках и footer
+- Семантичные теги: `<main>`, `<section>`, `<footer>`, `<nav>`
+- FAQ: `aria-expanded`, `aria-controls`
+
+### Lighthouse целевые показатели
+- **Performance:** 90+
+- **SEO:** 95+
+- **Accessibility:** 90+
+- **Best Practices:** 95+
+
+### Чек-лист при обновлении
+- [ ] Обновить `lastmod` в `public/sitemap.xml`
+- [ ] Проверить все 7 JSON-локалей при изменении FAQ/Pricing
+- [ ] Запустить `npm run build` — postbuild скрипт обновит JSON-LD
+- [ ] Проверить OG через https://developers.facebook.com/tools/debug/
+- [ ] Проверить structured data через https://search.google.com/test/rich-results

@@ -25,7 +25,7 @@ export default function Testimonials() {
   }))
 
   return (
-    <section id="testimonials" style={{ position: 'relative', padding: '100px 0' }}>
+    <section id="testimonials" aria-labelledby="testimonials-heading" style={{ position: 'relative', padding: '100px 0' }}>
       <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -37,7 +37,7 @@ export default function Testimonials() {
           <span style={{ display: 'inline-block', fontSize: '13px', fontWeight: '600', color: '#a78bfa', textTransform: 'uppercase', letterSpacing: '2px', marginBottom: '16px' }}>
             {t('testimonials.badge')}
           </span>
-          <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 3rem)', fontWeight: '700', color: 'white', marginBottom: '20px' }}>
+          <h2 id="testimonials-heading" style={{ fontSize: 'clamp(1.8rem, 4vw, 3rem)', fontWeight: '700', color: 'white', marginBottom: '20px' }}>
             {t('testimonials.title')}<span className="gradient-text">{t('testimonials.titleHighlight')}</span>
           </h2>
           <p style={{ fontSize: '18px', color: '#9ca3af', maxWidth: '640px', margin: '0 auto' }}>

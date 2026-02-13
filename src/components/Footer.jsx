@@ -43,7 +43,7 @@ export default function Footer() {
   }
 
   return (
-    <footer style={{ borderTop: '1px solid rgba(255,255,255,0.05)', background: '#030712' }}>
+    <footer aria-label="Site footer" style={{ borderTop: '1px solid rgba(255,255,255,0.05)', background: '#030712' }}>
       <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '64px 24px' }}>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '32px' }}>
           {/* Brand */}
@@ -64,12 +64,16 @@ export default function Footer() {
               {t('footer.description')}
             </p>
             <div style={{ display: 'flex', gap: '8px' }}>
-              {['TG', 'YT', 'VK'].map(s => (
-                <a key={s} href="#" style={{
+              {[
+                { abbr: 'TG', label: 'Telegram' },
+                { abbr: 'YT', label: 'YouTube' },
+                { abbr: 'VK', label: 'VKontakte' },
+              ].map(s => (
+                <a key={s.abbr} href="#" aria-label={s.label} style={{
                   width: '32px', height: '32px', borderRadius: '8px', background: '#1f2937',
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
                   fontSize: '11px', color: '#9ca3af', textDecoration: 'none', fontWeight: '600'
-                }}>{s}</a>
+                }}>{s.abbr}</a>
               ))}
             </div>
           </div>

@@ -1,5 +1,8 @@
-import { useEffect, lazy, Suspense } from 'react'
+import { lazy, Suspense } from 'react'
 import { useTranslation } from 'react-i18next'
+
+// SEO: Dynamic head management (title, meta, OG, hreflang, structured data)
+import SEOHead from './components/SEOHead'
 
 // Above-the-fold: load eagerly
 import Navbar from './components/Navbar'
@@ -18,29 +21,25 @@ const FinalCTA = lazy(() => import('./components/FinalCTA'))
 const Footer = lazy(() => import('./components/Footer'))
 const ChatWidget = lazy(() => import('./components/ChatWidget'))
 
+// Structured data (JSON-LD): loaded eagerly since it's critical for SEO
+const StructuredData = lazy(() => import('./components/StructuredData'))
+
 /** Invisible fallback — avoids layout shift while lazy chunks load */
 const LazyFallback = () => <div className="min-h-[200px]" />
 
 export default function App() {
-  const { t, i18n } = useTranslation()
-
-  // Update <html lang>, document.title, meta description on language change
-  useEffect(() => {
-    document.documentElement.lang = i18n.language
-    document.title = t('meta.title')
-
-    const metaDesc = document.querySelector('meta[name="description"]')
-    if (metaDesc) {
-      metaDesc.setAttribute('content', t('meta.description'))
-    }
-
-    // Direction support (LTR for all current languages; ready for RTL if Arabic/Hebrew added)
-    const rtlLanguages = ['ar', 'he']
-    document.documentElement.dir = rtlLanguages.includes(i18n.language) ? 'rtl' : 'ltr'
-  }, [i18n.language, t])
+  const { t } = useTranslation()
 
   return (
     <div className="min-h-screen bg-gray-950 text-white">
+      {/* SEO: All dynamic meta tags, OG, Twitter Cards, hreflang */}
+      <SEOHead />
+
+      {/* SEO: Structured data (JSON-LD) */}
+      <Suspense fallback={null}>
+        <StructuredData />
+      </Suspense>
+
       {/* Skip-to-content link for keyboard/screen-reader users */}
       <a
         href="#main-content"

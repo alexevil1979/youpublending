@@ -1,7 +1,11 @@
 {
   "meta": {
     "title": "YouPub — 一键发布视频到 5 大平台",
-    "description": "YouPub — 智能视频自动发布平台，一键发布到 YouTube、Telegram、TikTok、Instagram、Pinterest 五大平台"
+    "description": "YouPub — 智能视频自动发布平台，一键发布到 YouTube、Telegram、TikTok、Instagram、Pinterest 五大平台",
+    "ogTitle": "YouPub — 一键发布视频到 5 大平台",
+    "ogDescription": "自动发布视频到 YouTube、Telegram、TikTok、Instagram、Pinterest，AI 生成标题和分析",
+    "ogLocale": "zh_CN",
+    "keywords": "视频发布, 自动发布, YouTube, TikTok, Instagram, Telegram, Pinterest, AI生成, SMM, 自动化"
   },
   "navbar": {
     "features": "功能",
