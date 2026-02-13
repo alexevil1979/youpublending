@@ -1,36 +1,39 @@
 import { Zap } from 'lucide-react'
-
-const footerLinks = {
-  'Продукт': [
-    { name: 'Возможности', href: '#features' },
-    { name: 'Тарифы', href: '#pricing' },
-    { name: 'Интерфейс', href: '#interface' },
-    { name: 'API', href: '#faq' },
-    { name: 'Обновления', href: '#' },
-  ],
-  'Компания': [
-    { name: 'О нас', href: '#' },
-    { name: 'Блог', href: '#' },
-    { name: 'Карьера', href: '#' },
-    { name: 'Партнёрам', href: '#' },
-    { name: 'Контакты', href: '#' },
-  ],
-  'Поддержка': [
-    { name: 'Документация', href: '#' },
-    { name: 'База знаний', href: '#' },
-    { name: 'Telegram-чат', href: '#' },
-    { name: 'Статус сервиса', href: '#' },
-    { name: 'Обратная связь', href: '#' },
-  ],
-  'Юридическое': [
-    { name: 'Политика конфиденциальности', href: '#' },
-    { name: 'Условия использования', href: '#' },
-    { name: 'Оферта', href: '#' },
-    { name: 'Cookie', href: '#' },
-  ],
-}
+import { useTranslation } from 'react-i18next'
 
 export default function Footer() {
+  const { t } = useTranslation()
+
+  const footerLinks = {
+    [t('footer.product')]: [
+      { name: t('footer.links.features'), href: '#features' },
+      { name: t('footer.links.pricing'), href: '#pricing' },
+      { name: t('footer.links.interface'), href: '#interface' },
+      { name: t('footer.links.api'), href: '#faq' },
+      { name: t('footer.links.updates'), href: '#' },
+    ],
+    [t('footer.company')]: [
+      { name: t('footer.links.about'), href: '#' },
+      { name: t('footer.links.blog'), href: '#' },
+      { name: t('footer.links.careers'), href: '#' },
+      { name: t('footer.links.partners'), href: '#' },
+      { name: t('footer.links.contacts'), href: '#' },
+    ],
+    [t('footer.support')]: [
+      { name: t('footer.links.documentation'), href: '#' },
+      { name: t('footer.links.knowledgeBase'), href: '#' },
+      { name: t('footer.links.telegramChat'), href: '#' },
+      { name: t('footer.links.serviceStatus'), href: '#' },
+      { name: t('footer.links.feedback'), href: '#' },
+    ],
+    [t('footer.legal')]: [
+      { name: t('footer.links.privacy'), href: '#' },
+      { name: t('footer.links.terms'), href: '#' },
+      { name: t('footer.links.offer'), href: '#' },
+      { name: t('footer.links.cookie'), href: '#' },
+    ],
+  }
+
   const handleNavClick = (e, href) => {
     if (href.startsWith('#') && href !== '#') {
       e.preventDefault()
@@ -58,7 +61,7 @@ export default function Footer() {
               </span>
             </a>
             <p style={{ fontSize: '13px', color: '#6b7280', lineHeight: '1.6', marginBottom: '16px' }}>
-              Автоматическая публикация видео на 5 платформ с AI и аналитикой.
+              {t('footer.description')}
             </p>
             <div style={{ display: 'flex', gap: '8px' }}>
               {['TG', 'YT', 'VK'].map(s => (
@@ -95,8 +98,8 @@ export default function Footer() {
           marginTop: '48px', paddingTop: '32px', borderTop: '1px solid rgba(255,255,255,0.05)',
           display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: '16px'
         }}>
-          <p style={{ fontSize: '13px', color: '#4b5563' }}>© 2026 YouPub. Все права защищены.</p>
-          <p style={{ fontSize: '13px', color: '#4b5563' }}>Сделано с любовью для контент-мейкеров</p>
+          <p style={{ fontSize: '13px', color: '#4b5563' }}>{t('footer.copyright')}</p>
+          <p style={{ fontSize: '13px', color: '#4b5563' }}>{t('footer.madeWith')}</p>
         </div>
       </div>
     </footer>

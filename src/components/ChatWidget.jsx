@@ -7,6 +7,7 @@ import {
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
+import { useTranslation } from 'react-i18next'
 
 /* ============================================================
    CONFIGURATION
@@ -16,65 +17,6 @@ const STORAGE_KEY = 'youpub_chat_messages'
 const LEADS_KEY = 'youpub_chat_leads'
 
 const RATE_LIMIT = { maxPerMinute: 5, maxTotal: 50 }
-
-const SYSTEM_PROMPT = `Ты — умный AI-ассистент YouPub, построенный на GigaChat. Твоя цель — помогать пользователям узнать о платформе и мотивировать на регистрацию/покупку.
-
-Ключевые фичи YouPub:
-- Автоматическая публикация видео на YouTube, Telegram, TikTok, Instagram, Pinterest (5 платформ одновременно)
-- AI-генерация заголовков, описаний и тегов для максимального охвата
-- 5 типов расписаний публикаций (ежедневное, еженедельное, календарное, интервальное, одноразовое)
-- AutoView — система для увеличения просмотров на YouTube
-- Встроенный биллинг с 4 платёжными провайдерами (карты, СБП, криптовалюта, баланс)
-- REST API для интеграции с другими сервисами
-- Мультиканальная аналитика и статистика
-
-Тарифы:
-- Starter: 500₽/мес — до 30 видео/мес, 2 канала, базовый AI
-- Pro: 1500₽/мес — безлимитные видео, 10 каналов, продвинутый AI, AutoView, приоритетная поддержка
-- Business: 5000₽/мес — всё из Pro + API доступ, white-label, персональный менеджер
-
-Правила общения:
-- Всегда отвечай на русском языке
-- Будь дружелюбным и профессиональным
-- Фокусируйся на выгодах: экономия времени, рост просмотров, автоматизация рутины
-- Задавай уточняющие вопросы
-- Предлагай демо или подходящий тариф
-- Если пользователь заинтересован — предложи оставить email для связи
-- Используй эмодзи уместно, но не перебарщивай
-- Отвечай кратко и по делу (до 200 слов)
-- Собирай email для лидов`
-
-const GREETING_MESSAGE = {
-  id: 'greeting',
-  role: 'assistant',
-  content:
-    'Привет! 👋 Я AI-ассистент YouPub на базе GigaChat.\n\nПомогу узнать о платформе и подобрать лучшее решение для вашего контента.\n\nО чём хотите узнать?',
-  timestamp: Date.now(),
-}
-
-const QUICK_ACTIONS = [
-  { label: '🚀 Возможности', message: 'Расскажи о возможностях YouPub' },
-  { label: '💰 Тарифы', message: 'Какие есть тарифы и цены?' },
-  { label: '🤖 AI-генерация', message: 'Как работает AI-генерация контента?' },
-  { label: '📊 AutoView', message: 'Что такое AutoView и как он работает?' },
-]
-
-const FALLBACK_RESPONSE =
-  'Извините, произошла временная ошибка связи. Попробуйте повторить вопрос через несколько секунд или напишите нам на support@youpub.ru 📧'
-
-/* ============================================================
-   LEAD FORM SCHEMA (Zod + React Hook Form)
-   ============================================================ */
-
-const leadSchema = z.object({
-  name: z
-    .string()
-    .min(2, 'Минимум 2 символа')
-    .max(50, 'Максимум 50 символов'),
-  email: z
-    .string()
-    .email('Введите корректный email'),
-})
 
 /* ============================================================
    HELPERS
@@ -118,8 +60,6 @@ function markdownToHtml(text) {
 /** Analytics logger */
 function logAnalytics(event, data = {}) {
   console.log(`[YouPub Chat] ${event}`, { ...data, timestamp: new Date().toISOString() })
-  // Extend with GA / analytics provider:
-  // window.gtag?.('event', event, data)
 }
 
 /** Generate unique ID */
@@ -129,10 +69,9 @@ function uid() {
 
 /* ============================================================
    GIGACHAT API (через серверный прокси /api/chat)
-   API-ключ хранится на сервере — не попадает в клиентский бандл
    ============================================================ */
 
-async function callGigaChat(messages, retries = 2) {
+async function callGigaChat(messages, fallbackResponse, retries = 2) {
   try {
     const res = await fetch('/api/chat', {
       method: 'POST',
@@ -141,7 +80,7 @@ async function callGigaChat(messages, retries = 2) {
     })
 
     if (res.status === 429) {
-      return '⏳ Слишком много запросов. Подождите минуту и попробуйте снова.'
+      return fallbackResponse
     }
 
     if (!res.ok) {
@@ -149,14 +88,14 @@ async function callGigaChat(messages, retries = 2) {
     }
 
     const data = await res.json()
-    return data.choices?.[0]?.message?.content || FALLBACK_RESPONSE
+    return data.choices?.[0]?.message?.content || fallbackResponse
   } catch (err) {
     console.error('[GigaChat]', err)
     if (retries > 0) {
       await new Promise((r) => setTimeout(r, 1500))
-      return callGigaChat(messages, retries - 1)
+      return callGigaChat(messages, fallbackResponse, retries - 1)
     }
-    return FALLBACK_RESPONSE
+    return fallbackResponse
   }
 }
 
@@ -191,7 +130,6 @@ function ChatMessage({ message }) {
       transition={{ duration: 0.25 }}
       className={`flex ${isUser ? 'justify-end' : 'justify-start'} mb-3`}
     >
-      {/* Bot avatar */}
       {!isUser && (
         <div className="shrink-0 w-7 h-7 rounded-full bg-gradient-to-br from-purple-600 to-blue-500 flex items-center justify-center mr-2 mt-1">
           <Sparkles size={14} className="text-white" />
@@ -212,7 +150,6 @@ function ChatMessage({ message }) {
         )}
       </div>
 
-      {/* User avatar */}
       {isUser && (
         <div className="shrink-0 w-7 h-7 rounded-full bg-gray-700 flex items-center justify-center ml-2 mt-1">
           <UserIcon size={14} className="text-gray-300" />
@@ -223,7 +160,14 @@ function ChatMessage({ message }) {
 }
 
 /** Quick action chips */
-function QuickActions({ onSelect }) {
+function QuickActions({ onSelect, t }) {
+  const actions = [
+    { label: t('chat.quickActions.features'), message: t('chat.quickMessages.features') },
+    { label: t('chat.quickActions.pricing'), message: t('chat.quickMessages.pricing') },
+    { label: t('chat.quickActions.aiGeneration'), message: t('chat.quickMessages.aiGeneration') },
+    { label: t('chat.quickActions.autoview'), message: t('chat.quickMessages.autoview') },
+  ]
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 6 }}
@@ -231,7 +175,7 @@ function QuickActions({ onSelect }) {
       transition={{ delay: 0.3, duration: 0.3 }}
       className="flex flex-wrap gap-2 mb-3 px-1"
     >
-      {QUICK_ACTIONS.map((action) => (
+      {actions.map((action) => (
         <button
           key={action.label}
           onClick={() => onSelect(action.message)}
@@ -247,7 +191,17 @@ function QuickActions({ onSelect }) {
 }
 
 /** Lead capture form (inline in chat) */
-function LeadForm({ onSubmit, onClose }) {
+function LeadForm({ onSubmit, onClose, t }) {
+  const leadSchema = z.object({
+    name: z
+      .string()
+      .min(2, t('chat.validation.minChars'))
+      .max(50, t('chat.validation.maxChars')),
+    email: z
+      .string()
+      .email(t('chat.validation.invalidEmail')),
+  })
+
   const {
     register,
     handleSubmit,
@@ -266,14 +220,14 @@ function LeadForm({ onSubmit, onClose }) {
       <div className="rounded-2xl border border-purple-500/20 bg-gradient-to-br from-purple-900/30 to-blue-900/20 p-4">
         <div className="flex items-center gap-2 mb-3">
           <Mail size={16} className="text-purple-400" />
-          <span className="text-sm font-medium text-white">Оставьте контакт — свяжемся!</span>
+          <span className="text-sm font-medium text-white">{t('chat.leaveContact')}</span>
         </div>
 
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-2.5">
           <div>
             <input
               {...register('name')}
-              placeholder="Ваше имя"
+              placeholder={t('chat.yourName')}
               className="w-full px-3 py-2 text-sm rounded-lg bg-white/[0.07] border border-white/10
                          text-white placeholder-gray-500 focus:outline-none focus:border-purple-500/50
                          focus:ring-1 focus:ring-purple-500/30 transition-all"
@@ -286,7 +240,7 @@ function LeadForm({ onSubmit, onClose }) {
           <div>
             <input
               {...register('email')}
-              placeholder="Email"
+              placeholder={t('chat.email')}
               type="email"
               className="w-full px-3 py-2 text-sm rounded-lg bg-white/[0.07] border border-white/10
                          text-white placeholder-gray-500 focus:outline-none focus:border-purple-500/50
@@ -307,7 +261,7 @@ function LeadForm({ onSubmit, onClose }) {
                          cursor-pointer"
             >
               <ArrowRight size={14} />
-              Отправить
+              {t('chat.submit')}
             </button>
             <button
               type="button"
@@ -315,7 +269,7 @@ function LeadForm({ onSubmit, onClose }) {
               className="px-3 py-2 text-sm rounded-lg border border-white/10 text-gray-400
                          hover:text-white hover:border-white/20 transition-all cursor-pointer"
             >
-              Позже
+              {t('chat.later')}
             </button>
           </div>
         </form>
@@ -329,6 +283,8 @@ function LeadForm({ onSubmit, onClose }) {
    ============================================================ */
 
 export default function ChatWidget() {
+  const { t } = useTranslation()
+
   /* — Feature flag (dynamic check for testability) — */
   const chatEnabled = import.meta.env.VITE_ENABLE_CHAT === 'true'
   if (!chatEnabled) return null
@@ -345,6 +301,13 @@ export default function ChatWidget() {
   const inputRef = useRef(null)
   const messageTimestamps = useRef([])
 
+  const getGreetingMessage = useCallback(() => ({
+    id: 'greeting',
+    role: 'assistant',
+    content: t('chat.greeting'),
+    timestamp: Date.now(),
+  }), [t])
+
   /* — Load persisted state — */
   useEffect(() => {
     try {
@@ -353,14 +316,14 @@ export default function ChatWidget() {
         setMessages(saved)
         setHasInteracted(true)
       } else {
-        setMessages([GREETING_MESSAGE])
+        setMessages([getGreetingMessage()])
       }
       const leads = JSON.parse(localStorage.getItem(LEADS_KEY) || 'null')
       if (leads) setLeadCaptured(true)
     } catch {
-      setMessages([GREETING_MESSAGE])
+      setMessages([getGreetingMessage()])
     }
-  }, [])
+  }, [getGreetingMessage])
 
   /* — Persist messages — */
   useEffect(() => {
@@ -385,7 +348,6 @@ export default function ChatWidget() {
   useEffect(() => {
     const userMsgCount = messages.filter((m) => m.role === 'user').length
     if (userMsgCount >= 4 && !leadCaptured && !showLeadForm) {
-      // Check if last assistant message hints at email
       const lastBot = [...messages].reverse().find((m) => m.role === 'assistant')
       if (lastBot?.content?.match(/email|почт|свяж|контакт|оставь/i)) {
         setShowLeadForm(true)
@@ -397,24 +359,21 @@ export default function ChatWidget() {
   const checkRateLimit = useCallback(() => {
     const now = Date.now()
     messageTimestamps.current = messageTimestamps.current.filter(
-      (t) => now - t < 60_000,
+      (ts) => now - ts < 60_000,
     )
 
     if (messageTimestamps.current.length >= RATE_LIMIT.maxPerMinute) {
-      return { allowed: false, reason: '⏳ Слишком много сообщений. Подождите минуту.' }
+      return { allowed: false, reason: t('chat.errors.rateLimit') }
     }
 
     const totalUser = messages.filter((m) => m.role === 'user').length
     if (totalUser >= RATE_LIMIT.maxTotal) {
-      return {
-        allowed: false,
-        reason: '📝 Достигнут лимит сообщений. Обновите страницу для нового сеанса.',
-      }
+      return { allowed: false, reason: t('chat.errors.totalLimit') }
     }
 
     messageTimestamps.current.push(now)
     return { allowed: true }
-  }, [messages])
+  }, [messages, t])
 
   /* — Send message — */
   const sendMessage = useCallback(
@@ -422,21 +381,14 @@ export default function ChatWidget() {
       const trimmed = (text || '').trim()
       if (!trimmed || isLoading) return
 
-      // Validate input length
       if (trimmed.length > 1000) {
         setMessages((prev) => [
           ...prev,
-          {
-            id: uid(),
-            role: 'assistant',
-            content: '⚠️ Сообщение слишком длинное. Пожалуйста, сократите до 1000 символов.',
-            timestamp: Date.now(),
-          },
+          { id: uid(), role: 'assistant', content: t('chat.errors.tooLong'), timestamp: Date.now() },
         ])
         return
       }
 
-      // Rate limit check
       const limit = checkRateLimit()
       if (!limit.allowed) {
         setMessages((prev) => [
@@ -455,17 +407,16 @@ export default function ChatWidget() {
       logAnalytics('message_sent', { length: trimmed.length })
 
       try {
-        // Build conversation for GigaChat API
         const apiMessages = [
-          { role: 'system', content: SYSTEM_PROMPT },
+          { role: 'system', content: t('chat.systemPrompt') },
           ...messages
             .filter((m) => m.role === 'user' || m.role === 'assistant')
-            .slice(-10) // Keep last 10 messages for context
+            .slice(-10)
             .map((m) => ({ role: m.role, content: m.content })),
           { role: 'user', content: trimmed },
         ]
 
-        const response = await callGigaChat(apiMessages)
+        const response = await callGigaChat(apiMessages, t('chat.errors.fallback'))
 
         setMessages((prev) => [
           ...prev,
@@ -477,13 +428,13 @@ export default function ChatWidget() {
         console.error('[ChatWidget]', err)
         setMessages((prev) => [
           ...prev,
-          { id: uid(), role: 'assistant', content: FALLBACK_RESPONSE, timestamp: Date.now() },
+          { id: uid(), role: 'assistant', content: t('chat.errors.fallback'), timestamp: Date.now() },
         ])
       } finally {
         setIsLoading(false)
       }
     },
-    [isLoading, messages, checkRateLimit],
+    [isLoading, messages, checkRateLimit, t],
   )
 
   /* — Handle form submit — */
@@ -506,7 +457,7 @@ export default function ChatWidget() {
       {
         id: uid(),
         role: 'assistant',
-        content: `Спасибо, ${data.name}! 🎉 Мы свяжемся с вами по адресу ${data.email}. А пока — задавайте любые вопросы!`,
+        content: t('chat.thankYou', { name: data.name, email: data.email }),
         timestamp: Date.now(),
       },
     ])
@@ -524,7 +475,7 @@ export default function ChatWidget() {
   /* — Clear session — */
   const clearSession = () => {
     localStorage.removeItem(STORAGE_KEY)
-    setMessages([GREETING_MESSAGE])
+    setMessages([getGreetingMessage()])
     setHasInteracted(false)
     setShowLeadForm(false)
     logAnalytics('session_cleared')
@@ -546,12 +497,11 @@ export default function ChatWidget() {
             exit={{ scale: 0, rotate: 180 }}
             transition={{ type: 'spring', stiffness: 260, damping: 20 }}
           >
-            {/* Pulse ring */}
             <span className="absolute inset-0 rounded-full animate-chat-ping bg-purple-500/40" />
 
             <button
               onClick={toggleChat}
-              aria-label="Открыть чат"
+              aria-label={t('chat.openChat')}
               className="relative w-14 h-14 sm:w-16 sm:h-16 rounded-full
                          bg-gradient-to-br from-purple-600 to-blue-600
                          text-white shadow-lg shadow-purple-500/30
@@ -594,24 +544,23 @@ export default function ChatWidget() {
                 </div>
                 <div>
                   <h3 className="text-sm font-semibold text-white leading-tight">
-                    YouPub AI-Ассистент
+                    {t('chat.title')}
                   </h3>
                   <span className="text-[11px] text-green-400 flex items-center gap-1">
                     <span className="w-1.5 h-1.5 rounded-full bg-green-400 inline-block" />
-                    Онлайн
+                    {t('chat.online')}
                   </span>
                 </div>
               </div>
 
               <div className="flex items-center gap-1">
-                {/* Clear session */}
                 {hasInteracted && (
                   <button
                     onClick={clearSession}
                     className="p-2 rounded-lg text-gray-400 hover:text-white hover:bg-white/[0.06]
                                transition-colors cursor-pointer"
-                    title="Новый диалог"
-                    aria-label="Новый диалог"
+                    title={t('chat.newDialog')}
+                    aria-label={t('chat.newDialog')}
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -630,22 +579,20 @@ export default function ChatWidget() {
                   </button>
                 )}
 
-                {/* Minimize */}
                 <button
                   onClick={toggleChat}
                   className="p-2 rounded-lg text-gray-400 hover:text-white hover:bg-white/[0.06]
                              transition-colors cursor-pointer"
-                  aria-label="Свернуть чат"
+                  aria-label={t('chat.minimize')}
                 >
                   <Minimize2 size={16} />
                 </button>
 
-                {/* Close */}
                 <button
                   onClick={toggleChat}
                   className="p-2 rounded-lg text-gray-400 hover:text-white hover:bg-white/[0.06]
                              transition-colors cursor-pointer"
-                  aria-label="Закрыть чат"
+                  aria-label={t('chat.close')}
                 >
                   <X size={16} />
                 </button>
@@ -661,12 +608,10 @@ export default function ChatWidget() {
                 <ChatMessage key={msg.id} message={msg} />
               ))}
 
-              {/* Quick actions after greeting */}
               {messages.length === 1 && messages[0].id === 'greeting' && (
-                <QuickActions onSelect={sendMessage} />
+                <QuickActions onSelect={sendMessage} t={t} />
               )}
 
-              {/* Typing indicator */}
               {isLoading && (
                 <motion.div
                   initial={{ opacity: 0 }}
@@ -682,12 +627,12 @@ export default function ChatWidget() {
                 </motion.div>
               )}
 
-              {/* Lead form */}
               <AnimatePresence>
                 {showLeadForm && !leadCaptured && (
                   <LeadForm
                     onSubmit={handleLeadSubmit}
                     onClose={() => setShowLeadForm(false)}
+                    t={t}
                   />
                 )}
               </AnimatePresence>
@@ -700,7 +645,6 @@ export default function ChatWidget() {
               className="px-4 py-3 border-t border-white/[0.06]
                          bg-[#0f0f1a]"
             >
-              {/* Lead capture button (if not captured and not shown) */}
               {!leadCaptured && !showLeadForm && hasInteracted && (
                 <button
                   onClick={() => setShowLeadForm(true)}
@@ -709,7 +653,7 @@ export default function ChatWidget() {
                              text-purple-300 hover:bg-purple-500/15 transition-colors cursor-pointer"
                 >
                   <Mail size={12} />
-                  Хотите демо? Оставьте email
+                  {t('chat.demoEmail')}
                 </button>
               )}
 
@@ -719,7 +663,7 @@ export default function ChatWidget() {
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
                   onKeyDown={handleKeyDown}
-                  placeholder="Напишите сообщение..."
+                  placeholder={t('chat.placeholder')}
                   rows={1}
                   className="flex-1 resize-none px-3.5 py-2.5 text-sm rounded-xl
                              bg-white/[0.07] border border-white/10 text-white
@@ -738,7 +682,7 @@ export default function ChatWidget() {
                              disabled:opacity-30 disabled:cursor-not-allowed
                              hover:from-purple-500 hover:to-blue-500
                              active:scale-95 transition-all cursor-pointer"
-                  aria-label="Отправить"
+                  aria-label={t('chat.sendAriaLabel')}
                 >
                   {isLoading ? (
                     <Loader2 size={18} className="animate-spin" />
