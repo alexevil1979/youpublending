@@ -71,7 +71,7 @@ function uid() {
    GIGACHAT API (через серверный прокси /api/chat)
    ============================================================ */
 
-async function callGigaChat(messages, fallbackResponse, retries = 2) {
+async function callGigaChat(messages, fallbackResponse, rateLimitResponse, retries = 2) {
   try {
     const res = await fetch('/api/chat', {
       method: 'POST',
@@ -80,7 +80,7 @@ async function callGigaChat(messages, fallbackResponse, retries = 2) {
     })
 
     if (res.status === 429) {
-      return fallbackResponse
+      return rateLimitResponse
     }
 
     if (!res.ok) {
@@ -93,7 +93,7 @@ async function callGigaChat(messages, fallbackResponse, retries = 2) {
     console.error('[GigaChat]', err)
     if (retries > 0) {
       await new Promise((r) => setTimeout(r, 1500))
-      return callGigaChat(messages, fallbackResponse, retries - 1)
+      return callGigaChat(messages, fallbackResponse, rateLimitResponse, retries - 1)
     }
     return fallbackResponse
   }
@@ -283,7 +283,7 @@ function LeadForm({ onSubmit, onClose, t }) {
    ============================================================ */
 
 export default function ChatWidget() {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
 
   /* — Feature flag (dynamic check for testability) — */
   const chatEnabled = import.meta.env.VITE_ENABLE_CHAT === 'true'
@@ -324,6 +324,18 @@ export default function ChatWidget() {
       setMessages([getGreetingMessage()])
     }
   }, [getGreetingMessage])
+
+  /* — Reset chat session when language changes — */
+  const prevLangRef = useRef(i18n.language)
+  useEffect(() => {
+    if (prevLangRef.current !== i18n.language) {
+      prevLangRef.current = i18n.language
+      localStorage.removeItem(STORAGE_KEY)
+      setMessages([getGreetingMessage()])
+      setHasInteracted(false)
+      setShowLeadForm(false)
+    }
+  }, [i18n.language, getGreetingMessage])
 
   /* — Persist messages — */
   useEffect(() => {
@@ -407,16 +419,21 @@ export default function ChatWidget() {
       logAnalytics('message_sent', { length: trimmed.length })
 
       try {
+        /* Language name for reinforcement hint */
+        const langNames = { ru: 'Russian', en: 'English', zh: 'Chinese', hi: 'Hindi', de: 'German', fr: 'French', nl: 'Dutch' }
+        const langHint = langNames[i18n.language] || 'Russian'
+
         const apiMessages = [
           { role: 'system', content: t('chat.systemPrompt') },
           ...messages
             .filter((m) => m.role === 'user' || m.role === 'assistant')
             .slice(-10)
             .map((m) => ({ role: m.role, content: m.content })),
+          { role: 'system', content: `Important: You MUST respond in ${langHint} language only.` },
           { role: 'user', content: trimmed },
         ]
 
-        const response = await callGigaChat(apiMessages, t('chat.errors.fallback'))
+        const response = await callGigaChat(apiMessages, t('chat.errors.fallback'), t('chat.errors.tooManyRequests'))
 
         setMessages((prev) => [
           ...prev,
@@ -434,7 +451,7 @@ export default function ChatWidget() {
         setIsLoading(false)
       }
     },
-    [isLoading, messages, checkRateLimit, t],
+    [isLoading, messages, checkRateLimit, t, i18n.language],
   )
 
   /* — Handle form submit — */
