@@ -1,5 +1,6 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
 import { render, screen, fireEvent, waitFor } from '@testing-library/react'
+import i18n from '../i18n/index.js'
 import ChatWidget from './ChatWidget'
 
 // Mock env variables
@@ -43,8 +44,10 @@ vi.mock('framer-motion', async () => {
   }
 })
 
-beforeEach(() => {
+beforeEach(async () => {
   localStorage.clear()
+  // Ensure consistent language for tests
+  await i18n.changeLanguage('ru')
 })
 
 describe('ChatWidget', () => {
@@ -60,7 +63,7 @@ describe('ChatWidget', () => {
     fireEvent.click(openBtn)
 
     await waitFor(() => {
-      expect(screen.getByText('YouPub AI-Ассистент')).toBeInTheDocument()
+      expect(screen.getByRole('heading', { level: 3 })).toHaveTextContent(/YouPub AI/i)
     })
   })
 
@@ -78,14 +81,14 @@ describe('ChatWidget', () => {
     fireEvent.click(screen.getByRole('button', { name: /открыть чат/i }))
 
     await waitFor(() => {
-      expect(screen.getByText('YouPub AI-Ассистент')).toBeInTheDocument()
+      expect(screen.getByRole('heading', { level: 3 })).toHaveTextContent(/YouPub AI/i)
     })
 
     const closeBtn = screen.getByRole('button', { name: /закрыть чат/i })
     fireEvent.click(closeBtn)
 
     await waitFor(() => {
-      expect(screen.queryByText('YouPub AI-Ассистент')).not.toBeInTheDocument()
+      expect(screen.queryByRole('heading', { level: 3 })).not.toBeInTheDocument()
     })
   })
 
