@@ -365,6 +365,7 @@
     "yourName": "Votre nom",
     "email": "Email",
     "submit": "Envoyer",
+    "later": "Plus tard",
     "thankYou": "Merci, {{name}} ! 🎉 Nous vous recontacterons à {{email}}. En attendant — posez toutes vos questions !",
     "greeting": "Bonjour ! 👋 Je suis l'assistant IA YouPub basé sur GigaChat.\n\nJe peux vous aider à découvrir la plateforme et trouver la meilleure solution pour votre contenu.\n\nSur quoi voulez-vous en savoir plus ?",
     "quickActions": {

@@ -365,6 +365,7 @@
     "yourName": "Dein Name",
     "email": "E-Mail",
     "submit": "Senden",
+    "later": "Später",
     "thankYou": "Danke, {{name}}! 🎉 Wir melden uns unter {{email}}. Bis dahin — stell gern alle Fragen!",
     "greeting": "Hallo! 👋 Ich bin der YouPub KI-Assistent auf Basis von GigaChat.\n\nIch helfe dir, die Plattform kennenzulernen und die beste Lösung für deinen Content zu finden.\n\nWorüber möchtest du mehr erfahren?",
     "quickActions": {

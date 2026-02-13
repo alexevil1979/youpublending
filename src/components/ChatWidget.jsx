@@ -349,7 +349,7 @@ export default function ChatWidget() {
     const userMsgCount = messages.filter((m) => m.role === 'user').length
     if (userMsgCount >= 4 && !leadCaptured && !showLeadForm) {
       const lastBot = [...messages].reverse().find((m) => m.role === 'assistant')
-      if (lastBot?.content?.match(/email|почт|свяж|контакт|оставь/i)) {
+      if (lastBot?.content?.match(/email|e-mail|mail|contact|контакт|почт|свяж|оставь|Kontakt|联系|邮件|संपर्क|ईमेल/i)) {
         setShowLeadForm(true)
       }
     }
