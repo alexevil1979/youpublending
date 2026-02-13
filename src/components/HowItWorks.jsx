@@ -1,15 +1,22 @@
 import { motion } from 'framer-motion'
 import { Upload, Layers, Sparkles, CalendarClock, Rocket } from 'lucide-react'
+import { useTranslation } from 'react-i18next'
 
-const steps = [
-  { icon: Upload, number: '01', title: 'Загружаете видео', description: 'Загрузите одно видео или целую пачку. Поддерживаем массовую загрузку до 100 файлов одновременно.', color: '#a78bfa' },
-  { icon: Layers, number: '02', title: 'Выбираете платформы и группу', description: 'Отметьте YouTube, Telegram, TikTok, Instagram, Pinterest — любую комбинацию. Создайте группу контента.', color: '#60a5fa' },
-  { icon: Sparkles, number: '03', title: 'AI создаёт метаданные', description: 'Искусственный интеллект анализирует видео и генерирует уникальные заголовки, описания и теги для каждой платформы.', color: '#f472b6' },
-  { icon: CalendarClock, number: '04', title: 'Настраиваете расписание', description: 'Выберите один из 5 режимов: линейный, волновой, случайный, по часовым поясам или интервальный.', color: '#22d3ee' },
-  { icon: Rocket, number: '05', title: 'Запускаете и отслеживаете', description: 'Нажмите «Запустить» — видео публикуется по расписанию. AutoView даёт стартовые просмотры. Следите за аналитикой.', color: '#4ade80' },
-]
+const stepIcons = [Upload, Layers, Sparkles, CalendarClock, Rocket]
+const stepNumbers = ['01', '02', '03', '04', '05']
+const stepColors = ['#a78bfa', '#60a5fa', '#f472b6', '#22d3ee', '#4ade80']
 
 export default function HowItWorks() {
+  const { t } = useTranslation()
+
+  const steps = stepIcons.map((icon, i) => ({
+    icon,
+    number: stepNumbers[i],
+    title: t(`howItWorks.step${i + 1}.title`),
+    description: t(`howItWorks.step${i + 1}.description`),
+    color: stepColors[i],
+  }))
+
   return (
     <section id="how-it-works" style={{ position: 'relative', padding: '100px 0' }}>
       <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
@@ -21,14 +28,14 @@ export default function HowItWorks() {
           style={{ textAlign: 'center', marginBottom: '64px' }}
         >
           <span style={{ display: 'inline-block', fontSize: '13px', fontWeight: '600', color: '#22d3ee', textTransform: 'uppercase', letterSpacing: '2px', marginBottom: '16px' }}>
-            Как это работает
+            {t('howItWorks.badge')}
           </span>
           <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 3rem)', fontWeight: '700', color: 'white', marginBottom: '20px' }}>
-            От загрузки до публикации —{' '}
-            <span className="gradient-text">5 простых шагов</span>
+            {t('howItWorks.title')}
+            <span className="gradient-text">{t('howItWorks.titleHighlight')}</span>
           </h2>
           <p style={{ fontSize: '18px', color: '#9ca3af', maxWidth: '640px', margin: '0 auto' }}>
-            Весь процесс занимает меньше 3 минут. Без сложных настроек, без ручной работы.
+            {t('howItWorks.subtitle')}
           </p>
         </motion.div>
 

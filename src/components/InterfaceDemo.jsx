@@ -1,23 +1,20 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { LayoutDashboard, CalendarDays, Sparkles, Eye, BarChart3 } from 'lucide-react'
+import { useTranslation } from 'react-i18next'
 
-const tabs = [
-  { id: 'dashboard', icon: LayoutDashboard, label: 'Дашборд', title: 'Единый центр управления', description: 'Все ваши платформы, видео, статистика и настройки — в одном окне. Не нужно переключаться между кабинетами.' },
-  { id: 'calendar', icon: CalendarDays, label: 'Календарь', title: 'Умный календарь публикаций', description: 'Волновой, случайный, линейный режимы. Перетаскивайте видео между слотами, настраивайте интервалы.' },
-  { id: 'ai', icon: Sparkles, label: 'AI-генерация', title: 'AI создаёт метаданные за вас', description: 'Загрузите видео — AI анализирует контент и создаёт заголовок, описание, теги для каждой платформы.' },
-  { id: 'autoview', icon: Eye, label: 'AutoView', title: 'Автопросмотры для быстрого старта', description: 'Настройте стартовые просмотры для каждого видео. Алгоритмы подхватывают контент с хорошим начальным откликом.' },
-  { id: 'stats', icon: BarChart3, label: 'Статистика', title: 'Аналитика по всем платформам', description: 'Сравнивайте эффективность на YouTube, Telegram, TikTok, Instagram и Pinterest в одном дашборде.' },
-]
+const tabIds = ['dashboard', 'calendar', 'ai', 'autoview', 'stats']
+const tabIcons = [LayoutDashboard, CalendarDays, Sparkles, Eye, BarChart3]
 
 function DashboardScreen() {
+  const { t } = useTranslation()
   return (
     <div>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '10px', marginBottom: '16px' }}>
         {[
-          { label: 'Видео сегодня', value: '24', extra: '80%', extraColor: '#a78bfa' },
-          { label: 'Просмотры', value: '14.2K', extra: '↑ 23%', extraColor: '#4ade80' },
-          { label: 'AI-генераций', value: '156', extra: 'за неделю', extraColor: '#60a5fa' },
+          { label: t('interfaceDemo.screen.videosToday'), value: '24', extra: '80%', extraColor: '#a78bfa' },
+          { label: t('interfaceDemo.screen.views'), value: '14.2K', extra: '↑ 23%', extraColor: '#4ade80' },
+          { label: t('interfaceDemo.screen.aiGenerations'), value: '156', extra: t('interfaceDemo.screen.perWeek'), extraColor: '#60a5fa' },
         ].map(s => (
           <div key={s.label} style={{ background: 'rgba(31,41,55,0.6)', borderRadius: '10px', padding: '12px', border: '1px solid rgba(255,255,255,0.05)' }}>
             <p style={{ fontSize: '11px', color: '#6b7280' }}>{s.label}</p>
@@ -26,7 +23,7 @@ function DashboardScreen() {
           </div>
         ))}
       </div>
-      {['YouTube — 8 публикаций', 'Telegram — 6 публикаций', 'TikTok — 5 публикаций', 'Instagram — 3 публикации'].map((item, i) => (
+      {[t('interfaceDemo.screen.ytPublications'), t('interfaceDemo.screen.tgPublications'), t('interfaceDemo.screen.ttPublications'), t('interfaceDemo.screen.igPublications')].map((item, i) => (
         <div key={i} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '10px', background: 'rgba(31,41,55,0.4)', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.05)', marginBottom: '6px' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
             <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: ['#ef4444','#60a5fa','#fff','#ec4899'][i] }} />
@@ -39,39 +36,18 @@ function DashboardScreen() {
   )
 }
 
-function BarChart() {
+function CalendarScreen() {
+  const { t } = useTranslation()
+  const weekdays = t('interfaceDemo.screen.weekdays', { returnObjects: true })
+  const schedules = [
+    t('interfaceDemo.screen.schedule1'),
+    t('interfaceDemo.screen.schedule2'),
+    t('interfaceDemo.screen.schedule3'),
+  ]
   return (
     <div>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '10px', marginBottom: '16px' }}>
-        {[{ l: 'Просмотры', v: '89.4K' }, { l: 'Подписчики', v: '+2,341' }, { l: 'CTR', v: '8.7%' }].map(s => (
-          <div key={s.l} style={{ background: 'rgba(31,41,55,0.6)', borderRadius: '10px', padding: '10px', border: '1px solid rgba(255,255,255,0.05)', textAlign: 'center' }}>
-            <p style={{ fontSize: '11px', color: '#6b7280' }}>{s.l}</p>
-            <p style={{ fontSize: '18px', fontWeight: '700', color: 'white' }}>{s.v}</p>
-          </div>
-        ))}
-      </div>
-      <div style={{ background: 'rgba(31,41,55,0.6)', borderRadius: '10px', padding: '14px', border: '1px solid rgba(255,255,255,0.05)' }}>
-        <p style={{ fontSize: '11px', color: '#6b7280', marginBottom: '10px' }}>Просмотры по платформам</p>
-        {[{ n: 'YouTube', v: 85, c: '#ef4444' }, { n: 'TikTok', v: 72, c: '#fff' }, { n: 'Instagram', v: 58, c: '#ec4899' }, { n: 'Telegram', v: 45, c: '#60a5fa' }].map(i => (
-          <div key={i.n} style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '8px' }}>
-            <span style={{ fontSize: '11px', color: '#9ca3af', width: '70px' }}>{i.n}</span>
-            <div style={{ flex: 1, background: '#374151', borderRadius: '100px', height: '6px' }}>
-              <div style={{ width: `${i.v}%`, background: i.c, height: '6px', borderRadius: '100px' }} />
-            </div>
-            <span style={{ fontSize: '11px', color: '#6b7280', width: '30px', textAlign: 'right' }}>{i.v}%</span>
-          </div>
-        ))}
-      </div>
-    </div>
-  )
-}
-
-const screens = {
-  dashboard: <DashboardScreen />,
-  calendar: (
-    <div>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(7, 1fr)', gap: '4px', marginBottom: '12px' }}>
-        {['Пн','Вт','Ср','Чт','Пт','Сб','Вс'].map(d => (
+        {weekdays.map(d => (
           <div key={d} style={{ textAlign: 'center', fontSize: '11px', color: '#6b7280', padding: '4px' }}>{d}</div>
         ))}
         {Array.from({ length: 28 }, (_, i) => {
@@ -87,16 +63,21 @@ const screens = {
           )
         })}
       </div>
-      <p style={{ fontSize: '11px', color: '#6b7280', marginBottom: '8px' }}>Расписание на 9 февраля</p>
-      {['09:00 — Reels: Утренний лайфхак', '12:00 — YouTube: Обзор инструментов', '18:00 — TikTok: Тренд недели'].map((t,i) => (
-        <div key={i} style={{ padding: '8px 12px', background: 'rgba(31,41,55,0.4)', borderRadius: '8px', fontSize: '12px', color: '#d1d5db', border: '1px solid rgba(255,255,255,0.05)', marginBottom: '4px' }}>{t}</div>
+      <p style={{ fontSize: '11px', color: '#6b7280', marginBottom: '8px' }}>{t('interfaceDemo.screen.scheduleDate')}</p>
+      {schedules.map((s, i) => (
+        <div key={i} style={{ padding: '8px 12px', background: 'rgba(31,41,55,0.4)', borderRadius: '8px', fontSize: '12px', color: '#d1d5db', border: '1px solid rgba(255,255,255,0.05)', marginBottom: '4px' }}>{s}</div>
       ))}
     </div>
-  ),
-  ai: (
+  )
+}
+
+function AiScreen() {
+  const { t } = useTranslation()
+  const tags = t('interfaceDemo.screen.tagsList', { returnObjects: true })
+  return (
     <div>
       <div style={{ padding: '14px', background: 'rgba(31,41,55,0.6)', borderRadius: '10px', border: '1px solid rgba(255,255,255,0.05)', marginBottom: '12px' }}>
-        <p style={{ fontSize: '11px', color: '#6b7280', marginBottom: '8px' }}>Видео загружено</p>
+        <p style={{ fontSize: '11px', color: '#6b7280', marginBottom: '8px' }}>{t('interfaceDemo.screen.videoUploaded')}</p>
         <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
           <div style={{ width: '48px', height: '32px', borderRadius: '6px', background: 'linear-gradient(135deg, rgba(139,92,246,0.3), rgba(59,130,246,0.3))', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '12px' }}>▶</div>
           <div>
@@ -108,38 +89,42 @@ const screens = {
       <div style={{ padding: '14px', background: 'rgba(139,92,246,0.08)', borderRadius: '10px', border: '1px solid rgba(139,92,246,0.2)' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '10px' }}>
           <Sparkles style={{ width: '14px', height: '14px', color: '#a78bfa' }} />
-          <p style={{ fontSize: '12px', color: '#c4b5fd', fontWeight: '500' }}>AI сгенерировал метаданные</p>
+          <p style={{ fontSize: '12px', color: '#c4b5fd', fontWeight: '500' }}>{t('interfaceDemo.screen.aiGenerated')}</p>
         </div>
         <div style={{ marginBottom: '8px' }}>
           <p style={{ fontSize: '11px', color: '#6b7280' }}>YouTube</p>
-          <p style={{ fontSize: '13px', color: 'white' }}>🚀 5 стратегий, которые ВЗОРВУТ в 2026!</p>
+          <p style={{ fontSize: '13px', color: 'white' }}>{t('interfaceDemo.screen.ytTitle')}</p>
         </div>
         <div style={{ marginBottom: '8px' }}>
           <p style={{ fontSize: '11px', color: '#6b7280' }}>TikTok</p>
-          <p style={{ fontSize: '13px', color: 'white' }}>Повтори и получи 1000 клиентов 💰</p>
+          <p style={{ fontSize: '13px', color: 'white' }}>{t('interfaceDemo.screen.ttTitle')}</p>
         </div>
         <div>
-          <p style={{ fontSize: '11px', color: '#6b7280', marginBottom: '4px' }}>Теги</p>
+          <p style={{ fontSize: '11px', color: '#6b7280', marginBottom: '4px' }}>{t('interfaceDemo.screen.tags')}</p>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '4px' }}>
-            {['маркетинг','бизнес2026','smm','рост','стратегия'].map(t => (
-              <span key={t} style={{ padding: '2px 8px', fontSize: '11px', background: '#1f2937', color: '#9ca3af', borderRadius: '4px' }}>#{t}</span>
+            {tags.map(tag => (
+              <span key={tag} style={{ padding: '2px 8px', fontSize: '11px', background: '#1f2937', color: '#9ca3af', borderRadius: '4px' }}>#{tag}</span>
             ))}
           </div>
         </div>
       </div>
     </div>
-  ),
-  autoview: (
+  )
+}
+
+function AutoViewScreen() {
+  const { t } = useTranslation()
+  return (
     <div>
       <div style={{ padding: '14px', background: 'rgba(31,41,55,0.6)', borderRadius: '10px', border: '1px solid rgba(255,255,255,0.05)', marginBottom: '12px' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '12px' }}>
-          <p style={{ fontSize: '14px', color: 'white', fontWeight: '500' }}>Очередь AutoView</p>
-          <span style={{ fontSize: '11px', padding: '3px 10px', background: 'rgba(74,222,128,0.15)', color: '#4ade80', borderRadius: '6px' }}>Активна</span>
+          <p style={{ fontSize: '14px', color: 'white', fontWeight: '500' }}>{t('interfaceDemo.screen.autoviewQueue')}</p>
+          <span style={{ fontSize: '11px', padding: '3px 10px', background: 'rgba(74,222,128,0.15)', color: '#4ade80', borderRadius: '6px' }}>{t('interfaceDemo.screen.active')}</span>
         </div>
         {[
-          { n: '5 маркетинговых стратегий', v: '1,200 / 2,000', p: 60 },
-          { n: 'Обзор нейросетей для видео', v: '800 / 1,000', p: 80 },
-          { n: 'Как начать SMM в 2026', v: '2,000 / 2,000', p: 100 },
+          { n: t('interfaceDemo.screen.autoviewItem1'), v: '1,200 / 2,000', p: 60 },
+          { n: t('interfaceDemo.screen.autoviewItem2'), v: '800 / 1,000', p: 80 },
+          { n: t('interfaceDemo.screen.autoviewItem3'), v: '2,000 / 2,000', p: 100 },
         ].map((item, i) => (
           <div key={i} style={{ padding: '10px', background: 'rgba(31,41,55,0.4)', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.05)', marginBottom: '6px' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '6px' }}>
@@ -153,16 +138,61 @@ const screens = {
         ))}
       </div>
       <div style={{ padding: '10px 14px', background: 'rgba(59,130,246,0.08)', borderRadius: '10px', border: '1px solid rgba(59,130,246,0.2)', fontSize: '12px', color: '#93c5fd' }}>
-        💡 AutoView работает органично — алгоритмы платформ считают просмотры естественными
+        {t('interfaceDemo.screen.autoviewHint')}
       </div>
     </div>
-  ),
-  stats: <BarChart />,
+  )
+}
+
+function StatsScreen() {
+  const { t } = useTranslation()
+  return (
+    <div>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '10px', marginBottom: '16px' }}>
+        {[{ l: t('interfaceDemo.screen.statsViews'), v: '89.4K' }, { l: t('interfaceDemo.screen.subscribers'), v: '+2,341' }, { l: 'CTR', v: '8.7%' }].map(s => (
+          <div key={s.l} style={{ background: 'rgba(31,41,55,0.6)', borderRadius: '10px', padding: '10px', border: '1px solid rgba(255,255,255,0.05)', textAlign: 'center' }}>
+            <p style={{ fontSize: '11px', color: '#6b7280' }}>{s.l}</p>
+            <p style={{ fontSize: '18px', fontWeight: '700', color: 'white' }}>{s.v}</p>
+          </div>
+        ))}
+      </div>
+      <div style={{ background: 'rgba(31,41,55,0.6)', borderRadius: '10px', padding: '14px', border: '1px solid rgba(255,255,255,0.05)' }}>
+        <p style={{ fontSize: '11px', color: '#6b7280', marginBottom: '10px' }}>{t('interfaceDemo.screen.viewsByPlatform')}</p>
+        {[{ n: 'YouTube', v: 85, c: '#ef4444' }, { n: 'TikTok', v: 72, c: '#fff' }, { n: 'Instagram', v: 58, c: '#ec4899' }, { n: 'Telegram', v: 45, c: '#60a5fa' }].map(i => (
+          <div key={i.n} style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '8px' }}>
+            <span style={{ fontSize: '11px', color: '#9ca3af', width: '70px' }}>{i.n}</span>
+            <div style={{ flex: 1, background: '#374151', borderRadius: '100px', height: '6px' }}>
+              <div style={{ width: `${i.v}%`, background: i.c, height: '6px', borderRadius: '100px' }} />
+            </div>
+            <span style={{ fontSize: '11px', color: '#6b7280', width: '30px', textAlign: 'right' }}>{i.v}%</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  )
 }
 
 export default function InterfaceDemo() {
+  const { t } = useTranslation()
   const [activeTab, setActiveTab] = useState('dashboard')
+
+  const tabs = tabIds.map((id, i) => ({
+    id,
+    icon: tabIcons[i],
+    label: t(`interfaceDemo.tabs.${id}.label`),
+    title: t(`interfaceDemo.tabs.${id}.title`),
+    description: t(`interfaceDemo.tabs.${id}.description`),
+  }))
+
   const tab = tabs.find(t => t.id === activeTab)
+
+  const screens = {
+    dashboard: <DashboardScreen />,
+    calendar: <CalendarScreen />,
+    ai: <AiScreen />,
+    autoview: <AutoViewScreen />,
+    stats: <StatsScreen />,
+  }
 
   return (
     <section id="interface" style={{ position: 'relative', padding: '100px 0' }}>
@@ -175,13 +205,13 @@ export default function InterfaceDemo() {
           style={{ textAlign: 'center', marginBottom: '48px' }}
         >
           <span style={{ display: 'inline-block', fontSize: '13px', fontWeight: '600', color: '#60a5fa', textTransform: 'uppercase', letterSpacing: '2px', marginBottom: '16px' }}>
-            Интерфейс
+            {t('interfaceDemo.badge')}
           </span>
           <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 3rem)', fontWeight: '700', color: 'white', marginBottom: '20px' }}>
-            Посмотрите, как это <span className="gradient-text">выглядит внутри</span>
+            {t('interfaceDemo.title')}<span className="gradient-text">{t('interfaceDemo.titleHighlight')}</span>
           </h2>
           <p style={{ fontSize: '18px', color: '#9ca3af', maxWidth: '640px', margin: '0 auto' }}>
-            Интуитивный интерфейс, в котором каждая деталь продумана для скорости и удобства
+            {t('interfaceDemo.subtitle')}
           </p>
         </motion.div>
 
@@ -211,7 +241,7 @@ export default function InterfaceDemo() {
               <motion.div key={activeTab} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: 20 }} transition={{ duration: 0.3 }}>
                 <h3 style={{ fontSize: 'clamp(1.3rem, 2.5vw, 1.8rem)', fontWeight: '700', color: 'white', marginBottom: '16px' }}>{tab.title}</h3>
                 <p style={{ fontSize: '16px', color: '#9ca3af', lineHeight: '1.7', marginBottom: '24px' }}>{tab.description}</p>
-                <a href="#pricing" style={{ color: '#a78bfa', fontWeight: '500', textDecoration: 'none', fontSize: '15px' }}>Попробовать бесплатно →</a>
+                <a href="#pricing" style={{ color: '#a78bfa', fontWeight: '500', textDecoration: 'none', fontSize: '15px' }}>{t('interfaceDemo.tryFree')}</a>
               </motion.div>
             </AnimatePresence>
           </div>

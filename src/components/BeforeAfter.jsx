@@ -1,25 +1,23 @@
 import { motion } from 'framer-motion'
 import { X, Check, Clock, Frown, Smile, ArrowRight } from 'lucide-react'
+import { useTranslation } from 'react-i18next'
 
-const beforeItems = [
-  { icon: Clock, text: '3–5 часов в день на ручную публикацию' },
-  { icon: X, text: 'Переключение между 5 разными кабинетами' },
-  { icon: X, text: 'Копипаст заголовков и описаний вручную' },
-  { icon: X, text: 'Скучные однотипные метаданные' },
-  { icon: X, text: '0 стартовых просмотров — видео тонет' },
-  { icon: Frown, text: 'Выгорание и упущенные охваты' },
-]
-
-const afterItems = [
-  { icon: Check, text: '3 клика — видео на всех 5 платформах' },
-  { icon: Check, text: 'Один дашборд для всего' },
-  { icon: Check, text: 'AI создаёт уникальные метаданные для каждой площадки' },
-  { icon: Check, text: 'Цепляющие заголовки = выше CTR' },
-  { icon: Check, text: 'AutoView разгоняет видео в первые часы' },
-  { icon: Smile, text: 'Больше времени на творчество и рост' },
-]
+const beforeIcons = [Clock, X, X, X, X, Frown]
+const afterIcons = [Check, Check, Check, Check, Check, Smile]
 
 export default function BeforeAfter() {
+  const { t } = useTranslation()
+
+  const beforeItems = beforeIcons.map((icon, i) => ({
+    icon,
+    text: t(`beforeAfter.before${i + 1}`),
+  }))
+
+  const afterItems = afterIcons.map((icon, i) => ({
+    icon,
+    text: t(`beforeAfter.after${i + 1}`),
+  }))
+
   return (
     <section style={{ position: 'relative', padding: '100px 0' }}>
       <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
@@ -31,13 +29,13 @@ export default function BeforeAfter() {
           style={{ textAlign: 'center', marginBottom: '64px' }}
         >
           <span style={{ display: 'inline-block', fontSize: '13px', fontWeight: '600', color: '#f472b6', textTransform: 'uppercase', letterSpacing: '2px', marginBottom: '16px' }}>
-            Трансформация
+            {t('beforeAfter.badge')}
           </span>
           <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 3rem)', fontWeight: '700', color: 'white', marginBottom: '20px' }}>
-            Почувствуйте <span className="gradient-text">разницу</span>
+            {t('beforeAfter.title')}<span className="gradient-text">{t('beforeAfter.titleHighlight')}</span>
           </h2>
           <p style={{ fontSize: '18px', color: '#9ca3af', maxWidth: '640px', margin: '0 auto' }}>
-            Сравните свою работу до и после YouPub — экономия времени очевидна
+            {t('beforeAfter.subtitle')}
           </p>
         </motion.div>
 
@@ -70,8 +68,8 @@ export default function BeforeAfter() {
                 <Frown style={{ width: '20px', height: '20px', color: '#f87171' }} />
               </div>
               <div>
-                <h3 style={{ fontSize: '20px', fontWeight: '700', color: 'white' }}>До YouPub</h3>
-                <p style={{ fontSize: '13px', color: '#f87171' }}>Ручная рутина и хаос</p>
+                <h3 style={{ fontSize: '20px', fontWeight: '700', color: 'white' }}>{t('beforeAfter.beforeTitle')}</h3>
+                <p style={{ fontSize: '13px', color: '#f87171' }}>{t('beforeAfter.beforeSubtitle')}</p>
               </div>
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
@@ -108,8 +106,8 @@ export default function BeforeAfter() {
                 <Smile style={{ width: '20px', height: '20px', color: '#4ade80' }} />
               </div>
               <div>
-                <h3 style={{ fontSize: '20px', fontWeight: '700', color: 'white' }}>С YouPub</h3>
-                <p style={{ fontSize: '13px', color: '#4ade80' }}>Автоматизация и рост</p>
+                <h3 style={{ fontSize: '20px', fontWeight: '700', color: 'white' }}>{t('beforeAfter.afterTitle')}</h3>
+                <p style={{ fontSize: '13px', color: '#4ade80' }}>{t('beforeAfter.afterSubtitle')}</p>
               </div>
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
