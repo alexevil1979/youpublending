@@ -33,7 +33,7 @@ export default function FinalCTA() {
           </p>
 
           <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center', gap: '16px' }}>
-            <a href="#pricing" className="btn-primary"
+            <a href="https://youpub.site/login" className="btn-primary"
               style={{ padding: '16px 36px', borderRadius: '16px', fontSize: '17px', fontWeight: '700', color: 'white', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
               {t('finalCta.ctaPrimary')}
               <ArrowRight style={{ width: '20px', height: '20px' }} />

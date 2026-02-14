@@ -241,7 +241,7 @@ export default function InterfaceDemo() {
               <motion.div key={activeTab} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: 20 }} transition={{ duration: 0.3 }}>
                 <h3 style={{ fontSize: 'clamp(1.3rem, 2.5vw, 1.8rem)', fontWeight: '700', color: 'white', marginBottom: '16px' }}>{tab.title}</h3>
                 <p style={{ fontSize: '16px', color: '#9ca3af', lineHeight: '1.7', marginBottom: '24px' }}>{tab.description}</p>
-                <a href="#pricing" style={{ color: '#a78bfa', fontWeight: '500', textDecoration: 'none', fontSize: '15px' }}>{t('interfaceDemo.tryFree')}</a>
+                <a href="https://youpub.site/login" style={{ color: '#a78bfa', fontWeight: '500', textDecoration: 'none', fontSize: '15px' }}>{t('interfaceDemo.tryFree')}</a>
               </motion.div>
             </AnimatePresence>
           </div>

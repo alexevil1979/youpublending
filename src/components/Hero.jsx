@@ -87,7 +87,7 @@ export default function Hero() {
             transition={{ duration: 0.7, delay: 0.3 }}
             style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center', gap: '16px', marginBottom: '64px' }}
           >
-            <a href="#pricing" className="btn-primary"
+            <a href="https://youpub.site/login" className="btn-primary"
               style={{ padding: '16px 32px', borderRadius: '16px', fontSize: '17px', fontWeight: '600', color: 'white', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
               {t('hero.ctaPrimary')}
               <ArrowRight style={{ width: '20px', height: '20px' }} />

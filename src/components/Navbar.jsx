@@ -164,11 +164,11 @@ export default function Navbar() {
               </AnimatePresence>
             </div>
 
-            <a href="#pricing" onClick={(e) => handleNavClick(e, '#pricing')}
+            <a href="https://youpub.site/login"
               style={{ padding: '8px 16px', fontSize: '14px', color: '#9ca3af', textDecoration: 'none' }}>
               {t('navbar.login')}
             </a>
-            <a href="#pricing" onClick={(e) => handleNavClick(e, '#pricing')}
+            <a href="https://youpub.site/login"
               className="btn-primary"
               style={{ padding: '10px 20px', borderRadius: '14px', fontSize: '14px', fontWeight: '600', color: 'white', textDecoration: 'none' }}>
               {t('navbar.startFree')}
@@ -231,7 +231,7 @@ export default function Navbar() {
               </div>
 
               <div style={{ paddingTop: '12px', borderTop: '1px solid rgba(255,255,255,0.05)', marginTop: '8px' }}>
-                <a href="#pricing" onClick={(e) => handleNavClick(e, '#pricing')}
+                <a href="https://youpub.site/login"
                   className="btn-primary"
                   style={{
                     display: 'block', textAlign: 'center', padding: '14px 20px',

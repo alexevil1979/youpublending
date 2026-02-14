@@ -2,7 +2,7 @@
 
 Продающий лендинг для SaaS-сервиса **YouPub** — платформы автоматической публикации видеоконтента на 5 платформ: YouTube, Telegram, TikTok, Instagram, Pinterest.
 
-**Продакшен:** https://youpub.1tlt.ru
+**Продакшен:** https://youpub.site
 
 ---
 
@@ -143,7 +143,7 @@ npm run lint         # ESLint проверка
 - **Веб-сервер:** Apache 2.4
 - **SSL:** Let's Encrypt (DNS-challenge)
 - **Путь:** `/ssd/www/youpublanding/`
-- **Домен:** youpub.1tlt.ru
+- **Домен:** youpub.site
 
 ---
 

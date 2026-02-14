@@ -13,9 +13,43 @@
     <!-- Theme color for mobile browsers -->
     <meta name="theme-color" content="#7c3aed" />
 
-    <!-- Fallback meta (overridden by React Helmet at runtime) -->
+    <!-- SEO: Canonical -->
+    <link rel="canonical" href="https://youpub.site/" />
+
+    <!-- SEO: Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://youpub.site/" />
+    <meta property="og:title" content="YouPub — Публикуй видео на 5 платформ одним кликом" />
+    <meta property="og:description" content="Автоматическая публикация видео на YouTube, Telegram, TikTok, Instagram, Pinterest с AI и аналитикой" />
+    <meta property="og:site_name" content="YouPub" />
+    <meta property="og:locale" content="ru_RU" />
+
+    <!-- SEO: Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="YouPub — Публикуй видео на 5 платформ одним кликом" />
+    <meta name="twitter:description" content="Автоматическая публикация видео на 5 платформ с AI-генерацией и аналитикой" />
+
+    <!-- Fallback meta (overridden by React at runtime) -->
     <title>YouPub — Публикуй видео на 5 платформ одним кликом</title>
     <meta name="description" content="YouPub — умная платформа автоматической публикации видео на 5 платформ: YouTube, Telegram, TikTok, Instagram, Pinterest" />
+
+    <!-- Structured Data: SoftwareApplication -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "YouPub",
+      "url": "https://youpub.site",
+      "applicationCategory": "MultimediaApplication",
+      "operatingSystem": "Web",
+      "description": "Умная платформа автоматической публикации видео на 5 платформ",
+      "offers": [
+        { "@type": "Offer", "name": "Starter", "price": "0", "priceCurrency": "RUB" },
+        { "@type": "Offer", "name": "Pro", "price": "1490", "priceCurrency": "RUB" },
+        { "@type": "Offer", "name": "Agency", "price": "4990", "priceCurrency": "RUB" }
+      ]
+    }
+    </script>
 
     <!-- Fonts: preconnect + load only used weights with font-display: swap -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />

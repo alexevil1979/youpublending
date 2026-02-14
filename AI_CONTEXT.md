@@ -4,7 +4,7 @@
 
 ## Обзор проекта
 
-Продающий лендинг для **YouPub** — платформы автоматической публикации видео на 5 платформ (YouTube, Telegram, TikTok, Instagram, Pinterest). Сайт: `https://youpub.1tlt.ru`
+Продающий лендинг для **YouPub** — платформы автоматической публикации видео на 5 платформ (YouTube, Telegram, TikTok, Instagram, Pinterest). Сайт: `https://youpub.site`
 
 ## Стек
 

@@ -15,7 +15,7 @@ import { fileURLToPath } from 'url'
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const distHtml = resolve(__dirname, '..', 'dist', 'index.html')
 
-const SITE_URL = 'https://youpub.1tlt.ru'
+const SITE_URL = 'https://youpub.site'
 
 // Load Russian locale (fallback) for static structured data
 const ruLocale = JSON.parse(

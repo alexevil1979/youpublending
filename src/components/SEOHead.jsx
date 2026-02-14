@@ -1,7 +1,7 @@
 import { Helmet } from '@dr.pogodin/react-helmet'
 import { useTranslation } from 'react-i18next'
 
-const SITE_URL = 'https://youpub.1tlt.ru'
+const SITE_URL = 'https://youpub.site'
 const SUPPORTED_LANGS = ['ru', 'en', 'zh', 'hi', 'de', 'fr', 'nl']
 
 /**

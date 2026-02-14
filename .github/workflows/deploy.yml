@@ -40,6 +40,7 @@ jobs:
           cp package.json deploy-package/
           cp package-lock.json deploy-package/
           cp ecosystem.config.cjs deploy-package/
+          cp -r apache deploy-package/
 
       - name: Create target dir and deploy
         uses: appleboy/ssh-action@v1

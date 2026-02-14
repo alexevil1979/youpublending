@@ -24,6 +24,9 @@ rsync -avz \
   ecosystem.config.cjs \
   "${VPS_USER}@${VPS_HOST}:${VPS_PATH}/"
 
+echo "📦 Загрузка Apache конфига..."
+rsync -avz apache/ "${VPS_USER}@${VPS_HOST}:${VPS_PATH}/apache/"
+
 echo "🔧 Установка зависимостей и перезапуск сервера..."
 ssh "${VPS_USER}@${VPS_HOST}" << 'ENDSSH'
   cd /ssd/www/youpublanding
@@ -42,5 +45,6 @@ ENDSSH
 
 echo ""
 echo "✅ Деплой завершён!"
-echo "   Сайт: https://youpub.1tlt.ru"
-echo "   API:  https://youpub.1tlt.ru/api/chat"
+echo "   Сайт:  https://youpub.site"
+echo "   CRM:   https://youpub.site/login"
+echo "   API:   https://youpub.site/api/health"

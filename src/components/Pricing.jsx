@@ -112,10 +112,10 @@ export default function Pricing() {
                 ))}
               </div>
 
-              <button className={plan.primary ? 'btn-primary' : 'btn-secondary'}
-                style={{ width: '100%', padding: '12px', borderRadius: '12px', fontWeight: '600', fontSize: '14px', color: 'white', border: plan.primary ? 'none' : undefined }}>
+              <a href="https://youpub.site/login" className={plan.primary ? 'btn-primary' : 'btn-secondary'}
+                style={{ width: '100%', padding: '12px', borderRadius: '12px', fontWeight: '600', fontSize: '14px', color: 'white', border: plan.primary ? 'none' : undefined, textDecoration: 'none', textAlign: 'center', display: 'block' }}>
                 {plan.cta}
-              </button>
+              </a>
             </motion.div>
           ))}
         </div>
